@@ -146,6 +146,23 @@ def render_markdown(case: Dict[str, Any]) -> str:
         add(draft.get("body", ""))
         add("```")
         add("")
+    sec = case.get("security", {})
+    add("## Security & tamper checks")
+    add("")
+    if sec.get("findings"):
+        for f in sec["findings"]:
+            add("- **{} / {}** in `{}` ({}): `{}`".format(
+                f["severity"], f["kind"], f["source_id"], f.get("location", ""),
+                f["evidence"]))
+        add("")
+        add("The recommended position is computed deterministically; injected document "
+            "content cannot alter the math, only the prose, which NumberGuard, the "
+            "reference check and the eval judge police.")
+    else:
+        add("- No injection or tamper indicators across {} scanned sources "
+            "(classes: {}).".format(sec.get("sources_scanned", "?"),
+                                    ", ".join(sec.get("classes", []))))
+    add("")
     qa = case["qa"]
     add("## Quality & audit")
     add("")
@@ -463,6 +480,30 @@ def render_html(case: Dict[str, Any]) -> str:
         add('<details><summary>Retrieval plan (datum explain)</summary>'
             '<div class="quote">{}</div></details>'.format(_esc(retr["explain_sample"])))
     add('</div>')
+
+    # ---- security panel
+    sec = case.get("security", {})
+    add('<h2>Security &amp; tamper checks '
+        '<span class="badge tag-det">deterministic scan, every run</span></h2>')
+    if sec.get("findings"):
+        for f in sec["findings"]:
+            add('<div class="card HIGH"><h3><span class="chip {sev}">{sev}</span> '
+                '&nbsp;{kind} in {src}</h3><div class="small">{loc}</div>'
+                '<div class="quote">{ev}</div></div>'.format(
+                    sev=_esc(f["severity"]), kind=_esc(f["kind"]),
+                    src=_esc(f["source_id"]), loc=_esc(f.get("location", "")),
+                    ev=_esc(f["evidence"])))
+        add('<p class="note">Indicators of adversarial content were found. The '
+            'recommended position is computed deterministically, so injected text '
+            'cannot alter the math; the prose is policed by NumberGuard, the reference '
+            'check and the eval judge. Review the flagged sources before relying on '
+            'their statements.</p>')
+    else:
+        add('<div class="panel"><span class="chip OKAY">clean</span> '
+            '<span class="small">No injection or tamper indicators across {} scanned '
+            'sources. Classes checked: {}.</span></div>'.format(
+                _esc(sec.get("sources_scanned", "?")),
+                _esc(", ".join(sec.get("classes", [])))))
 
     # ---- QA panel
     add('<h2>Quality &amp; guardrails</h2><div class="stats">')

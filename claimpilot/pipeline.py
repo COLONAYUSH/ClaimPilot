@@ -22,6 +22,7 @@ from .models import FactLedger
 from .position import build_case_input, compose_position
 from .reconcile import run_reconciliation
 from .retrieval import build_chunks, make_retriever
+from .security import SCAN_CLASSES, scan_registry
 from .util import to_jsonable
 
 log = logging.getLogger("claimpilot.pipeline")
@@ -35,6 +36,16 @@ def run_pipeline(cfg: RunConfig) -> Dict[str, Any]:
     client = LLMClient(cfg.provider, cfg.model, cfg.cache_dir, cfg.max_repairs)
 
     extraction = run_extraction(registry, ledger, client, cfg)
+
+    # Adversarial-input scan: covers native text, vision transcripts, and any
+    # text layer found where none should exist. Findings surface in the brief;
+    # the money conclusions are computed and cannot be moved by injected text.
+    security_findings = scan_registry(registry)
+    if security_findings:
+        log.warning("SECURITY: %d adversarial-input indicator(s): %s",
+                    len(security_findings),
+                    ", ".join(sorted({f.kind for f in security_findings})))
+
     recon = run_reconciliation(ledger, registry)
 
     chunks = build_chunks(registry)   # includes vision transcripts by now
@@ -104,6 +115,12 @@ def run_pipeline(cfg: RunConfig) -> Dict[str, Any]:
             "log": ent.retrieval_log,
             "no_clause_topics": ent.no_clause_topics,
             "explain_sample": explain_sample,
+        },
+        "security": {
+            "findings": [to_jsonable(f) for f in security_findings],
+            "sources_scanned": sum(1 for d in registry.values()
+                                   if d.status not in ("MISSING", "UNREADABLE")),
+            "classes": SCAN_CLASSES,
         },
         "qa": {
             "quotes_total": qa.total, "quotes_exact": qa.exact, "quotes_fuzzy": qa.fuzzy,

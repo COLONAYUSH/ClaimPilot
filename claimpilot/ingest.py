@@ -139,15 +139,19 @@ def _parse_pdf_text(doc: SourceDoc) -> None:
 
 def _parse_pdf_scan(doc: SourceDoc) -> None:
     # Confirm there is genuinely no text layer; the transcript comes from the
-    # vision stage later and lands in derived_text.
+    # vision stage later and lands in derived_text. A text layer on a source
+    # registered as image-only is a tamper indicator (an easy way to feed a
+    # parser words the human eye never sees), so it is recorded for the
+    # security scanner and deliberately NOT adopted as citable text.
     from pypdf import PdfReader
     reader = PdfReader(doc.path)
     text = "".join((p.extract_text() or "") for p in reader.pages).strip()
     doc.meta["native_text_chars"] = len(text)
     if len(text) >= 50:
-        log.warning("%s: scan unexpectedly has a text layer (%d chars); using it",
+        log.warning("%s: unexpected text layer on an image-only scan (%d chars); "
+                    "flagged for the security panel, vision remains canonical",
                     doc.source_id, len(text))
-        doc.text = text
+        doc.meta["unexpected_text_layer"] = text[:2000]
 
 
 def _parse_text(doc: SourceDoc) -> None:

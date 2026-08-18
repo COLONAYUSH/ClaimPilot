@@ -30,6 +30,7 @@ the written brief uses a number the system can't prove, the brief doesn't ship.
 [![Citation validity](https://img.shields.io/badge/citation%20validity-100%25%20(207%2F207)-brightgreen.svg)](evals/eval_report.md)
 [![Tests](https://img.shields.io/badge/unit%20tests-33%20passing-brightgreen.svg)](tests)
 [![NumberGuard](https://img.shields.io/badge/NumberGuard-fails%20closed-8A2BE2.svg)](#the-grounding-gates)
+[![Robustness](https://img.shields.io/badge/prompt%20injection-12%2F12%20defended-brightgreen.svg)](#security-and-adversarial-input)
 
 [![LLM](https://img.shields.io/badge/LLM-claude--sonnet--5%20·%20temp%200%20·%20cached-D97757.svg)](#reliability)
 [![Retrieval](https://img.shields.io/badge/retrieval-datum%20%2B%20SQLite%20FTS5-336791.svg?logo=postgresql&logoColor=white)](#retrieval)
@@ -66,6 +67,7 @@ the written brief uses a number the system can't prove, the brief doesn't ship.
 - [Quickstart](#quickstart)
 - [How it works](#how-it-works)
 - [The grounding gates](#the-grounding-gates)
+- [Security and adversarial input](#security-and-adversarial-input)
 - [Reliability](#reliability)
 - [Retrieval](#retrieval)
 - [Evaluation](#evaluation)
@@ -292,6 +294,54 @@ And a derived one:
 
 <div align="right"><a href="#contents">back to top</a></div>
 
+## Security and adversarial input
+
+The claim folder is untrusted input. The counterparty writes several of these documents,
+and any of them can carry text aimed at the model instead of the reader: a forged "system
+note", an "ignore previous instructions" line, an instruction hidden in zero-width unicode,
+or words smuggled into the text layer of a supposedly image-only scan. A copilot that reads
+attacker-authored PDFs has to assume some of them are hostile.
+
+The main defense is the architecture, not a filter. The recommended counter and every
+classification are **computed from structured facts, not generated**, so no injected
+sentence can move the money. Extracted facts need mechanically verified quotes. Trust tiers
+stop carrier correspondence from outranking a signed document. NumberGuard and the reference
+check keep injected figures out of the prose. An injected instruction lands in the pipeline
+as one more untrusted assertion, and there is no code path from an assertion to a
+conclusion.
+
+On top of that, `claimpilot/security.py` runs a deterministic scanner on every source
+(native text, vision transcripts, and any unexpected text layer) and lists what it finds in
+the brief's security panel, so a specialist knows the counterparty tried. Detection over
+silent resistance.
+
+| Threat | Where it enters | What stops it |
+|---|---|---|
+| Indirect prompt injection (fake system note, "ignore instructions") | any document body, email, vision transcript | conclusions are computed not generated; per-touchpoint "content is data" system prompts; scanner flags it |
+| Invisible-unicode / bidi payloads | any text field | scanner flags zero-width and bidi control characters |
+| Text-layer smuggling in a scan | image-only PDF | the text layer is recorded and flagged, never adopted as citable text; vision stays canonical |
+| Document tampering with a fabricated value | any single source | cross-source reconciliation raises a discrepancy instead of adopting it; signed records outrank summaries and correspondence |
+| Fabricated quote from the model | extraction output | the quote gate quarantines it |
+| Fabricated figure in the brief | composition output | NumberGuard fails the run closed |
+| Retrieval poisoning to surface the wrong clause | any indexed source | typed abstention over a nearest-sounding hit; retrieval plan recorded for audit |
+
+`claimpilot robustness` proves it. The suite seeds a copy of the pack with a prompt-injection
+email, an invisible-unicode payload and a cross-source offer tamper, runs the whole pipeline
+over it, and asserts both halves: every planted indicator is detected, and the recommended
+counter, the documented case and the entitlement classifications come out byte-identical to
+the clean run, with NumberGuard still clean and the injected "accept the offer" instruction
+absent from the prose. Results in `evals/robustness_report.md`.
+
+> [!NOTE]
+> Known limits, stated honestly. The scanner is pattern-based, so it is a tripwire, not a
+> proof; a novel phrasing can slip past it, which is exactly why detection is the backstop
+> and the computed-not-generated design is the real defense. A tampered value that no other
+> source contradicts (a lone freight charge, say) is adopted, because there is nothing to
+> reconcile it against; production closes that with signed-manifest ingestion and
+> source-of-record integrity, not with more model calls.
+
+<div align="right"><a href="#contents">back to top</a></div>
+
 ## Reliability
 
 - Every LLM call runs at temperature 0, gets schema-validated, and is cached
@@ -370,6 +420,7 @@ Four layers, all runnable from the CLI, results committed:
 | Unit tests (`tests/`) | reconciliation rules, cap math, date math, NumberGuard, quote verification, schema validator, benchmark scoring | **33/33** |
 | Golden-set eval (`evals/run_evals.py`) | 72 hand-labeled facts across all three extraction paths, 6 planted discrepancies, 4 evidence gaps, 7 entitlement classifications with dollar bounds, comparables inclusion, citation validity, guard cleanliness, plus the ablation run | **106/106** |
 | LLM-as-judge (`evals/llm_judge.py`) | the composed prose, judged adversarially against the full case data: faithful use of cited facts, no overstatement in the draft reply, consistency with the computed position, register separation, material completeness | **5/5** |
+| Robustness (`evals/robustness.py`) | a pack seeded with prompt injection, invisible unicode and a cross-source tamper: every indicator detected, and the recommended counter, documented case and classifications identical to the clean run | **12/12** |
 | Retrieval bench and abstention sweep (`evals/retrieval_bench.md`, `evals/abstention_sweep.md`) | hit@1/3, MRR@5, per-kind breakdown, false-answer rate on unanswerables, latency | table above |
 
 The split is deliberate. Everything with an objective answer gets a deterministic check,
@@ -459,6 +510,7 @@ freight-claim-copilot/
 │   ├── ingest.py          deterministic parsers: eml, JSON, CSV, XLSX, PDF, scan registration
 │   ├── extract.py         stage 2: structured + LLM + vision extraction, quotes everywhere
 │   ├── grounding.py       the two gates: quote verification + NumberGuard
+│   ├── security.py        adversarial-input scanner (injection, invisible unicode, tamper)
 │   ├── reconcile.py       stage 4: the 14 cross-source rules and authority rulings
 │   ├── retrieval.py       Retriever protocol, FTS5 backend, datum client, loud fallback
 │   ├── datum_bridge.py    JSON-lines bridge, runs under datum's own venv

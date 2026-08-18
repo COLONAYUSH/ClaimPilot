@@ -64,6 +64,11 @@ def main(argv=None) -> int:
     p_bench = sub.add_parser("bench", help="retrieval backend head-to-head benchmark")
     _common(p_bench)
 
+    p_rob = sub.add_parser("robustness", help="adversarial-input robustness suite: run a "
+                                              "pack seeded with synthetic tampering and "
+                                              "assert the defenses hold")
+    _common(p_rob)
+
     args = parser.parse_args(argv)
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -113,6 +118,12 @@ def main(argv=None) -> int:
         sys.path.insert(0, str(root))
         from evals.retrieval_bench import main as bench_main
         return bench_main(cfg)
+
+    if args.command == "robustness":
+        root = Path(__file__).resolve().parent.parent
+        sys.path.insert(0, str(root))
+        from evals.robustness import main as robustness_main
+        return robustness_main(cfg)
 
     return 2
 
