@@ -1,0 +1,68 @@
+{
+ "text": "```json\n{\n \"criteria\": [\n  {\n   \"id\": \"faithful_citation_use\",\n   \"pass\": false,\n   \"evidence\": \"negotiation_analysis states: 'HC-2025-0118 shared a very similar evidence profile — a partial packaging dispute and a missing packaging specification — and still settled at 81.28% of the claimed amount [HC-2025-0118], while HC-2025-0094, a pure delay claim on the same non-guaranteed service, saw its promotion markdown denied entirely with only a commercial freight refund approved [HC-2025-0094].' The provided case data only gives aggregate medians for groups of historical rows (F-223: 83.77% median across 5 rows including HC-2025-0118; F-224: 8.51% median across 3 rows including HC-2025-0094) — no individual settlement percentage, evidence profile, or outcome detail for either specific case exists anywhere in referenced_facts, so both specifics are asserted without support in the data.\"\n  },\n  {\n   \"id\": \"no_overstatement_in_reply\",\n   \"pass\": true,\n   \"evidence\": \"The reply says 'We don't currently have that specification on hand' (framed as currently unavailable, not impossible), treats the 5 disputed units as unresolved ('we'd like you to reconsider accepting these 5 units'), and explicitly declines to claim the markdown as covered ('We're not asking BlueLine to treat this as a covered loss'); open items like the EDI/POD count and repack-labor classification are presented as ongoing, not settled.\"\n  },\n  {\n   \"id\": \"position_consistency\",\n   \"pass\": true,\n   \"evidence\": \"The counter of $11,920.00, its build (core_high $10,070.00 = 3400+3825+2125+420+300, plus goodwill_high $1,850.00), the $4,695.00 gap over the $7,225.00 offer, the outright markdown concession, and the freight refund framed strictly as a 'commercial accommodation'/goodwill lever are stated identically and match F-214–F-222 and entitlements E-1–E-7 across the executive_summary, negotiation_analysis, and draft_reply.\"\n  },\n  {\n   \"id\": \"register_separation\",\n   \"pass\": false,\n   \"evidence\": \"The same sentence citing HC-2025-0118's 'evidence profile' and '81.28%' outcome, and HC-2025-0094's 'promotion markdown denied entirely with only a commercial freight refund approved,' is written as established, source-cited fact (bracketed case-ID citations mirror the fact-citation style used elsewhere), but no such per-case detail is present in referenced_facts — only group medians (F-223–F-226) — so unverifiable specifics are presented with the same certainty as verified facts.\"\n  },\n  {\n   \"id\": \"material_completeness\",\n   \"pass\": true,\n   \"evidence\": \"The brief covers the disputed 5 damaged units (para 2, E-3, D-06), the markdown exclusion (para 3, E-6), the EDI-vs-POD count conflict (para 1, D-04, plus a dedicated next step), the freight-refund goodwill angle (para 3, E-7, executive summary, draft reply), and the evidence gaps G-01 through G-04 (each given its own recommended next step and risk callout).\"\n  }\n ]\n}\n```",
+ "obj": {
+  "criteria": [
+   {
+    "id": "faithful_citation_use",
+    "pass": false,
+    "evidence": "negotiation_analysis states: 'HC-2025-0118 shared a very similar evidence profile — a partial packaging dispute and a missing packaging specification — and still settled at 81.28% of the claimed amount [HC-2025-0118], while HC-2025-0094, a pure delay claim on the same non-guaranteed service, saw its promotion markdown denied entirely with only a commercial freight refund approved [HC-2025-0094].' The provided case data only gives aggregate medians for groups of historical rows (F-223: 83.77% median across 5 rows including HC-2025-0118; F-224: 8.51% median across 3 rows including HC-2025-0094) — no individual settlement percentage, evidence profile, or outcome detail for either specific case exists anywhere in referenced_facts, so both specifics are asserted without support in the data."
+   },
+   {
+    "id": "no_overstatement_in_reply",
+    "pass": true,
+    "evidence": "The reply says 'We don't currently have that specification on hand' (framed as currently unavailable, not impossible), treats the 5 disputed units as unresolved ('we'd like you to reconsider accepting these 5 units'), and explicitly declines to claim the markdown as covered ('We're not asking BlueLine to treat this as a covered loss'); open items like the EDI/POD count and repack-labor classification are presented as ongoing, not settled."
+   },
+   {
+    "id": "position_consistency",
+    "pass": true,
+    "evidence": "The counter of $11,920.00, its build (core_high $10,070.00 = 3400+3825+2125+420+300, plus goodwill_high $1,850.00), the $4,695.00 gap over the $7,225.00 offer, the outright markdown concession, and the freight refund framed strictly as a 'commercial accommodation'/goodwill lever are stated identically and match F-214–F-222 and entitlements E-1–E-7 across the executive_summary, negotiation_analysis, and draft_reply."
+   },
+   {
+    "id": "register_separation",
+    "pass": false,
+    "evidence": "The same sentence citing HC-2025-0118's 'evidence profile' and '81.28%' outcome, and HC-2025-0094's 'promotion markdown denied entirely with only a commercial freight refund approved,' is written as established, source-cited fact (bracketed case-ID citations mirror the fact-citation style used elsewhere), but no such per-case detail is present in referenced_facts — only group medians (F-223–F-226) — so unverifiable specifics are presented with the same certainty as verified facts."
+   },
+   {
+    "id": "material_completeness",
+    "pass": true,
+    "evidence": "The brief covers the disputed 5 damaged units (para 2, E-3, D-06), the markdown exclusion (para 3, E-6), the EDI-vs-POD count conflict (para 1, D-04, plus a dedicated next step), the freight-refund goodwill angle (para 3, E-7, executive summary, draft reply), and the evidence gaps G-01 through G-04 (each given its own recommended next step and risk callout)."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 39239,
+  "cache_read_input_tokens": 25874,
+  "output_tokens": 12566,
+  "output_tokens_details": {
+   "thinking_tokens": 11466
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 39239,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 12566,
+    "cache_read_input_tokens": 25874,
+    "cache_creation_input_tokens": 39239,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 39239
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "eval/llm-judge"
+}

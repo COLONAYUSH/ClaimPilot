@@ -1,6 +1,6 @@
 # Evaluation report - Freight Claim Copilot
 
-Overall: **106/106 checks passed (100.0%)**
+Overall: **111/111 checks passed (100.0%)**
 Run: provider=claude-cli model=claude-sonnet-5 retrieval=datum | LLM cost this eval: $0.00
 
 ## Fact extraction accuracy  (72/72)
@@ -114,6 +114,14 @@ Run: provider=claude-cli model=claude-sonnet-5 retrieval=datum | LLM cost this e
 - [PASS] citation validity >= 0.95 - 100.0% (207 exact, 0 fuzzy, 0 failed)
 - [PASS] quarantined facts <= 2 - []
 - [PASS] position composed & NumberGuard clean - attempts=1 violations=0
+
+## LLM-as-judge (composed sections)  (5/5)
+
+- [PASS] faithful_citation_use - All numeric and relational claims in executive_summary and negotiation_analysis reconcile with the case data: $7,225=$3,400+$3,825 (F-214/F-115/F-116), $2,125=5×$425 disputed units (E-3), $11,920=$10,070+$1,850 (F-215/F-
+- [PASS] no_overstatement_in_reply - The reply says 'We don't currently have that specification on hand' (not 'unavailable/impossible'), keeps the EDI-vs-POD discrepancy open ('we're glad to work through that discrepancy with you'), keeps salvage and repack
+- [PASS] position_consistency - The counter ($11,920.00, F-217), the conceded markdown (recommendation to concede outright + reply's 'We're not asking BlueLine to treat this as a covered loss'), the held/pursued items (disputed 5 units, inspection fee,
+- [PASS] register_separation - Recommendations are explicitly flagged ('Recommendation: given this exclusion, Northstar should concede the markdown outright...'), and open items are hedged appropriately, e.g. 'though that note speaks to the pallet's c
+- [PASS] material_completeness - The brief covers the disputed 5 damaged units (para 2), the markdown exclusion (para 3), the EDI-vs-POD conflict (exec summary, para 1, recommended_next_steps item 6), the freight-refund goodwill framing (para 3, exec su
 
 ## Ablation: inspection report removed (graceful degradation)  (12/12)
 

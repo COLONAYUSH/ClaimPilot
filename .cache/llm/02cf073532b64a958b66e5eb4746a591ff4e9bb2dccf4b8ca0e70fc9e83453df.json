@@ -1,0 +1,68 @@
+{
+ "text": "```json\n{\n \"criteria\": [\n  {\n   \"id\": \"faithful_citation_use\",\n   \"pass\": false,\n   \"evidence\": \"The sentence \\\"In one closely comparable prior case, an $18,000.00 promotion-markdown demand was denied while a commercial freight refund was approved, and combined damage-plus-delay claims on this carrier generally pay the damage component near invoice value while excluding the delay component [HC-2025-0094][F-225]\\\" is unsupported: F-224 (not F-225) lists HC-2025-0094 as one of three rows in the DELAY-ONLY cohort, while F-225's damage-plus-delay cohort is actually composed of HC-2025-0142 and HC-2024-0218 — HC-2025-0094 does not belong to it. No referenced fact anywhere gives HC-2025-0094's specific dollar amounts or outcome ($18,000 markdown denied / freight refund approved), so those specifics are fabricated and attached to the wrong comp figure.\"\n  },\n  {\n   \"id\": \"no_overstatement_in_reply\",\n   \"pass\": true,\n   \"evidence\": \"Missing/open items are consistently hedged as currently unresolved rather than final: \\\"the vendor packaging specification you requested is not currently available on our side\\\" and \\\"we're confirming internally whether that work was performed by a third party and will follow up with documentation\\\"; the freight ask is framed as a request (\\\"ask BlueLine to reconsider... as a commercial gesture\\\"), not a claimed entitlement, consistent with its GOODWILL_LEVER classification.\"\n  },\n  {\n   \"id\": \"position_consistency\",\n   \"pass\": true,\n   \"evidence\": \"The draft reply's itemization ($7,225 offer + $2,125 disputed damage + $420 inspection + $300 repack + $1,850 freight goodwill = $11,920) matches position.recommended_counter (F-217) and its core_high/goodwill_high components (F-215/F-216) exactly, the $18,000 markdown is explicitly withdrawn per E-6, and the freight line is explicitly called a \\\"commercial gesture,\\\" matching its GOODWILL_LEVER classification (E-7).\"\n  },\n  {\n   \"id\": \"register_separation\",\n   \"pass\": false,\n   \"evidence\": \"The claim \\\"combined damage-plus-delay claims on this carrier generally pay the damage component near invoice value while excluding the delay component [HC-2025-0094][F-225]\\\" states a specific internal settlement-composition pattern as established fact, but F-225 only provides an aggregate 49.93% median across 2 cases with no line-item breakdown to support that granular characterization — this is speculation dressed as settled precedent.\"\n  },\n  {\n   \"id\": \"material_completeness\",\n   \"pass\": true,\n   \"evidence\": \"All five material items are covered somewhere in the brief: disputed damaged units (negotiation_analysis para 2, E-3), markdown exclusion (para 3, E-6), EDI-vs-POD conflict (recommended_next_steps action 6, risks_and_watchouts, draft_reply piece-count paragraph), freight-refund goodwill angle (para 3, draft_reply), and evidence gaps G-01 through G-04 (recommended_next_steps, risks_and_watchouts).\"\n  }\n ]\n}\n```",
+ "obj": {
+  "criteria": [
+   {
+    "id": "faithful_citation_use",
+    "pass": false,
+    "evidence": "The sentence \"In one closely comparable prior case, an $18,000.00 promotion-markdown demand was denied while a commercial freight refund was approved, and combined damage-plus-delay claims on this carrier generally pay the damage component near invoice value while excluding the delay component [HC-2025-0094][F-225]\" is unsupported: F-224 (not F-225) lists HC-2025-0094 as one of three rows in the DELAY-ONLY cohort, while F-225's damage-plus-delay cohort is actually composed of HC-2025-0142 and HC-2024-0218 — HC-2025-0094 does not belong to it. No referenced fact anywhere gives HC-2025-0094's specific dollar amounts or outcome ($18,000 markdown denied / freight refund approved), so those specifics are fabricated and attached to the wrong comp figure."
+   },
+   {
+    "id": "no_overstatement_in_reply",
+    "pass": true,
+    "evidence": "Missing/open items are consistently hedged as currently unresolved rather than final: \"the vendor packaging specification you requested is not currently available on our side\" and \"we're confirming internally whether that work was performed by a third party and will follow up with documentation\"; the freight ask is framed as a request (\"ask BlueLine to reconsider... as a commercial gesture\"), not a claimed entitlement, consistent with its GOODWILL_LEVER classification."
+   },
+   {
+    "id": "position_consistency",
+    "pass": true,
+    "evidence": "The draft reply's itemization ($7,225 offer + $2,125 disputed damage + $420 inspection + $300 repack + $1,850 freight goodwill = $11,920) matches position.recommended_counter (F-217) and its core_high/goodwill_high components (F-215/F-216) exactly, the $18,000 markdown is explicitly withdrawn per E-6, and the freight line is explicitly called a \"commercial gesture,\" matching its GOODWILL_LEVER classification (E-7)."
+   },
+   {
+    "id": "register_separation",
+    "pass": false,
+    "evidence": "The claim \"combined damage-plus-delay claims on this carrier generally pay the damage component near invoice value while excluding the delay component [HC-2025-0094][F-225]\" states a specific internal settlement-composition pattern as established fact, but F-225 only provides an aggregate 49.93% median across 2 cases with no line-item breakdown to support that granular characterization — this is speculation dressed as settled precedent."
+   },
+   {
+    "id": "material_completeness",
+    "pass": true,
+    "evidence": "All five material items are covered somewhere in the brief: disputed damaged units (negotiation_analysis para 2, E-3), markdown exclusion (para 3, E-6), EDI-vs-POD conflict (recommended_next_steps action 6, risks_and_watchouts, draft_reply piece-count paragraph), freight-refund goodwill angle (para 3, draft_reply), and evidence gaps G-01 through G-04 (recommended_next_steps, risks_and_watchouts)."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 18943,
+  "cache_read_input_tokens": 32226,
+  "output_tokens": 13128,
+  "output_tokens_details": {
+   "thinking_tokens": 12023
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 18943,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 13128,
+    "cache_read_input_tokens": 32226,
+    "cache_creation_input_tokens": 18943,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 18943
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "eval/llm-judge"
+}

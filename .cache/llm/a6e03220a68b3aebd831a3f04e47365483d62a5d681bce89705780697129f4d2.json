@@ -1,0 +1,68 @@
+{
+ "text": "```json\n{\n \"criteria\": [\n  {\n   \"id\": \"faithful_citation_use\",\n   \"pass\": true,\n   \"evidence\": \"All numeric claims in executive_summary and negotiation_analysis check out against the case data: $7,225 = $3,400 (E-1) + $3,825 (E-2) matching F-219; $11,920 = $10,070 (F-215) + $1,850 (F-216) matching F-217; the 8/9/5/14-unit breakdown is internally consistent at $425/unit across E-1, E-2 and E-3; the EDI-vs-POD, markdown-exclusion, and comparables figures (F-223-227) are stated exactly as given. No misstated value, direction or relationship was found.\"\n  },\n  {\n   \"id\": \"no_overstatement_in_reply\",\n   \"pass\": false,\n   \"evidence\": \"The draft reply states the freight-refund ask is warranted 'given the shipment was in fact delivered several days past the requested date' — no fact in the case data (F-185, D-08, or any entitlement) establishes a specific delay magnitude ('several days'); only carrier-side causes (terminal backlog, driver-hours stand-down) are documented, not a days-late figure, so this is an invented specific asserted beyond the record.\"\n  },\n  {\n   \"id\": \"position_consistency\",\n   \"pass\": true,\n   \"evidence\": \"The counter ($11,920.00), the conceded markdown ('We're not asking BlueLine to treat this as a covered loss'), the held disputed units/fees (5 damaged units, inspection fee, repack labor all pressed in the counter), and the goodwill framing of the freight charge ('goodwill gesture' / 'commercial accommodation') all match F-215–F-222 and entitlements E-3/E-6/E-7 exactly.\"\n  },\n  {\n   \"id\": \"register_separation\",\n   \"pass\": true,\n   \"evidence\": \"Recommendations are explicitly flagged ('Recommendation: given this exclusion, Northstar should concede the markdown outright...'; 'Recommendation: the comparables argue for pressing...'), factual claims carry bracketed citations throughout, and open items (D-04 EDI/POD, D-06 photo gap, G-02 packaging spec) are consistently described as unresolved rather than settled.\"\n  },\n  {\n   \"id\": \"material_completeness\",\n   \"pass\": true,\n   \"evidence\": \"The brief addresses all five material items: the disputed 5 damaged units (para 2), the markdown exclusion (para 3), the EDI-vs-POD count conflict (exec summary + para 1 + a dedicated next step), the freight-refund goodwill angle (para 3), and the evidence gaps G-01–G-04 (each has a corresponding recommended_next_steps action).\"\n  }\n ]\n}\n```",
+ "obj": {
+  "criteria": [
+   {
+    "id": "faithful_citation_use",
+    "pass": true,
+    "evidence": "All numeric claims in executive_summary and negotiation_analysis check out against the case data: $7,225 = $3,400 (E-1) + $3,825 (E-2) matching F-219; $11,920 = $10,070 (F-215) + $1,850 (F-216) matching F-217; the 8/9/5/14-unit breakdown is internally consistent at $425/unit across E-1, E-2 and E-3; the EDI-vs-POD, markdown-exclusion, and comparables figures (F-223-227) are stated exactly as given. No misstated value, direction or relationship was found."
+   },
+   {
+    "id": "no_overstatement_in_reply",
+    "pass": false,
+    "evidence": "The draft reply states the freight-refund ask is warranted 'given the shipment was in fact delivered several days past the requested date' — no fact in the case data (F-185, D-08, or any entitlement) establishes a specific delay magnitude ('several days'); only carrier-side causes (terminal backlog, driver-hours stand-down) are documented, not a days-late figure, so this is an invented specific asserted beyond the record."
+   },
+   {
+    "id": "position_consistency",
+    "pass": true,
+    "evidence": "The counter ($11,920.00), the conceded markdown ('We're not asking BlueLine to treat this as a covered loss'), the held disputed units/fees (5 damaged units, inspection fee, repack labor all pressed in the counter), and the goodwill framing of the freight charge ('goodwill gesture' / 'commercial accommodation') all match F-215–F-222 and entitlements E-3/E-6/E-7 exactly."
+   },
+   {
+    "id": "register_separation",
+    "pass": true,
+    "evidence": "Recommendations are explicitly flagged ('Recommendation: given this exclusion, Northstar should concede the markdown outright...'; 'Recommendation: the comparables argue for pressing...'), factual claims carry bracketed citations throughout, and open items (D-04 EDI/POD, D-06 photo gap, G-02 packaging spec) are consistently described as unresolved rather than settled."
+   },
+   {
+    "id": "material_completeness",
+    "pass": true,
+    "evidence": "The brief addresses all five material items: the disputed 5 damaged units (para 2), the markdown exclusion (para 3), the EDI-vs-POD count conflict (exec summary + para 1 + a dedicated next step), the freight-refund goodwill angle (para 3), and the evidence gaps G-01–G-04 (each has a corresponding recommended_next_steps action)."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 46120,
+  "cache_read_input_tokens": 75676,
+  "output_tokens": 15944,
+  "output_tokens_details": {
+   "thinking_tokens": 14961
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 46120,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 949,
+    "cache_read_input_tokens": 49802,
+    "cache_creation_input_tokens": 22192,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 22192
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "eval/llm-judge"
+}

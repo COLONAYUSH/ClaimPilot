@@ -143,6 +143,18 @@ def evaluate_case(case: Dict[str, Any], golden: Dict[str, Any]) -> List[Section]
     return sections
 
 
+def judged_sections(case: Dict[str, Any], cfg) -> List[Section]:
+    """The qualitative layer: deterministic checks stop where objective answers
+    stop; an adversarial LLM judge covers the composed prose (see llm_judge.py)."""
+    try:
+        from evals.llm_judge import judge_section
+        return [judge_section(case, cfg)]
+    except Exception as exc:
+        s = Section("LLM-as-judge (composed sections)")
+        s.check("judge ran", False, "{}: {}".format(type(exc).__name__, exc))
+        return [s]
+
+
 def evaluate_ablation(case: Dict[str, Any], golden: Dict[str, Any]) -> Section:
     spec = golden["ablation_inspection"]
     s = Section("Ablation: inspection report removed (graceful degradation)")
@@ -181,6 +193,7 @@ def main(cfg) -> int:
     print("== full-evidence run ==")
     case = run_pipeline(cfg)
     sections = evaluate_case(case, golden)
+    sections.extend(judged_sections(case, cfg))
 
     print("== ablation run (inspection report removed) ==")
     cfg2 = copy.deepcopy(cfg)

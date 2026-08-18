@@ -1,0 +1,91 @@
+{
+ "text": "```json\n{\n \"criteria\": [\n  {\n   \"id\": \"faithful_citation_use\",\n   \"pass\": true,\n   \"evidence\": \"All numeric values, sums, and directional claims in executive_summary and negotiation_analysis (e.g. $29,920 demand, $7,225 offer = sum of STRONG entitlements [F-219], $10,070 core_high [F-215], $11,920 counter [F-217], 4 days late [F-184], carrier-side causes [F-185]) match the cited facts exactly; no sentence reverses a value or direction relative to its citation.\"\n  },\n  {\n   \"id\": \"no_overstatement_in_reply\",\n   \"pass\": false,\n   \"evidence\": \"Draft reply states: 'we don't think photographic coverage should be a precondition for recovery when the POD exception, the surveyor's inspection, and the driver's note all independently corroborate the same five cartons.' F-095 ('Pallet 3 wrap torn at rear; exceptions written before departure.') supports only the general torn-wrap damage mechanism, not independent confirmation of all five specific damaged cartons — the letter inflates the driver's note into carton-specific corroboration it does not provide (contrast the correctly-scoped use of F-095 one sentence earlier as merely 'consistent with... the torn pallet wrap').\"\n  },\n  {\n   \"id\": \"position_consistency\",\n   \"pass\": true,\n   \"evidence\": \"The $11,920.00 counter, its $10,070.00/$1,850.00 composition, the $4,695.00 offer gap, the $7,645–$11,920 band, and the freight charge consistently framed as a GOODWILL_LEVER (not entitlement) all match position_numbers and entitlements exactly across executive_summary, negotiation_analysis, recommended_next_steps, and draft_reply (e.g. itemized action 1 sums to exactly $11,920.00).\"\n  },\n  {\n   \"id\": \"register_separation\",\n   \"pass\": true,\n   \"evidence\": \"Open items are consistently kept open (e.g. 'this remains an open item [D-04]' before any normative comment) and precedent-based conclusions are marked as recommendation/judgment ('As a matter of negotiation judgment...', 'the template to follow here'), while ambiguous evidence like the surveyor's foam finding is explicitly characterized as 'a mixed finding that softens, but does not resolve, the packaging defense' rather than presented as settled.\"\n  },\n  {\n   \"id\": \"material_completeness\",\n   \"pass\": true,\n   \"evidence\": \"The brief addresses the disputed 5 damaged units (para 3, draft reply), the markdown exclusion (exec summary, para 4, next-steps action 3), the EDI/POD count conflict (para 2, next-steps action 2, draft reply), the freight-refund goodwill angle (para 4/6, next-steps action 1, risks item 4), and all four evidence gaps G-01–G-04 (next-steps actions 4–6, risks_and_watchouts).\"\n  }\n ]\n}\n```",
+ "obj": {
+  "criteria": [
+   {
+    "id": "faithful_citation_use",
+    "pass": true,
+    "evidence": "All numeric values, sums, and directional claims in executive_summary and negotiation_analysis (e.g. $29,920 demand, $7,225 offer = sum of STRONG entitlements [F-219], $10,070 core_high [F-215], $11,920 counter [F-217], 4 days late [F-184], carrier-side causes [F-185]) match the cited facts exactly; no sentence reverses a value or direction relative to its citation."
+   },
+   {
+    "id": "no_overstatement_in_reply",
+    "pass": false,
+    "evidence": "Draft reply states: 'we don't think photographic coverage should be a precondition for recovery when the POD exception, the surveyor's inspection, and the driver's note all independently corroborate the same five cartons.' F-095 ('Pallet 3 wrap torn at rear; exceptions written before departure.') supports only the general torn-wrap damage mechanism, not independent confirmation of all five specific damaged cartons — the letter inflates the driver's note into carton-specific corroboration it does not provide (contrast the correctly-scoped use of F-095 one sentence earlier as merely 'consistent with... the torn pallet wrap')."
+   },
+   {
+    "id": "position_consistency",
+    "pass": true,
+    "evidence": "The $11,920.00 counter, its $10,070.00/$1,850.00 composition, the $4,695.00 offer gap, the $7,645–$11,920 band, and the freight charge consistently framed as a GOODWILL_LEVER (not entitlement) all match position_numbers and entitlements exactly across executive_summary, negotiation_analysis, recommended_next_steps, and draft_reply (e.g. itemized action 1 sums to exactly $11,920.00)."
+   },
+   {
+    "id": "register_separation",
+    "pass": true,
+    "evidence": "Open items are consistently kept open (e.g. 'this remains an open item [D-04]' before any normative comment) and precedent-based conclusions are marked as recommendation/judgment ('As a matter of negotiation judgment...', 'the template to follow here'), while ambiguous evidence like the surveyor's foam finding is explicitly characterized as 'a mixed finding that softens, but does not resolve, the packaging defense' rather than presented as settled."
+   },
+   {
+    "id": "material_completeness",
+    "pass": true,
+    "evidence": "The brief addresses the disputed 5 damaged units (para 3, draft reply), the markdown exclusion (exec summary, para 4, next-steps action 3), the EDI/POD count conflict (para 2, next-steps action 2, draft reply), the freight-refund goodwill angle (para 4/6, next-steps action 1, risks item 4), and all four evidence gaps G-01–G-04 (next-steps actions 4–6, risks_and_watchouts)."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 44912,
+  "cache_read_input_tokens": 77558,
+  "output_tokens": 19617,
+  "output_tokens_details": {
+   "thinking_tokens": 18578
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 25810,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 17813,
+    "cache_read_input_tokens": 25874,
+    "cache_creation_input_tokens": 25810,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 25810
+    },
+    "type": "message"
+   },
+   {
+    "input_tokens": 70757,
+    "output_tokens": 9818,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "type": "advisor_message",
+    "model": "claude-opus-5"
+   },
+   {
+    "input_tokens": 2,
+    "output_tokens": 1804,
+    "cache_read_input_tokens": 51684,
+    "cache_creation_input_tokens": 19102,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 19102,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "eval/llm-judge"
+}

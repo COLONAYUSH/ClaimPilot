@@ -10,7 +10,7 @@
     "reserve_usd": "15000.00"
   },
   "run": {
-    "generated_at": "2026-08-17T21:14:14+00:00",
+    "generated_at": "2026-08-18T03:57:14+00:00",
     "provider": "claude-cli",
     "model": "claude-sonnet-5",
     "retrieval_backend": "datum",
@@ -115,12 +115,12 @@
         "cached": true,
         "cost_usd": 0.0,
         "elapsed_s": 0.0,
-        "cache_key": "d6ec6e80962a0d6aadb5779484c68c5289002a3e75965f02948c8cbc914943f8"
+        "cache_key": "ee18e366a3114b8f941a95d585c0e06e013f7895990086bb2e07ab5ae4448812"
       }
     ],
     "ablated_sources": [],
     "skipped_sources": [],
-    "elapsed_s": 15.8
+    "elapsed_s": 15.5
   },
   "sources": [
     {
@@ -5792,100 +5792,64 @@
   "position": {
     "ok": true,
     "data": {
-      "executive_summary": "BlueLine's $7,225.00 offer matches exactly the sum of the two entitlements that are not in dispute — the missing units and the damage BlueLine has already accepted [F-219][E-1][E-2]. Northstar's original demand of $29,920.00 includes an $18,000.00 late-delivery markdown that the contract's delay-exclusion clause does not support on this non-guaranteed Standard LTL service [E-6][F-190][F-191]. Based on the contract's liability terms, the documentary evidence on file (signed POD, independent inspection, driver's note), and BlueLine's own settlement precedent, the recommended position is to concede the markdown and counter at $11,920.00 — the full supportable cargo/cost case plus a freight-charge goodwill allowance — leaving an offer gap of $4,695.00 against BlueLine's current position, well within the $15,000.00 reserve [F-217][F-218][F-009][F-222].",
+      "executive_summary": "BlueLine's current offer of $7,225.00 matches exactly the sum of Northstar's two strongest entitlements — the 8-unit shortage priced from the signed POD and the 9 damaged units the carrier has already accepted [F-108, F-219, E-1, E-2, F-115, F-116]. The shortage figure relies on the POD's 58-carton count against the carrier's EDI count of 59 pieces; that one-carton reconciliation remains open [D-04]. The core dispute is the remaining 5 damaged units, valued at $2,125.00, which the carrier withholds citing incomplete photo coverage and a missing packaging specification, but which are corroborated by the signed POD exception, the independent inspection, and the driver's note [E-3, D-06, F-092, F-155, F-095]. The $18,000.00 late-delivery markdown is contractually excluded on this non-guaranteed Standard LTL service and carries no supporting documentation [E-6, D-07]. The recommended counter is $11,920.00, combining the full supportable cargo/cost case with a freight-charge-scale goodwill component, and sits within the $15,000.00 reserve [F-217, F-222, F-009].",
       "negotiation_analysis": [
-        "Northstar's original demand totals $29,920.00, comprised of six lines: missing product $3,400.00, damaged/unsellable product $5,950.00, independent inspection $420.00, repack labor $300.00, late-delivery markdown $18,000.00, and freight charge $1,850.00 [F-008][F-110][F-180]. BlueLine's current offer is $7,225.00, composed of the missing units ($3,400.00) and the 9 damaged units it accepts ($3,825.00) [F-010][F-114][F-116][F-181]. That offer is exactly equal to the sum of the two STRONG-classified entitlements in the computed position analysis — the undisputed evidentiary floor — meaning every dollar above $7,225.00 is what remains to negotiate [F-219][E-1][E-2].",
-        "The 5 disputed damaged units, valued at $2,125.00, sit in the MODERATE band with an entitled range of $0.00 to $2,125.00 [E-3][F-182]. BlueLine disputes them on two grounds: photographs cover only 2 of the 5 damaged cartons, and the vendor packaging specification has not been produced [D-06][F-118][F-175]. Countervailing evidence includes the signed POD, which recorded all 5 damaged cartons at delivery, the independent surveyor's examination of all 5 cartons showing 14 unsellable and 6 repackable units, and the delivery driver's note corroborating torn wrap on the affected pallet [F-092][F-155][F-095]. The inspection also found molded foam present in the cartons examined, which partially offsets but does not resolve the missing packaging-specification gap [F-146][F-152][G-02].",
-        "The late-delivery markdown of $18,000.00 is classified EXCLUDED_CONTRACTUAL with an entitled range of $0.00 [E-6]. The agreement's delay clause excludes markdowns and loss of promotion value on shipments without a purchased guaranteed-appointment service, and TMS, the BOL, and the carrier's stated position all confirm no guaranteed service was purchased on this Standard LTL move [F-190][F-191][F-187][F-018][F-079]. The figure is also asserted-only, with no supporting markdown documentation present in the folder [F-110]. The freight charge refund of $1,850.00 is likewise not a contractual entitlement, since a service refund attaches only to a purchased Guaranteed Appointment failure, but it is carried as a goodwill lever because the delivery was four days late by the carrier's own TMS exception log and both recorded delay events are carrier-side operational causes [E-7][F-183][F-184][F-185].",
-        "The independent inspection fee of $420.00 is MODERATE, since BlueLine itself requested an inspection report in the thread and the fee is documented in the surveyor's report [E-4][F-149][F-120]. Repack labor of $300.00 is classified NEEDS_INFO because the folder does not establish whether the repack was performed by a third party or internally, a distinction the agreement treats differently [E-5][F-150]. Historical BlueLine comparables support this posture: the damage-with-inspection cohort settles at a median of 83.77% of claimed value, while delay-only claims on this carrier settle at a median of just 8.51% [F-223][F-224]. In one closely comparable prior case, an $18,000.00 promotion-markdown demand was denied while a commercial freight refund was approved, and combined damage-plus-delay claims on this carrier generally pay the damage component near invoice value while excluding the delay component [HC-2025-0094][F-225].",
-        "The recommended counter is $11,920.00 [F-217]. This is built from a core_high of $10,070.00 — the full supportable cargo/cost case combining missing product, accepted damage, disputed damage, inspection fee, and repack labor — plus a $1,850.00 goodwill ceiling equal to the freight charge [F-215][F-216]. This leaves an offer gap of $4,695.00 against BlueLine's current position, sits within an expected settlement band of $7,645.00 to $11,920.00, and is fully covered by the $15,000.00 reserve [F-218][F-220][F-221][F-009][F-222]. The late-delivery markdown should be conceded outright given the contractual exclusion and is not part of the recommended counter [E-6]."
+        "BlueLine's offer of $7,225.00 [F-010, F-108] equals exactly the sum of the two entitlements the system classifies STRONG: $3,400.00 for the 8-unit shortage priced from the signed POD [E-1, F-089, F-090, F-115] and $3,825.00 for the 9 damaged units BlueLine has already accepted [E-2, F-116]. The shortage figure rests on the POD's 58-carton receiving count; the carrier-reported EDI count of 59 pieces still differs from that count by one, and this reconciliation remains open, with the signed POD governing the calculation as the consignee's documented receiving record [D-04, F-045, F-090]. The system flags the offer explicitly as equal to the undisputed floor of the claim [F-219] — meaning every dollar above $7,225.00 is what the remaining negotiation is actually about.",
+        "The remaining 5 damaged units, valued at $2,125.00 [E-3], are classified MODERATE rather than STRONG because BlueLine disputes them on two grounds: the photographs on file cover only cartons C-021 and C-023, leaving C-017, C-018 and C-022 undocumented [D-06, F-175], and the vendor packaging specification has not been produced [G-02, F-130]. Against this, the signed POD recorded all 5 cartons as damaged at delivery [F-091, F-092], the independent surveyor separately examined all 5 cartons and found 14 unsellable and 6 repackable units, consistent with the POD and demand figures [F-142, F-143, F-144, D-05], and the driver's note corroborates torn shrink-wrap on the affected pallet at the point of delivery — though that note speaks to the pallet's condition generally, not to a specific carton count [F-095]. The inspector's finding that molded foam was present in the packaging offers some support against a pure insufficient-packaging defense, even without the vendor specification [F-146, F-152].",
+        "The $18,000.00 late-delivery markdown is classified EXCLUDED_CONTRACTUAL [E-6]: no guaranteed-appointment service was purchased on this shipment, a point on which the TMS, the BOL, and the carrier's own stated position all agree [F-187, F-018, F-079, D-08], and Section 4 of the agreement excludes markdown and loss-of-promotion-value damages arising from delay [CT-2]. The amount is also an unsupported commercial assertion with no markdown documentation in the claim folder [D-07]. Recommendation: given this exclusion, Northstar should concede the markdown outright rather than continue pressing it, since holding a position the contract plainly forecloses risks credibility on the components the evidence does support. The $1,850.00 freight-charge refund is a different case — it is likewise not a contractual entitlement, since a service refund under Section 4 attaches only to a purchased Guaranteed Appointment service [CT-3, E-7], but the shipment was delivered late for carrier-side operational reasons — a terminal backlog and a driver-hours stand-down — recorded in BlueLine's own tracking [F-185], so the system carries it forward only as a goodwill lever at freight-charge scale [F-216].",
+        "Recommendation: the comparables argue for pressing the damage components firmly while treating delay-linked asks as leverage, not entitlement. Comparable BlueLine DAMAGE claims on Standard LTL with inspection evidence settled at a median of 83.77% of the claimed amount across 5 rows [F-223, HC-2025-0067, HC-2025-0118, HC-2024-0205, HC-2024-0207, HC-2024-0209], whereas DELAY-only claims settled at a median of just 8.51% across 3 rows [F-224, HC-2025-0094, HC-2024-0202, HC-2024-0203], and combined DAMAGE+DELAY claims fell in between at 49.93% across 2 rows [F-225, HC-2025-0142, HC-2024-0218]. The case file also records that in 3 of the 5 BlueLine claims involving a DELAY component, that component was denied or excluded in the settlement summary [F-226]. Individual comparables illustrate the pattern directly: HC-2025-0118 shared a very similar evidence profile — a partial packaging dispute and a missing packaging specification — and still settled at 81.28% of the claimed amount [HC-2025-0118], while HC-2025-0094, a pure delay claim on the same non-guaranteed service, saw its promotion markdown denied entirely with only a commercial freight refund approved [HC-2025-0094]. These are historical outcomes only, not contractual entitlements [F-227].",
+        "The system's recommended counter is $11,920.00 [F-217], built from the full supportable cargo/cost case of $10,070.00 [F-215] — the two accepted entitlements plus the disputed 5 units, the $420.00 inspection fee, and the $300.00 repack labor, each at its documented amount — plus a $1,850.00 freight-charge-scale goodwill component [F-216]. That leaves a gap of $4,695.00 above BlueLine's current $7,225.00 offer [F-218], and the counter sits well within the $15,000.00 reserve [F-009, F-222]. The expected settlement band runs from a conservative $7,645.00 — the accepted floor plus the inspection fee [F-220] — up to the full $11,920.00 counter [F-221].",
+        "Two components remain open pending documentation rather than active dispute: the $420.00 inspection fee is MODERATE because BlueLine itself requested an inspection report in the correspondence [E-4, F-120], and the $300.00 repack labor is NEEDS_INFO because the folder does not establish whether the repack was performed by a third party or internally, a distinction Section 3 treats differently [E-5, CT-7]. Separately, the agreement requires crediting salvage value for the 14 unsellable units, and no salvage or disposition statement is currently in the folder [CT-6, G-03]."
       ],
       "recommended_next_steps": [
         {
-          "action": "Send the counter-offer at $11,920.00, itemized by missing product, accepted damage, disputed damage, inspection fee, repack labor, and freight-charge goodwill, while explicitly conceding the $18,000.00 late-delivery markdown [F-217][E-6].",
-          "rationale": "This matches the computed recommended position and isolates the true point of disagreement — the $4,695.00 gap to BlueLine's current offer — rather than continuing to negotiate a line the contract does not support [F-217][F-218][E-6]."
+          "action": "Send BlueLine a counter-offer of $11,920.00, itemized by component [F-217].",
+          "rationale": "This equals the full supportable cargo/cost case plus the freight-charge-scale goodwill component, leaves a gap of $4,695.00 above BlueLine's current $7,225.00 offer, and remains within the $15,000.00 reserve [F-215, F-216, F-218, F-108, F-222]."
         },
         {
-          "action": "Request additional photographs of cartons C-017, C-018 and C-022 from the consignee, MetroMart Stores [G-01][F-175].",
-          "rationale": "Closes the photo-coverage gap BlueLine is relying on to dispute the 5 damaged units; if obtained, it directly strengthens the MODERATE-classified disputed-damage entitlement [D-06][E-3]."
+          "action": "Ask the consignee's receiving team whether any additional photographs exist for cartons C-017, C-018, and C-022 [D-06].",
+          "rationale": "Photo coverage today documents only C-021 and C-023 of the 5 damaged cartons; closing this gap would move the disputed units from MODERATE toward a stronger evidentiary footing [F-175, E-3]."
         },
         {
-          "action": "Confirm to BlueLine that the vendor packaging specification is not currently available, while pointing to the surveyor's finding that molded foam was present in the examined cartons [G-02][F-130][F-146].",
-          "rationale": "Keeps the record accurate rather than overstating the document as unobtainable, while offering the best available rebuttal to the packaging defense under the agreement's packaging clause [CT-5][F-152]."
+          "action": "Confirm to BlueLine in writing that the vendor packaging specification is not currently available, and reference the inspector's finding of molded foam as a partial counter to the insufficient-packaging argument [F-130, F-146, F-152].",
+          "rationale": "The specification gap is real and should not be represented as closed, but the foam finding offers some documented support against Section 3's packaging-relief defense [G-02, CT-5]."
         },
         {
-          "action": "Obtain a salvage or disposition statement for the 14 unsellable units [G-03][F-172].",
-          "rationale": "The agreement requires crediting salvage value where commercially reasonable, and nothing in the folder currently documents disposition of the unsellable units [CT-6][G-03]."
+          "action": "Obtain a salvage or disposition statement for the 14 unsellable units [G-03].",
+          "rationale": "The agreement requires the claimant to credit salvage value, and no disposition record is currently in the folder; without one, BlueLine has an opening to discount the damage payout further [CT-6, F-172]."
         },
         {
-          "action": "Clarify and document whether the repack labor was performed by a third party or internally [G-04][F-150].",
-          "rationale": "The agreement excludes internal administrative labor unless agreed in writing, so this classification determines whether the $300.00 line is recoverable at all [CT-7][E-5]."
+          "action": "Determine and document whether the $300.00 repack labor was performed by a third party or by internal staff [G-04].",
+          "rationale": "Section 3 excludes internal administrative labor from reimbursement unless agreed in writing, and this classification is currently undocumented, which is why the line is flagged NEEDS_INFO [CT-7, E-5]."
         },
         {
-          "action": "Reconcile the EDI 59-piece count against the signed POD 58-carton count [D-04][F-029][F-089].",
-          "rationale": "The discrepancy remains open; although the signed POD already governs the shortage calculation used in the position analysis, closing the gap removes a documentation objection BlueLine could otherwise raise [F-045][F-169]."
+          "action": "Note to BlueLine that the EDI 59-piece count and the signed POD's 58-carton count remain an open reconciliation item, while continuing to rely on the signed POD as the governing receiving record [D-04].",
+          "rationale": "The discrepancy is still marked open even though the shortage entitlement calculation already applies the POD count; being explicit avoids overstating the record [F-045, F-090]."
         }
       ],
       "risks_and_watchouts": [
-        "The packaging clause allows BlueLine to deny cargo liability to the extent loss was caused by insufficient packaging, and the missing vendor packaging specification leaves this defense open on the disputed 5 units despite the foam finding [CT-5][G-02][F-146].",
-        "Repack labor is excluded under the agreement if it was internal administrative labor rather than third-party work, so without documentation this $300.00 line could be dropped entirely rather than negotiated down [CT-7][E-5].",
-        "The late-delivery markdown is a large, asserted-only figure with no supporting documentation in the folder, and delay-only claims on this carrier historically settle at a median of just 8.51% of claimed value, so continued pressure on this line has little precedent support [F-110][F-224][E-6].",
-        "Salvage value for the 14 unsellable units is undocumented anywhere in the folder; if BlueLine raises this first, it could be used to discount the damaged-product entitlement below the amounts modeled here [CT-6][G-03].",
-        "The EDI-versus-POD count discrepancy remains open, and while the signed POD already governs the shortage position used here, an unreconciled discrepancy is a documentation objection BlueLine could reference to revisit the shortage figure [D-04][F-045]."
+        "The 5 disputed damaged units ($2,125.00) remain MODERATE, not STRONG — if the photo-coverage and packaging-specification gaps are never closed, BlueLine may hold its line and the counter could settle closer to the $7,645.00 conservative band than the full $11,920.00 ask [E-3, D-06, G-02, F-220].",
+        "Precedent shows delay-linked components are frequently denied outright by this carrier — 3 of 5 BlueLine claims with a DELAY component had that component denied or excluded in the settlement summary [F-226] — so expect continued resistance on the freight-refund ask even framed as a goodwill gesture [F-216].",
+        "The salvage/disposition gap for the 14 unsellable units and the internal-vs-third-party question on the $300.00 repack labor are both unresolved; either could give BlueLine grounds to shave the counter further if raised before Northstar closes them [G-03, G-04, CT-6, CT-7].",
+        "The freight-charge refund is carried only as a goodwill lever, not a contractual entitlement — treating it as guaranteed money in internal planning would overstate the floor of the negotiation [E-7, F-216].",
+        "The EDI-vs-POD piece-count discrepancy is still open in the record; if BlueLine reopens it, it could threaten the shortage entitlement that currently sits inside the accepted floor rather than remaining a side issue [D-04, E-1]."
       ],
       "draft_reply": {
-        "subject": "Re: Claim FCL-2026-0147 (PRO BLF-77209115) - Response to Settlement Offer",
-        "body": "Dear Daniel,\n\nThank you for BlueLine's review and for the offer of $7,225.00 covering the 8 missing units and the 9 damaged units your team has accepted. We'd like to move this toward resolution and are proposing a counter of $11,920.00, outlined below.\n\nOn the 5 damaged units BlueLine has not yet accepted: the signed proof of delivery documents all five affected cartons at the time of delivery, and the independent inspection performed by Southwest Cargo Survey examined all five cartons and found a total of 14 unsellable and 6 repackable units across them. The delivery driver's own note also corroborates torn shrink wrap on the affected pallet. We recognize our photo documentation currently covers only two of the five cartons, and we are following up with our consignee, MetroMart Stores, to see whether additional photographs of the remaining cartons can be located. On packaging, we want to be direct: the vendor packaging specification you requested is not currently available on our side. We'd note that the independent surveyor's report documents molded foam protection inside the cartons examined, which we hope is useful context while that specification remains outstanding.\n\nWe're also asking that the independent inspection fee of $420.00 and the repack labor of $300.00 be included in the settlement. The inspection was performed at your team's request, and its report is what substantiates both the accepted and disputed damage figures. On the repack labor, we're confirming internally whether that work was performed by a third party and will follow up with documentation.\n\nRegarding the delivery delay: we recognize this was Standard LTL service without a purchased guaranteed appointment, and we are withdrawing our request for the $18,000.00 late-delivery markdown tied to the promotion launch. We would, however, ask BlueLine to reconsider the freight charge of $1,850.00 as a commercial gesture, given that the shipment arrived four days after the requested delivery date and your own records point to a terminal backlog and a driver-hours issue as the causes.\n\nFinally, on the piece-count question your team raised: the EDI record shows 59 pieces delivered, while the signed proof of delivery - the consignee's actual receiving record - shows 58 cartons received. We believe the signed proof of delivery should govern the shortage calculation, but we're glad to work with you to reconcile the two records if that would be helpful.\n\nTo summarize, our proposed resolution is $11,920.00: the $7,225.00 already reflected in your offer, plus $2,125.00 for the disputed damaged units, $420.00 for the inspection fee, $300.00 for repack labor, and $1,850.00 as a commercial allowance on the freight charge, with the promotion-markdown claim withdrawn. Please let us know if you'd like to discuss, or if there's additional documentation we can provide.\n\nBest regards,\nMaya Chen\nNorthstar Retail Equipment LLC"
+        "subject": "FCL-2026-0147 / PRO BLF-77209115 — Counter-Proposal and Open Items",
+        "body": "Dear Daniel,\n\nThank you for BlueLine's offer of $7,225.00 on this claim. We've reviewed it against our file for shipment BOL-884219 and would like to respond with a counter-proposal, along with a few open items we'd like to work through together.\n\nWe're glad to see the offer reflects the 8-unit shortage and the 9 damaged units you've already accepted — that matches our own records from the signed proof of delivery and the independent inspection report.\n\nOn the remaining 5 damaged units you've held back: we understand your concern that the photos we sent only show two of the five affected cartons, and that we haven't yet located the vendor's packaging specification. We don't currently have that specification on hand. That said, we'd point you to three things already in the file: the proof of delivery signed at receiving notes all five cartons as crushed or wet, with the shrink wrap torn on pallet 3; the independent surveyor's inspection report examined all five cartons and found the damage consistent with compression or puncture during handling; and the driver's own note corroborates torn wrap on that pallet at the point of delivery. The inspector also confirmed molded foam was present in the packaging, which we think is relevant even without the formal specification. On that basis, we'd like you to reconsider accepting these 5 units.\n\nOn the $18,000 late-delivery markdown: we recognize this shipment moved under Standard LTL service without a guaranteed appointment, and we accept that your agreement's delay and consequential-damages terms don't provide contractual recovery for lost promotion value under those circumstances. We're not asking BlueLine to treat this as a covered loss. We would still ask you to consider the freight charge as a goodwill gesture, given the shipment was in fact delivered several days past the requested date for reasons on BlueLine's side of the operation — the terminal backlog and driver-hours delay noted in your own tracking.\n\nWe'd also ask that the independent inspection fee be included, since you asked for that inspection report yourselves and the fee is documented in the surveyor's report. Separately, we'd ask that the repack labor for the salvageable units be included as well — the amount is documented in the same report, and we're confirming the details of who performed that work so we can share full documentation with you.\n\nPutting this together, we're countering at $11,920.00, covering the shortage, all 14 damaged/unsellable units, the inspection fee, the repack labor, and the $1,850.00 freight charge as a commercial accommodation.\n\nA few things we'll take care of on our end: we'll check with our consignee's warehouse team about whether any additional photos of the other three damaged cartons exist. We're also confirming the disposition of the unsellable units for salvage purposes, and separately confirming whether the repack labor was performed by a third party or by internal staff, and will share that documentation once we have it. On the one-piece difference between BlueLine's EDI count and our signed proof of delivery, we're continuing to treat the signed proof of delivery as the governing receiving record, but we're glad to work through that discrepancy with you if useful.\n\nWe'd like to get this resolved and appreciate BlueLine's continued engagement. Happy to discuss by phone this week if that's easier.\n\nBest regards,\nMaya Chen\nNorthstar Retail Equipment LLC"
       }
     },
     "violations": [],
     "attempts": 1,
     "refs_used": [
-      "CT-5",
-      "CT-6",
-      "CT-7",
+      "CT-2",
       "D-04",
       "D-06",
-      "E-1",
-      "E-2",
+      "D-07",
       "E-3",
-      "E-4",
-      "E-5",
       "E-6",
-      "E-7",
-      "F-008",
-      "F-009",
-      "F-010",
-      "F-018",
-      "F-029",
-      "F-045",
-      "F-079",
-      "F-089",
-      "F-092",
       "F-095",
-      "F-110",
-      "F-114",
-      "F-116",
-      "F-118",
-      "F-120",
-      "F-130",
-      "F-146",
-      "F-149",
-      "F-150",
-      "F-152",
-      "F-155",
-      "F-169",
-      "F-172",
-      "F-175",
-      "F-180",
-      "F-181",
-      "F-182",
-      "F-183",
-      "F-184",
       "F-185",
-      "F-187",
-      "F-190",
-      "F-191",
       "F-215",
       "F-216",
       "F-217",
@@ -5893,12 +5857,8 @@
       "F-219",
       "F-220",
       "F-221",
-      "F-222",
-      "F-223",
-      "F-224",
-      "F-225",
-      "G-01",
-      "G-02",
+      "F-226",
+      "F-227",
       "G-03",
       "G-04"
     ]
@@ -5912,9 +5872,9 @@
         "backend": "datum",
         "status": "ok",
         "sufficiency": 0.7324,
-        "plan_id": "pl_e4e2db68864bff6b2359",
+        "plan_id": "pl_e9067a34c2d7f9268e6b",
         "top": "2. Cargo Loss and Damage Liability",
-        "elapsed_ms": 9270
+        "elapsed_ms": 9179
       },
       {
         "topic": "delay_exclusions",
@@ -5923,9 +5883,9 @@
         "backend": "datum",
         "status": "ok",
         "sufficiency": 0.7208,
-        "plan_id": "pl_fbfc723b01b5b24a6093",
+        "plan_id": "pl_83f89d82d401d28ea778",
         "top": "4. Delay, Service Failures, and Consequential Damages",
-        "elapsed_ms": 796
+        "elapsed_ms": 903
       },
       {
         "topic": "notice_deadlines",
@@ -5934,9 +5894,9 @@
         "backend": "datum",
         "status": "ok",
         "sufficiency": 0.7323,
-        "plan_id": "pl_2e7c2079236ec4381cf1",
+        "plan_id": "pl_d4d7e473f462f12333ed",
         "top": "5. Claim Notice and Documentation",
-        "elapsed_ms": 819
+        "elapsed_ms": 837
       },
       {
         "topic": "packaging",
@@ -5945,9 +5905,9 @@
         "backend": "datum",
         "status": "ok",
         "sufficiency": 0.731,
-        "plan_id": "pl_e2d094696a6af9f80419",
+        "plan_id": "pl_2e8a48311bcf26427fce",
         "top": "3. Packaging and Mitigation",
-        "elapsed_ms": 778
+        "elapsed_ms": 775
       },
       {
         "topic": "salvage",
@@ -5956,9 +5916,9 @@
         "backend": "datum",
         "status": "ok",
         "sufficiency": 0.719,
-        "plan_id": "pl_e9e8860c4610dee4c4bf",
+        "plan_id": "pl_e07af4175c225d54da79",
         "top": "3. Packaging and Mitigation",
-        "elapsed_ms": 527
+        "elapsed_ms": 535
       },
       {
         "topic": "guaranteed_service",
@@ -5967,9 +5927,9 @@
         "backend": "datum",
         "status": "ok",
         "sufficiency": 0.7407,
-        "plan_id": "pl_c9d17e3c367f7e8a7d7a",
+        "plan_id": "pl_6db5cea0124d83147a18",
         "top": "4. Delay, Service Failures, and Consequential Damages",
-        "elapsed_ms": 1204
+        "elapsed_ms": 1192
       },
       {
         "topic": "inspection_costs",
@@ -5978,9 +5938,9 @@
         "backend": "datum",
         "status": "ok",
         "sufficiency": 0.7371,
-        "plan_id": "pl_abbfc0a52f447c8c3e72",
+        "plan_id": "pl_b3d2d0d129e9f5e27ea1",
         "top": "3. Packaging and Mitigation",
-        "elapsed_ms": 835
+        "elapsed_ms": 838
       },
       {
         "topic": "compromise",
@@ -5989,13 +5949,13 @@
         "backend": "datum",
         "status": "ok",
         "sufficiency": 0.7187,
-        "plan_id": "pl_108100e88d9771da1d2b",
+        "plan_id": "pl_055ff4c99b9d23a77cad",
         "top": "6. Settlement and Commercial Resolution",
-        "elapsed_ms": 697
+        "elapsed_ms": 700
       }
     ],
     "no_clause_topics": [],
-    "explain_sample": "Plan(plan_id='pl_e4e2db68864bff6b2359', plan_selector='rule-table@2026-08-11')\n  -> acl_filter(namespace='tenant:northstar')  [fails closed]\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='grep', fusion_weight=1.0)\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='bm25', fusion_weight=1.0)\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='ann', fusion_weight=1.0)\n  -> rerank(depth=16, reranker='BAAI/bge-reranker-v2-m3@v1')\n  -> abstain_check(min_dense_similarity=0.5)\n  -> sufficiency_check(method='uncalibrated-heuristic-v2')"
+    "explain_sample": "Plan(plan_id='pl_e9067a34c2d7f9268e6b', plan_selector='rule-table@2026-08-11')\n  -> acl_filter(namespace='tenant:northstar')  [fails closed]\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='grep', fusion_weight=1.0)\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='bm25', fusion_weight=1.0)\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='ann', fusion_weight=1.0)\n  -> rerank(depth=16, reranker='BAAI/bge-reranker-v2-m3@v1')\n  -> abstain_check(min_dense_similarity=0.5)\n  -> sufficiency_check(method='uncalibrated-heuristic-v2')"
   },
   "qa": {
     "quotes_total": 207,

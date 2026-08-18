@@ -1,0 +1,68 @@
+{
+ "text": "```json\n{\n \"criteria\": [\n  {\n   \"id\": \"faithful_citation_use\",\n   \"pass\": true,\n   \"evidence\": \"All numeric and relational claims in executive_summary and negotiation_analysis reconcile with the case data: $7,225=$3,400+$3,825 (F-214/F-115/F-116), $2,125=5×$425 disputed units (E-3), $11,920=$10,070+$1,850 (F-215/F-216/F-217), $4,695 gap (F-218), $7,645 conservative band (F-220), and the 83.77%/8.51%/49.93% comparable medians (F-223-225) all match. Minor imprecision only: contract clause citations like [CT-2], [CT-3], [CT-6] aren't independently defined in the provided data but are supported by the corresponding contract.* facts (F-190/F-191, F-192/F-193, F-198), so they pass as elsewhere-supported.\"\n  },\n  {\n   \"id\": \"no_overstatement_in_reply\",\n   \"pass\": true,\n   \"evidence\": \"The reply says 'We don't currently have that specification on hand' (not 'unavailable/impossible'), keeps the EDI-vs-POD discrepancy open ('we're glad to work through that discrepancy with you'), keeps salvage and repack-labor classification open ('confirming... will share that documentation once we have it'), and explicitly disclaims the markdown as a covered loss rather than asserting entitlement. No commitment exceeds what E-1 through E-7 and the gaps (G-01–G-04) support.\"\n  },\n  {\n   \"id\": \"position_consistency\",\n   \"pass\": true,\n   \"evidence\": \"The counter ($11,920.00, F-217), the conceded markdown (recommendation to concede outright + reply's 'We're not asking BlueLine to treat this as a covered loss'), the held/pursued items (disputed 5 units, inspection fee, repack labor all included in the $10,070 core_high per F-215), and the freight refund framed strictly as a 'goodwill gesture'/'commercial accommodation' (never as entitlement, consistent with E-7 GOODWILL_LEVER and F-216) are identical across executive_summary, negotiation_analysis, recommended_next_steps, and draft_reply.\"\n  },\n  {\n   \"id\": \"register_separation\",\n   \"pass\": true,\n   \"evidence\": \"Recommendations are explicitly flagged ('Recommendation: given this exclusion, Northstar should concede the markdown outright...'), and open items are hedged appropriately, e.g. 'though that note speaks to the pallet's condition generally, not to a specific carton count [F-095]' and 'offers some support against a pure insufficient-packaging defense, even without the vendor specification' — no speculation is presented as settled fact.\"\n  },\n  {\n   \"id\": \"material_completeness\",\n   \"pass\": true,\n   \"evidence\": \"The brief covers the disputed 5 damaged units (para 2), the markdown exclusion (para 3), the EDI-vs-POD conflict (exec summary, para 1, recommended_next_steps item 6), the freight-refund goodwill framing (para 3, exec summary), and all four evidence gaps G-01–G-04 (para 2, para 6, recommended_next_steps, risks_and_watchouts).\"\n  }\n ]\n}\n```",
+ "obj": {
+  "criteria": [
+   {
+    "id": "faithful_citation_use",
+    "pass": true,
+    "evidence": "All numeric and relational claims in executive_summary and negotiation_analysis reconcile with the case data: $7,225=$3,400+$3,825 (F-214/F-115/F-116), $2,125=5×$425 disputed units (E-3), $11,920=$10,070+$1,850 (F-215/F-216/F-217), $4,695 gap (F-218), $7,645 conservative band (F-220), and the 83.77%/8.51%/49.93% comparable medians (F-223-225) all match. Minor imprecision only: contract clause citations like [CT-2], [CT-3], [CT-6] aren't independently defined in the provided data but are supported by the corresponding contract.* facts (F-190/F-191, F-192/F-193, F-198), so they pass as elsewhere-supported."
+   },
+   {
+    "id": "no_overstatement_in_reply",
+    "pass": true,
+    "evidence": "The reply says 'We don't currently have that specification on hand' (not 'unavailable/impossible'), keeps the EDI-vs-POD discrepancy open ('we're glad to work through that discrepancy with you'), keeps salvage and repack-labor classification open ('confirming... will share that documentation once we have it'), and explicitly disclaims the markdown as a covered loss rather than asserting entitlement. No commitment exceeds what E-1 through E-7 and the gaps (G-01–G-04) support."
+   },
+   {
+    "id": "position_consistency",
+    "pass": true,
+    "evidence": "The counter ($11,920.00, F-217), the conceded markdown (recommendation to concede outright + reply's 'We're not asking BlueLine to treat this as a covered loss'), the held/pursued items (disputed 5 units, inspection fee, repack labor all included in the $10,070 core_high per F-215), and the freight refund framed strictly as a 'goodwill gesture'/'commercial accommodation' (never as entitlement, consistent with E-7 GOODWILL_LEVER and F-216) are identical across executive_summary, negotiation_analysis, recommended_next_steps, and draft_reply."
+   },
+   {
+    "id": "register_separation",
+    "pass": true,
+    "evidence": "Recommendations are explicitly flagged ('Recommendation: given this exclusion, Northstar should concede the markdown outright...'), and open items are hedged appropriately, e.g. 'though that note speaks to the pallet's condition generally, not to a specific carton count [F-095]' and 'offers some support against a pure insufficient-packaging defense, even without the vendor specification' — no speculation is presented as settled fact."
+   },
+   {
+    "id": "material_completeness",
+    "pass": true,
+    "evidence": "The brief covers the disputed 5 damaged units (para 2), the markdown exclusion (para 3), the EDI-vs-POD conflict (exec summary, para 1, recommended_next_steps item 6), the freight-refund goodwill framing (para 3, exec summary), and all four evidence gaps G-01–G-04 (para 2, para 6, recommended_next_steps, risks_and_watchouts)."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 65212,
+  "cache_read_input_tokens": 93187,
+  "output_tokens": 17704,
+  "output_tokens_details": {
+   "thinking_tokens": 16542
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 65212,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1128,
+    "cache_read_input_tokens": 67313,
+    "cache_creation_input_tokens": 23773,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 23773
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "eval/llm-judge"
+}

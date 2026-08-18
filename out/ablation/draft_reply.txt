@@ -1,24 +1,20 @@
-Subject: Re: Claim FCL-2026-0147 (PRO BLF-77209115) — Response and Counter-Proposal
+Subject: FCL-2026-0147 / PRO BLF-77209115 - Counter-Proposal and Outstanding Items
 
 Dear Daniel,
 
-Thank you for your continued attention to this claim and for the offer you sent through on the missing-product and accepted damaged-unit lines. I want to respond to each open item and put forward a counter-proposal.
+Thank you for your offer of $7,225.00 on this claim. We've reviewed it against our records and would like to propose a revised settlement of $11,920.00, along with a few items we'd ask BlueLine to reconsider.
 
-On the missing product, we're aligned — the signed proof of delivery documents 58 of 60 cartons received, and we agree the $3,400.00 figure for the 8 missing units is correct.
+We agree the signed proof of delivery supports the shortage of 8 units, and we appreciate that your offer already reflects that in full. On the damaged product, your offer currently credits 9 of the 14 units we've claimed. We'd like to keep working with you on the remaining 5 units. We understand your concern that the damage photos on file don't show all of the affected cartons, and we're checking whether additional photos exist. We're also still checking on the vendor packaging specification you requested; it is not currently available on our side, though our inspection noted that internal packaging (molded foam) was present in the cartons that were opened.
 
-On the damaged product, we'd like you to reconsider the 5 units you've held back. We understand your concern that the photographs on file don't show every affected carton, and that you're still waiting on the vendor packaging specification — that document is not currently available on our end, and we're continuing to look for it. The independent inspection we commissioned did report molded foam present in the cartons that were opened, and separately found 14 of the 20 units in the affected cartons unsellable and 6 repackable, which is the basis for our $5,950.00 damaged-product figure versus the $3,825.00 currently offered. We'd welcome the chance to walk through that inspection report with you directly.
+We also want to address the piece-count question you raised: your EDI record shows 59 pieces delivered, while the signed proof of delivery shows 58 cartons received. We treat the signed POD as the governing receiving record, but we recognize this hasn't been reconciled yet, and we're looking into it on our end.
 
-On the piece-count question you raised — the EDI count of 59 versus the 58 cartons noted on the signed proof of delivery — we'd treat the signed, consignee-executed proof of delivery as the governing receiving record for this shipment, and ask that the shortage calculation be based on that document.
+We're also asking that BlueLine reconsider two additional cost items: the independent inspection we arranged ($420.00) and the labor to repack the salvageable units ($300.00). We're gathering the supporting detail on both and can share it as soon as it's ready.
 
-On the late-delivery markdown, we recognize this shipment moved under standard, non-guaranteed service, and we're withdrawing that $18,000.00 line rather than continue to press it as a contractual matter.
+On the late-delivery markdown of $18,000.00, we understand and accept that this shipment moved under Standard LTL without a guaranteed appointment, and that your agreement excludes markdown and lost-promotion damages for delay under that service level. We're not asking BlueLine to reconsider that item. Given that the shipment was delivered several days past the requested date for reasons on BlueLine's side, we would still ask that you consider a refund of the freight charge ($1,850.00) as a commercial accommodation.
 
-We would, however, ask you to reconsider the freight charge. The shipment arrived four days after the requested delivery date, and the delay records point to terminal and driver-hours issues on your side. We're not asserting this as a contractual entitlement, but we'd like to request the $1,850.00 freight charge be refunded as a good-faith gesture given the circumstances, separate from and without prejudice to how either of us handles similar situations going forward.
+Taken together, we believe $11,920.00 is a fair and well-documented resolution: it reflects the shortage in full, the damaged units at the claimed level, the inspection and repack costs, and the freight charge as a commercial accommodation, without asking BlueLine to revisit the excluded markdown claim.
 
-We'd also ask that the independent inspection fee of $420.00, supported by the vendor's invoice, be included in the settlement. On the $300.00 repack labor line, we're glad to confirm with you how that work was performed so we can agree on the appropriate treatment.
-
-Putting this together, our counter-proposal is $11,920.00, made up of the missing-product line, the full damaged-product line, the inspection fee, the repack labor, and the freight-charge refund — with the late-delivery markdown withdrawn from the claim entirely.
-
-We're glad to discuss any of this by phone this week. Thank you again for working through it with us.
+We're happy to set up a call this week to work through the open items - the disputed cartons, the piece-count question, and the outstanding packaging documentation - and get this resolved. Please let us know what additional support would help move your review forward.
 
 Best regards,
 Maya Chen

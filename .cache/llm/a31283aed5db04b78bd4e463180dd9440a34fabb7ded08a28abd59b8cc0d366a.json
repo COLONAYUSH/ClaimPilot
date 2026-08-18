@@ -1,0 +1,68 @@
+{
+ "text": "```json\n{\n  \"criteria\": [\n    {\n      \"id\": \"faithful_citation_use\",\n      \"pass\": false,\n      \"evidence\": \"In negotiation_analysis, the sentence 'a 1-carton gap the carrier has asked to reconcile [D-04][F-029][F-089]' attributes a reconciliation request to the carrier that none of the cited items support — D-04 only records the discrepancy as 'OPEN', F-029 is the raw EDI piece count (59), and F-089 is the raw POD carton count (58); none states the carrier asked to reconcile anything.\"\n    },\n    {\n      \"id\": \"no_overstatement_in_reply\",\n      \"pass\": false,\n      \"evidence\": \"The draft reply states as a completed fact, 'we've asked the consignee whether additional photographs of the remaining cartons exist and will forward them if we receive any,' but the case data lists this only as a proposed future action ('Ask Northstar and the consignee whether additional photographs of cartons C-017, C-018, and C-022 exist [G-01]' in recommended_next_steps) that has not actually been taken. The reply also asserts the shipment 'arrived four days behind schedule' when F-183 records the delay as 3 days 17 hours 42 minutes, rounding up an unresolved figure into an overstated commitment-adjacent claim.\"\n    },\n    {\n      \"id\": \"position_consistency\",\n      \"pass\": true,\n      \"evidence\": \"The $11,920.00 counter, the $10,070.00 core case, the $1,850.00 goodwill component, the $4,695.00 gap over the $7,225.00 offer, the full withdrawal of the $18,000.00 markdown, and the freight charge framed strictly as a goodwill/commercial gesture rather than an entitlement are all consistent across executive_summary, negotiation_analysis, recommended_next_steps, and the draft_reply, and match position_numbers (F-215–F-222) and entitlements (E-1–E-7) exactly.\"\n    },\n    {\n      \"id\": \"register_separation\",\n      \"pass\": false,\n      \"evidence\": \"The unsupported claim 'a 1-carton gap the carrier has asked to reconcile' is presented as settled fact with citations that do not establish it, and the draft reply's 'we've asked the consignee whether additional photographs... exist' converts an open, not-yet-taken recommended action (G-01) into an already-completed fact, blurring the line between an open item and a resolved one.\"\n    },\n    {\n      \"id\": \"material_completeness\",\n      \"pass\": true,\n      \"evidence\": \"The brief addresses all required material items: the 5 disputed damaged units (paragraph 3 and reply), the markdown exclusion (paragraph 4), the EDI-vs-POD count conflict (paragraph 2), the freight-refund goodwill framing (paragraph 4, reply, risks), and the evidence gaps G-01 through G-04 (paragraphs 3 and 5, recommended_next_steps, and risks_and_watchouts).\"\n    }\n  ]\n}\n```",
+ "obj": {
+  "criteria": [
+   {
+    "id": "faithful_citation_use",
+    "pass": false,
+    "evidence": "In negotiation_analysis, the sentence 'a 1-carton gap the carrier has asked to reconcile [D-04][F-029][F-089]' attributes a reconciliation request to the carrier that none of the cited items support — D-04 only records the discrepancy as 'OPEN', F-029 is the raw EDI piece count (59), and F-089 is the raw POD carton count (58); none states the carrier asked to reconcile anything."
+   },
+   {
+    "id": "no_overstatement_in_reply",
+    "pass": false,
+    "evidence": "The draft reply states as a completed fact, 'we've asked the consignee whether additional photographs of the remaining cartons exist and will forward them if we receive any,' but the case data lists this only as a proposed future action ('Ask Northstar and the consignee whether additional photographs of cartons C-017, C-018, and C-022 exist [G-01]' in recommended_next_steps) that has not actually been taken. The reply also asserts the shipment 'arrived four days behind schedule' when F-183 records the delay as 3 days 17 hours 42 minutes, rounding up an unresolved figure into an overstated commitment-adjacent claim."
+   },
+   {
+    "id": "position_consistency",
+    "pass": true,
+    "evidence": "The $11,920.00 counter, the $10,070.00 core case, the $1,850.00 goodwill component, the $4,695.00 gap over the $7,225.00 offer, the full withdrawal of the $18,000.00 markdown, and the freight charge framed strictly as a goodwill/commercial gesture rather than an entitlement are all consistent across executive_summary, negotiation_analysis, recommended_next_steps, and the draft_reply, and match position_numbers (F-215–F-222) and entitlements (E-1–E-7) exactly."
+   },
+   {
+    "id": "register_separation",
+    "pass": false,
+    "evidence": "The unsupported claim 'a 1-carton gap the carrier has asked to reconcile' is presented as settled fact with citations that do not establish it, and the draft reply's 'we've asked the consignee whether additional photographs... exist' converts an open, not-yet-taken recommended action (G-01) into an already-completed fact, blurring the line between an open item and a resolved one."
+   },
+   {
+    "id": "material_completeness",
+    "pass": true,
+    "evidence": "The brief addresses all required material items: the 5 disputed damaged units (paragraph 3 and reply), the markdown exclusion (paragraph 4), the EDI-vs-POD count conflict (paragraph 2), the freight-refund goodwill framing (paragraph 4, reply, risks), and the evidence gaps G-01 through G-04 (paragraphs 3 and 5, recommended_next_steps, and risks_and_watchouts)."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 24995,
+  "cache_read_input_tokens": 25874,
+  "output_tokens": 12551,
+  "output_tokens_details": {
+   "thinking_tokens": 11545
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 24995,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 12551,
+    "cache_read_input_tokens": 25874,
+    "cache_creation_input_tokens": 24995,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 24995
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "eval/llm-judge"
+}

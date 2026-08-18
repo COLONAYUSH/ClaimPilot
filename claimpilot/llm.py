@@ -143,7 +143,6 @@ class AnthropicAPIProvider(BaseProvider):
     the shape is validated server-side rather than parsed out of prose."""
 
     name = "anthropic"
-    URL = "https://api.anthropic.com/v1/messages"
     MEDIA = {".pdf": ("document", "application/pdf"), ".png": ("image", "image/png"),
              ".jpg": ("image", "image/jpeg"), ".jpeg": ("image", "image/jpeg")}
 
@@ -151,6 +150,8 @@ class AnthropicAPIProvider(BaseProvider):
         self.api_key = os.environ.get("ANTHROPIC_API_KEY", "")
         if not self.api_key:
             raise LLMError("ANTHROPIC_API_KEY not set")
+        base = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com")
+        self.URL = base.rstrip("/") + "/v1/messages"
 
     def _content_blocks(self, req: LLMRequest) -> List[Dict[str, Any]]:
         import base64

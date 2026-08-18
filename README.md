@@ -26,7 +26,7 @@ the written brief uses a number the system can't prove, the brief doesn't ship.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B%20·%20stdlib%20%2B%20pypdf-3776AB.svg?logo=python&logoColor=white)](pyproject.toml)
-[![Golden eval](https://img.shields.io/badge/golden%20eval-106%2F106-brightgreen.svg)](evals/eval_report.md)
+[![Eval suite](https://img.shields.io/badge/eval%20suite-111%2F111-brightgreen.svg)](evals/eval_report.md)
 [![Citation validity](https://img.shields.io/badge/citation%20validity-100%25%20(207%2F207)-brightgreen.svg)](evals/eval_report.md)
 [![Tests](https://img.shields.io/badge/unit%20tests-33%20passing-brightgreen.svg)](tests)
 [![NumberGuard](https://img.shields.io/badge/NumberGuard-fails%20closed-8A2BE2.svg)](#the-grounding-gates)
@@ -363,13 +363,23 @@ a wrong-but-plausible chunk with a straight face.
 
 ## Evaluation
 
-Three layers, all runnable from the CLI, results committed:
+Four layers, all runnable from the CLI, results committed:
 
 | Layer | What it checks | Result |
 |---|---|---|
 | Unit tests (`tests/`) | reconciliation rules, cap math, date math, NumberGuard, quote verification, schema validator, benchmark scoring | **33/33** |
-| Golden-set eval (`evals/eval_report.md`) | 72 hand-labeled facts across all three extraction paths, 6 planted discrepancies, 4 evidence gaps, 7 entitlement classifications with dollar bounds, comparables inclusion, citation validity, guard cleanliness, plus the ablation run | **106/106** |
+| Golden-set eval (`evals/run_evals.py`) | 72 hand-labeled facts across all three extraction paths, 6 planted discrepancies, 4 evidence gaps, 7 entitlement classifications with dollar bounds, comparables inclusion, citation validity, guard cleanliness, plus the ablation run | **106/106** |
+| LLM-as-judge (`evals/llm_judge.py`) | the composed prose, judged adversarially against the full case data: faithful use of cited facts, no overstatement in the draft reply, consistency with the computed position, register separation, material completeness | **5/5** |
 | Retrieval bench and abstention sweep (`evals/retrieval_bench.md`, `evals/abstention_sweep.md`) | hit@1/3, MRR@5, per-kind breakdown, false-answer rate on unanswerables, latency | table above |
+
+The split is deliberate. Everything with an objective answer gets a deterministic check,
+which is cheaper, reproducible and immune to rubric noise. The judge covers only what no
+string or number check can reach: a grounded figure used in a sentence that says the
+wrong thing, a reply that quietly overstates the record. Its verdicts are binary with
+quoted evidence, temperature 0, and served through the same response cache as everything
+else, so reruns are stable. Same-family circularity is blunted by the task asymmetry
+(verifying against a fixed ledger is easier than composing) and by
+`CLAIMPILOT_JUDGE_MODEL`, which lets a different model sit on the bench.
 
 The ablation run (`claimpilot eval` executes it, artifacts in `out/ablation/`): with
 the scanned inspection report deleted, the pipeline must still complete, downgrade the
@@ -383,7 +393,11 @@ ledger.
 > test, schema drift in the composition stage caught and repaired by the retry loop,
 > and one mistake in my own golden labels (the $420 and $300 figures legitimately
 > survive the ablation through the email thread, so the eval now asserts the right
-> invariant instead). That is what the gates are for.
+> invariant instead). The judge earned its seat the same way: its first pass caught the
+> analysis generalizing a settlement pattern that two historical rows can't support,
+> and calibrating it taught me that a judge starved of context produces confident false
+> positives, so it now receives everything the composer received. That is what the
+> gates are for.
 
 <div align="right"><a href="#contents">back to top</a></div>
 
@@ -427,7 +441,9 @@ What the pipeline established, each point clickable down to a quote in the brief
 | Variable | Default | Meaning |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | none | enables the direct API provider |
+| `ANTHROPIC_BASE_URL` | `https://api.anthropic.com` | override when the key rides an enterprise gateway |
 | `ANTHROPIC_MODEL` | `claude-sonnet-5` | model id for either live provider |
+| `CLAIMPILOT_JUDGE_MODEL` | same as `ANTHROPIC_MODEL` | separate model for the eval judge |
 | `DATUM_PYTHON` | auto-detected | python interpreter of the datum venv (3.11+) |
 | `DATUM_PG_DSN` | `postgresql://localhost/datum_claims_fcc` | scratch Postgres DB for datum (pgvector required) |
 | `CLAIMPILOT_ABSTAIN_FLOOR` | `0.50` (calibrated) | datum's evidence-sufficiency floor, empty string for datum's default |

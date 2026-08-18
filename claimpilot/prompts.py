@@ -425,7 +425,16 @@ Hard rules:
    something as a gap or open question, treat it that way.
 6. In the draft reply, never overstate the record: a document not in the folder is
    "not currently available", not impossible to produce; an open question stays open.
-   Concessions and commitments must match the recommended position exactly."""
+   Concessions and commitments must match the recommended position exactly. When one
+   sentence bundles several evidence items, claim from each only what it individually
+   shows (a driver's note about a torn pallet wrap corroborates damage at delivery,
+   not a specific carton count). Recommended next steps are things to do, not things
+   done: in the reply, write them as commitments ("we will ask", "we are checking"),
+   never as completed actions.
+7. Historical claims: report each row's recorded outcome as recorded, attributed to its
+   claim id. State a cross-claim pattern ONLY if the case file contains it as a computed
+   fact (a cohort median, a pattern count), cited by that fact id - never generalize
+   beyond what a cited fact literally says."""
 
 POSITION_TASK = """Compose the negotiation position brief sections and the draft reply email.
 negotiation_analysis: 4-6 tight paragraphs walking the money: what is contractually owed
