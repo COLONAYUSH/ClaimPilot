@@ -1,7 +1,9 @@
-"""Pipeline orchestrator: ingest -> extract -> ground -> reconcile ->
-retrieve/entitle -> benchmark -> compose -> render. Deterministic stages never
-depend on LLM output succeeding; a failed composition stage degrades to a
-deterministic-only brief rather than aborting the run."""
+"""Pipeline orchestrator: ingest -> extract -> ground -> scan -> reconcile ->
+retrieve/entitle -> benchmark -> compose -> render. The adversarial-input scan
+(security.py) runs over the ingested sources and vision transcripts before any
+reasoning, and its findings ride into the brief's security panel. Deterministic
+stages never depend on LLM output succeeding; a failed composition stage
+degrades to a deterministic-only brief rather than aborting the run."""
 
 from __future__ import annotations
 

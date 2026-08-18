@@ -1,0 +1,94 @@
+{
+ "text": "```json\n{\n \"invoice_no\": {\n  \"value\": \"INV-483921\",\n  \"quote\": \"INV-483921\"\n },\n \"sales_order\": {\n  \"value\": \"SO-483921\",\n  \"quote\": \"SO-483921\"\n },\n \"seller\": {\n  \"value\": \"Northstar Retail Equipment LLC\",\n  \"quote\": \"Northstar Retail Equipment LLC\"\n },\n \"bill_to\": {\n  \"value\": \"MetroMart Stores, Accounts Payable\",\n  \"quote\": \"MetroMart Stores, Accounts Payable\"\n },\n \"invoice_date\": {\n  \"value\": \"2026-05-04\",\n  \"quote\": \"May 4, 2026\"\n },\n \"qty_units\": {\n  \"value\": 240,\n  \"quote\": \"240\"\n },\n \"unit_price_usd\": {\n  \"value\": 425.00,\n  \"quote\": \"$425.00\"\n },\n \"extended_value_usd\": {\n  \"value\": 102000.00,\n  \"quote\": \"$102,000.00\"\n },\n \"invoice_total_usd\": {\n  \"value\": 102000.00,\n  \"quote\": \"$102,000.00\"\n },\n \"cartons\": {\n  \"value\": 60,\n  \"quote\": \"60 cartons, 4 units per carton\"\n },\n \"units_per_carton\": {\n  \"value\": 4,\n  \"quote\": \"60 cartons, 4 units per carton\"\n },\n \"unit_weight_lb\": {\n  \"value\": 15,\n  \"quote\": \"approximately 15 lb including retail packaging\",\n  \"note\": \"Weight is stated as approximate in the source and includes retail packaging.\"\n },\n \"freight_note\": {\n  \"value\": \"Billed separately by carrier\",\n  \"quote\": \"Billed separately by carrier\"\n }\n}\n```",
+ "obj": {
+  "invoice_no": {
+   "value": "INV-483921",
+   "quote": "INV-483921"
+  },
+  "sales_order": {
+   "value": "SO-483921",
+   "quote": "SO-483921"
+  },
+  "seller": {
+   "value": "Northstar Retail Equipment LLC",
+   "quote": "Northstar Retail Equipment LLC"
+  },
+  "bill_to": {
+   "value": "MetroMart Stores, Accounts Payable",
+   "quote": "MetroMart Stores, Accounts Payable"
+  },
+  "invoice_date": {
+   "value": "2026-05-04",
+   "quote": "May 4, 2026"
+  },
+  "qty_units": {
+   "value": 240,
+   "quote": "240"
+  },
+  "unit_price_usd": {
+   "value": 425.0,
+   "quote": "$425.00"
+  },
+  "extended_value_usd": {
+   "value": 102000.0,
+   "quote": "$102,000.00"
+  },
+  "invoice_total_usd": {
+   "value": 102000.0,
+   "quote": "$102,000.00"
+  },
+  "cartons": {
+   "value": 60,
+   "quote": "60 cartons, 4 units per carton"
+  },
+  "units_per_carton": {
+   "value": 4,
+   "quote": "60 cartons, 4 units per carton"
+  },
+  "unit_weight_lb": {
+   "value": 15,
+   "quote": "approximately 15 lb including retail packaging",
+   "note": "Weight is stated as approximate in the source and includes retail packaging."
+  },
+  "freight_note": {
+   "value": "Billed separately by carrier",
+   "quote": "Billed separately by carrier"
+  }
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 14220,
+  "cache_read_input_tokens": 25874,
+  "output_tokens": 2134,
+  "output_tokens_details": {
+   "thinking_tokens": 1546
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 14220,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2134,
+    "cache_read_input_tokens": 25874,
+    "cache_creation_input_tokens": 14220,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 14220
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "extract/commercial_invoice"
+}

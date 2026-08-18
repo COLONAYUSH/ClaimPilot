@@ -1,0 +1,75 @@
+{
+ "text": "```json\n{\n  \"header_text\": {\n    \"value\": \"SYNTHETIC TRAINING EVIDENCE\",\n    \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n  },\n  \"footer_text\": {\n    \"value\": \"Claim FCL-2026-0147 | Warehouse photo | C-023\",\n    \"quote\": \"Claim FCL-2026-0147 | Warehouse photo | C-023\"\n  },\n  \"timestamp_text\": {\n    \"value\": \"2026-05-12 11:18 CT\",\n    \"quote\": \"MetroMart DC18 | 2026-05-12 11:18 CT\"\n  },\n  \"location_text\": {\n    \"value\": \"MetroMart DC18\",\n    \"quote\": \"MetroMart DC18 | 2026-05-12 11:18 CT\"\n  },\n  \"carton_labels_visible\": [\"C-023\", \"C-022\", \"C-023\"],\n  \"cartons_shown_damaged\": [\"C-023\"],\n  \"damage_observations\": [\n    \"Large dark angular shape (tear/puncture-like) overlaid across the front face of the left carton labeled C-023\",\n    \"Jagged, zigzag torn edge along the lower portion of the left carton labeled C-023\",\n    \"Left carton labeled C-023 is tilted/leaning rather than square, consistent with a crushed or deformed corner\"\n  ],\n  \"synthetic_watermark\": {\n    \"value\": true,\n    \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n  },\n  \"description\": \"The image is a simplified/illustrated warehouse evidence photo, not a real photograph. A header bar reads \\\"SYNTHETIC TRAINING EVIDENCE\\\" in bold dark red on the left, with \\\"MetroMart DC18 | 2026-05-12 11:18 CT\\\" on the right. Three cartons sit on a wooden pallet against a plain gray warehouse backdrop. The leftmost carton, bearing a white label reading \\\"C-023\\\", is visibly damaged: it is tilted off-square, has a large dark angular shape across its face resembling a tear or puncture, and a jagged torn edge along its lower portion. To its right, an intact, square carton labeled \\\"C-022\\\" shows no damage. A third intact carton on the far right is also labeled \\\"C-023\\\", identical in text to the damaged carton's label but showing no damage itself. A footer at the bottom reads \\\"Claim FCL-2026-0147 | Warehouse photo | C-023\\\".\"\n}\n```",
+ "obj": {
+  "header_text": {
+   "value": "SYNTHETIC TRAINING EVIDENCE",
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "footer_text": {
+   "value": "Claim FCL-2026-0147 | Warehouse photo | C-023",
+   "quote": "Claim FCL-2026-0147 | Warehouse photo | C-023"
+  },
+  "timestamp_text": {
+   "value": "2026-05-12 11:18 CT",
+   "quote": "MetroMart DC18 | 2026-05-12 11:18 CT"
+  },
+  "location_text": {
+   "value": "MetroMart DC18",
+   "quote": "MetroMart DC18 | 2026-05-12 11:18 CT"
+  },
+  "carton_labels_visible": [
+   "C-023",
+   "C-022",
+   "C-023"
+  ],
+  "cartons_shown_damaged": [
+   "C-023"
+  ],
+  "damage_observations": [
+   "Large dark angular shape (tear/puncture-like) overlaid across the front face of the left carton labeled C-023",
+   "Jagged, zigzag torn edge along the lower portion of the left carton labeled C-023",
+   "Left carton labeled C-023 is tilted/leaning rather than square, consistent with a crushed or deformed corner"
+  ],
+  "synthetic_watermark": {
+   "value": true,
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "description": "The image is a simplified/illustrated warehouse evidence photo, not a real photograph. A header bar reads \"SYNTHETIC TRAINING EVIDENCE\" in bold dark red on the left, with \"MetroMart DC18 | 2026-05-12 11:18 CT\" on the right. Three cartons sit on a wooden pallet against a plain gray warehouse backdrop. The leftmost carton, bearing a white label reading \"C-023\", is visibly damaged: it is tilted off-square, has a large dark angular shape across its face resembling a tear or puncture, and a jagged torn edge along its lower portion. To its right, an intact, square carton labeled \"C-022\" shows no damage. A third intact carton on the far right is also labeled \"C-023\", identical in text to the damaged carton's label but showing no damage itself. A footer at the bottom reads \"Claim FCL-2026-0147 | Warehouse photo | C-023\"."
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 22325,
+  "cache_read_input_tokens": 65395,
+  "output_tokens": 3399,
+  "output_tokens_details": {
+   "thinking_tokens": 2480
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 22325,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 3307,
+    "cache_read_input_tokens": 39521,
+    "cache_creation_input_tokens": 8678,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 8678
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "vision/damage_photo_2"
+}

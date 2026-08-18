@@ -1,0 +1,113 @@
+{
+ "text": "```json\n{\n  \"bol_number\": {\n    \"value\": \"BOL-884219\",\n    \"quote\": \"BOL-884219\"\n  },\n  \"pro_number\": {\n    \"value\": \"BLF-77209115\",\n    \"quote\": \"BLF-77209115\"\n  },\n  \"shipper\": {\n    \"value\": \"Northstar Retail Equipment LLC - Columbus, OH\",\n    \"quote\": \"Northstar Retail Equipment LLC - Columbus, OH\"\n  },\n  \"consignee\": {\n    \"value\": \"MetroMart Stores - DC 18, Dallas, TX\",\n    \"quote\": \"MetroMart Stores - DC 18, Dallas, TX\"\n  },\n  \"pickup_date\": {\n    \"value\": \"2026-05-04\",\n    \"quote\": \"May 4, 2026\"\n  },\n  \"carrier\": {\n    \"value\": \"BlueLine Freight Systems\",\n    \"quote\": \"BlueLine Freight Systems\"\n  },\n  \"service_description\": {\n    \"value\": \"Standard LTL - non-guaranteed\",\n    \"quote\": \"Standard LTL - non-guaranteed\"\n  },\n  \"pallets\": {\n    \"value\": 4,\n    \"quote\": \"4 pallets\"\n  },\n  \"cartons\": {\n    \"value\": 60,\n    \"quote\": \"60 cartons\"\n  },\n  \"weight_lb\": {\n    \"value\": 3600,\n    \"quote\": \"3,600 lb\"\n  },\n  \"freight_class\": {\n    \"value\": \"125\",\n    \"quote\": \"Class 125\"\n  },\n  \"declared_value_note\": {\n    \"value\": \"No excess declared value entered on this BOL.\",\n    \"quote\": \"No excess declared value entered on this BOL.\"\n  },\n  \"requested_delivery\": {\n    \"value\": \"2026-05-08T17:00:00\",\n    \"quote\": \"Requested delivery by Friday, May 8, 2026, 5:00 PM local.\"\n  },\n  \"promotion_note\": {\n    \"value\": \"Customer promotion begins May 10.\",\n    \"quote\": \"Customer promotion begins May 10.\"\n  },\n  \"guarantee_note\": {\n    \"value\": \"requested delivery date is not shown as a guaranteed-service accessorial\",\n    \"quote\": \"Note: requested delivery date is not shown as a guaranteed-service accessorial.\"\n  },\n  \"packaging_note\": {\n    \"value\": \"Corrugated cartons, four units per carton, palletized and shrink-wrapped.\",\n    \"quote\": \"Corrugated cartons, four units per carton, palletized and shrink-wrapped.\"\n  },\n  \"shipper_signature\": {\n    \"value\": \"A. Patel / 05-04-2026 15:16\",\n    \"quote\": \"A. Patel / 05-04-2026 15:16\"\n  },\n  \"carrier_signature\": {\n    \"value\": \"J. Roberts / BlueLine Freight\",\n    \"quote\": \"J. Roberts / BlueLine Freight\"\n  }\n}\n```",
+ "obj": {
+  "bol_number": {
+   "value": "BOL-884219",
+   "quote": "BOL-884219"
+  },
+  "pro_number": {
+   "value": "BLF-77209115",
+   "quote": "BLF-77209115"
+  },
+  "shipper": {
+   "value": "Northstar Retail Equipment LLC - Columbus, OH",
+   "quote": "Northstar Retail Equipment LLC - Columbus, OH"
+  },
+  "consignee": {
+   "value": "MetroMart Stores - DC 18, Dallas, TX",
+   "quote": "MetroMart Stores - DC 18, Dallas, TX"
+  },
+  "pickup_date": {
+   "value": "2026-05-04",
+   "quote": "May 4, 2026"
+  },
+  "carrier": {
+   "value": "BlueLine Freight Systems",
+   "quote": "BlueLine Freight Systems"
+  },
+  "service_description": {
+   "value": "Standard LTL - non-guaranteed",
+   "quote": "Standard LTL - non-guaranteed"
+  },
+  "pallets": {
+   "value": 4,
+   "quote": "4 pallets"
+  },
+  "cartons": {
+   "value": 60,
+   "quote": "60 cartons"
+  },
+  "weight_lb": {
+   "value": 3600,
+   "quote": "3,600 lb"
+  },
+  "freight_class": {
+   "value": "125",
+   "quote": "Class 125"
+  },
+  "declared_value_note": {
+   "value": "No excess declared value entered on this BOL.",
+   "quote": "No excess declared value entered on this BOL."
+  },
+  "requested_delivery": {
+   "value": "2026-05-08T17:00:00",
+   "quote": "Requested delivery by Friday, May 8, 2026, 5:00 PM local."
+  },
+  "promotion_note": {
+   "value": "Customer promotion begins May 10.",
+   "quote": "Customer promotion begins May 10."
+  },
+  "guarantee_note": {
+   "value": "requested delivery date is not shown as a guaranteed-service accessorial",
+   "quote": "Note: requested delivery date is not shown as a guaranteed-service accessorial."
+  },
+  "packaging_note": {
+   "value": "Corrugated cartons, four units per carton, palletized and shrink-wrapped.",
+   "quote": "Corrugated cartons, four units per carton, palletized and shrink-wrapped."
+  },
+  "shipper_signature": {
+   "value": "A. Patel / 05-04-2026 15:16",
+   "quote": "A. Patel / 05-04-2026 15:16"
+  },
+  "carrier_signature": {
+   "value": "J. Roberts / BlueLine Freight",
+   "quote": "J. Roberts / BlueLine Freight"
+  }
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 14594,
+  "cache_read_input_tokens": 25874,
+  "output_tokens": 3199,
+  "output_tokens_details": {
+   "thinking_tokens": 2237
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 14594,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 3199,
+    "cache_read_input_tokens": 25874,
+    "cache_creation_input_tokens": 14594,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 14594
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "extract/bill_of_lading"
+}

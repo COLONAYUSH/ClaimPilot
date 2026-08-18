@@ -1,0 +1,76 @@
+{
+ "text": "```json\n{\n  \"header_text\": {\n    \"value\": \"SYNTHETIC TRAINING EVIDENCE\",\n    \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n  },\n  \"footer_text\": {\n    \"value\": \"Claim FCL-2026-0147 | Warehouse photo | C-021\",\n    \"quote\": \"Claim FCL-2026-0147 | Warehouse photo | C-021\"\n  },\n  \"timestamp_text\": {\n    \"value\": \"2026-05-12 11:18 CT\",\n    \"quote\": \"2026-05-12 11:18 CT\"\n  },\n  \"location_text\": {\n    \"value\": \"MetroMart DC18\",\n    \"quote\": \"MetroMart DC18\"\n  },\n  \"carton_labels_visible\": [\"C-021\", \"C-021\", \"C-023\"],\n  \"cartons_shown_damaged\": [\"C-021\"],\n  \"damage_observations\": [\n    \"Jagged, irregular zig-zag torn edge across the top flaps of the middle carton, consistent with a tear/crush deformation\",\n    \"Large dark oval stain covering the lower-left front face of the middle carton\",\n    \"A dark diagonal rod/stick-like object protruding through the torn top opening of the middle carton\",\n    \"A small dark triangular mark near the bottom-right of the torn opening on the middle carton\"\n  ],\n  \"synthetic_watermark\": {\n    \"value\": true,\n    \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n  },\n  \"description\": \"The image shows three cartons on a pallet against a plain gray warehouse backdrop. The header (top-left, dark red text) reads 'SYNTHETIC TRAINING EVIDENCE', with 'MetroMart DC18 | 2026-05-12 11:18 CT' in the top-right. A footer at bottom-left reads 'Claim FCL-2026-0147 | Warehouse photo | C-021'. The leftmost carton is printed directly with the id 'C-021' on its side and appears intact, with no visible tears, punctures, or stains. The middle carton exhibits visible damage: a jagged torn top edge, a large dark stain on its lower front face, a rod-like object protruding through the torn top, and a dark triangular mark near the opening; a white callout label box reading 'C-021' is overlaid on this damaged carton. The rightmost carton is printed with the id 'C-023' and appears intact with no visible damage. Note: the id 'C-021' appears on two distinct physical cartons in this image — the intact left carton (printed directly on the box) and the damaged middle carton (via the overlaid callout label) — creating an identification inconsistency between which physical carton the damage documentation applies to.\"\n}\n```",
+ "obj": {
+  "header_text": {
+   "value": "SYNTHETIC TRAINING EVIDENCE",
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "footer_text": {
+   "value": "Claim FCL-2026-0147 | Warehouse photo | C-021",
+   "quote": "Claim FCL-2026-0147 | Warehouse photo | C-021"
+  },
+  "timestamp_text": {
+   "value": "2026-05-12 11:18 CT",
+   "quote": "2026-05-12 11:18 CT"
+  },
+  "location_text": {
+   "value": "MetroMart DC18",
+   "quote": "MetroMart DC18"
+  },
+  "carton_labels_visible": [
+   "C-021",
+   "C-021",
+   "C-023"
+  ],
+  "cartons_shown_damaged": [
+   "C-021"
+  ],
+  "damage_observations": [
+   "Jagged, irregular zig-zag torn edge across the top flaps of the middle carton, consistent with a tear/crush deformation",
+   "Large dark oval stain covering the lower-left front face of the middle carton",
+   "A dark diagonal rod/stick-like object protruding through the torn top opening of the middle carton",
+   "A small dark triangular mark near the bottom-right of the torn opening on the middle carton"
+  ],
+  "synthetic_watermark": {
+   "value": true,
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "description": "The image shows three cartons on a pallet against a plain gray warehouse backdrop. The header (top-left, dark red text) reads 'SYNTHETIC TRAINING EVIDENCE', with 'MetroMart DC18 | 2026-05-12 11:18 CT' in the top-right. A footer at bottom-left reads 'Claim FCL-2026-0147 | Warehouse photo | C-021'. The leftmost carton is printed directly with the id 'C-021' on its side and appears intact, with no visible tears, punctures, or stains. The middle carton exhibits visible damage: a jagged torn top edge, a large dark stain on its lower front face, a rod-like object protruding through the torn top, and a dark triangular mark near the opening; a white callout label box reading 'C-021' is overlaid on this damaged carton. The rightmost carton is printed with the id 'C-023' and appears intact with no visible damage. Note: the id 'C-021' appears on two distinct physical cartons in this image — the intact left carton (printed directly on the box) and the damaged middle carton (via the overlaid callout label) — creating an identification inconsistency between which physical carton the damage documentation applies to."
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 22269,
+  "cache_read_input_tokens": 65340,
+  "output_tokens": 4657,
+  "output_tokens_details": {
+   "thinking_tokens": 3666
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 22269,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 4566,
+    "cache_read_input_tokens": 39466,
+    "cache_creation_input_tokens": 8677,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 8677
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "vision/damage_photo_1"
+}

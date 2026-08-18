@@ -189,7 +189,7 @@ claimpilot bench --pack DIR
 
 ```mermaid
 flowchart LR
-    subgraph folder["Claim folder - 15 sources"]
+    subgraph folder["Claim folder - 15 untrusted sources"]
         s1["email thread · JSON/CSV/XLSX<br/>text PDFs · image-only scan<br/>photos · carrier MSA · history"]
     end
     s1 --> A["<b>1 INGEST</b><br/>deterministic parsers<br/>sha256 · trust tiers"]
@@ -200,7 +200,23 @@ flowchart LR
     E --> F["<b>6 BENCHMARK</b><br/>similarity + dispute-pattern<br/>over 30 past claims"]
     F --> G["<b>7 COMPOSE</b><br/>LLM writes brief + reply<br/>NumberGuard + ref check<br/>bounded repair · fails CLOSED"]
     G --> H["brief.html<br/>case_file.json<br/>draft_reply.txt"]
+
+    B -. sources + vision transcripts .-> SEC["<b>SCAN</b> tamper-proofing<br/>deterministic adversarial-input check<br/>injection · invisible unicode · smuggled text layer"]
+    SEC -. findings .-> H
+
+    classDef llm fill:#D97757,stroke:#8a3b1e,color:#fff;
+    classDef det fill:#1a7f37,stroke:#0b4a20,color:#fff;
+    classDef guard fill:#6f42c1,stroke:#3f2374,color:#fff;
+    class B,E,G llm;
+    class A,D,F det;
+    class C,SEC guard;
 ```
+
+Green is deterministic Python, orange is an LLM call, purple is a guard that can stop or
+flag output. The three guards (the quote gate at **3**, the tamper-proofing **SCAN**, and
+NumberGuard at **7**) are all deterministic and all run on every request. `SCAN` reads the
+raw sources and the vision transcripts, so a payload hidden in a scanned document is checked
+too; its findings ride into the brief's security panel rather than silently passing.
 
 The design decision that matters is who does what:
 
@@ -209,6 +225,7 @@ The design decision that matters is who does what:
 | Parsing, checksums, trust tiers | Python | deterministic, testable |
 | Reading language into typed facts | **LLM** (schema-forced, quoted) | this is what LLMs are for |
 | Verifying every quote against its source | Python | trust nothing unverified |
+| Scanning every source for adversarial content | Python (scanner) | injection detection can't depend on the model being attacked |
 | Cross-source reconciliation, authority rulings | Python (14 rules) | conflicts have right answers |
 | Finding the governing contract clauses | **datum** retrieval | ranking is a retrieval problem |
 | Reading clause parameters ($50/lb, 9 months...) | **LLM** (quoted) | language again |
