@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claimpilot"
+version = "0.1.0"
+description = "Evidence-grounded freight-claim negotiation copilot - every figure cited, verified and traceable; hallucinations fail closed"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "Ayush Kumar"}]
+requires-python = ">=3.9"
+# Dependencies are intentionally minimal. Everything else is Python stdlib.
+# In this environment pip resolves against the enterprise Artifactory index
+# (see ~/.pip/pip.conf); both packages below were already present system-wide,
+# so a plain `python3 -m claimpilot ...` works with zero installs.
+dependencies = [
+    "pypdf>=4.0",       # text-layer extraction for text-native PDFs
+]
+
+[project.optional-dependencies]
+xlsx = ["openpyxl>=3.1"]   # only used to cross-check the .xlsx twin of the claims CSV
+
+[project.scripts]
+claimpilot = "claimpilot.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["claimpilot*"]

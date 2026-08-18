@@ -1,0 +1,160 @@
+{
+ "text": "```json\n{\n  \"transcript\": \"INDEPENDENT CARGO INSPECTION REPORT\\n\\nReport: IR-260518-44     Claim: FCL-2026-0147\\nInspection date: 2026-05-18     Location: MetroMart DC18, Dallas, TX\\nPRO: BLF-77209115     BOL: BOL-884219\\nInspector: Southwest Cargo Survey LLC / L. Greene\\n\\nObserved shipment condition\\n- Consignee records 58 of 60 cartons received; 2 cartons not present at inspection.\\n- Five cartons showed crush, puncture and/or moisture damage: C-017, C-018, C-021, C-022, C-023.\\n- Internal molded foam inserts were present in all five opened cartons.\\n- No evidence of product damage was observed in the 6 units classified as repackable.\\n\\nUnit disposition\\nCarton | Units | Unsellable | Repackable | Primary observation\\nC-017 | 4 | 3 | 1 | Corner crush / shell deformation\\nC-018 | 4 | 2 | 2 | Moisture + retail box damage\\nC-021 | 4 | 4 | 0 | Puncture / cracked housings\\nC-022 | 4 | 2 | 2 | Compression / retail box damage\\nC-023 | 4 | 3 | 1 | Side crush / screen damage\\n\\nTOTAL: 20 units examined; 14 unsellable; 6 functional but require repacking.\\n\\nCost documentation supplied by Northstar\\nInspection fee: $420.00     Repack labor: $300.00\\n\\nInspector conclusion\\nThe observed physical damage is consistent with compression/puncture during handling or transit. The presence of molded foam provides some internal protection; however, no vendor packaging specification or laboratory packaging test was provided to the inspector.\\n\\nPhotos supplied to surveyor: only C-021 and C-023.\\n\\nSigned: L. Greene     05/18/2026\",\n  \"report_no\": {\n    \"value\": \"IR-260518-44\",\n    \"quote\": \"Report: IR-260518-44\"\n  },\n  \"claim_id\": {\n    \"value\": \"FCL-2026-0147\",\n    \"quote\": \"Claim: FCL-2026-0147\"\n  },\n  \"pro_number\": {\n    \"value\": \"BLF-77209115\",\n    \"quote\": \"PRO: BLF-77209115\"\n  },\n  \"bol_number\": {\n    \"value\": \"BOL-884219\",\n    \"quote\": \"BOL: BOL-884219\"\n  },\n  \"inspection_date\": {\n    \"value\": \"2026-05-18\",\n    \"quote\": \"Inspection date: 2026-05-18\"\n  },\n  \"location\": {\n    \"value\": \"MetroMart DC18, Dallas, TX\",\n    \"quote\": \"Location: MetroMart DC18, Dallas, TX\"\n  },\n  \"inspector\": {\n    \"value\": \"Southwest Cargo Survey LLC / L. Greene\",\n    \"quote\": \"Inspector: Southwest Cargo Survey LLC / L. Greene\"\n  },\n  \"carton_rows\": [\n    {\n      \"carton_id\": \"C-017\",\n      \"units\": 4,\n      \"unsellable\": 3,\n      \"repackable\": 1,\n      \"observation\": \"Corner crush / shell deformation\"\n    },\n    {\n      \"carton_id\": \"C-018\",\n      \"units\": 4,\n      \"unsellable\": 2,\n      \"repackable\": 2,\n      \"observation\": \"Moisture + retail box damage\"\n    },\n    {\n      \"carton_id\": \"C-021\",\n      \"units\": 4,\n      \"unsellable\": 4,\n      \"repackable\": 0,\n      \"observation\": \"Puncture / cracked housings\"\n    },\n    {\n      \"carton_id\": \"C-022\",\n      \"units\": 4,\n      \"unsellable\": 2,\n      \"repackable\": 2,\n      \"observation\": \"Compression / retail box damage\"\n    },\n    {\n      \"carton_id\": \"C-023\",\n      \"units\": 4,\n      \"unsellable\": 3,\n      \"repackable\": 1,\n      \"observation\": \"Side crush / screen damage\"\n    }\n  ],\n  \"total_examined\": {\n    \"value\": 20,\n    \"quote\": \"TOTAL: 20 units examined; 14 unsellable; 6 functional but require repacking.\"\n  },\n  \"total_unsellable\": {\n    \"value\": 14,\n    \"quote\": \"TOTAL: 20 units examined; 14 unsellable; 6 functional but require repacking.\"\n  },\n  \"total_repackable\": {\n    \"value\": 6,\n    \"quote\": \"TOTAL: 20 units examined; 14 unsellable; 6 functional but require repacking.\"\n  },\n  \"cartons_received_note\": {\n    \"value\": \"Consignee records 58 of 60 cartons received; 2 cartons not present at inspection.\",\n    \"quote\": \"Consignee records 58 of 60 cartons received; 2 cartons not present at inspection.\"\n  },\n  \"foam_present\": {\n    \"value\": true,\n    \"quote\": \"Internal molded foam inserts were present in all five opened cartons.\"\n  },\n  \"no_damage_in_repackable\": {\n    \"value\": true,\n    \"quote\": \"No evidence of product damage was observed in the 6 units classified as repackable.\"\n  },\n  \"photos_provided_note\": {\n    \"value\": \"Photos supplied to surveyor: only C-021 and C-023.\",\n    \"quote\": \"Photos supplied to surveyor: only C-021 and C-023.\"\n  },\n  \"inspection_fee_usd\": {\n    \"value\": 420.00,\n    \"quote\": \"Inspection fee: $420.00\"\n  },\n  \"repack_labor_usd\": {\n    \"value\": 300.00,\n    \"quote\": \"Repack labor: $300.00\"\n  },\n  \"conclusion\": {\n    \"value\": \"The observed physical damage is consistent with compression/puncture during handling or transit. The presence of molded foam provides some internal protection; however, no vendor packaging specification or laboratory packaging test was provided to the inspector.\",\n    \"quote\": \"The observed physical damage is consistent with compression/puncture during handling or transit. The presence of molded foam provides some internal protection; however, no vendor packaging specification or laboratory packaging test was provided to the inspector.\"\n  },\n  \"packaging_spec_note\": {\n    \"value\": \"no vendor packaging specification or laboratory packaging test was provided to the inspector\",\n    \"quote\": \"no vendor packaging specification or laboratory packaging test was provided to the inspector.\"\n  },\n  \"signed_by\": {\n    \"value\": \"L. Greene\",\n    \"quote\": \"Signed: L. Greene\"\n  },\n  \"signed_date\": {\n    \"value\": \"2026-05-18\",\n    \"quote\": \"05/18/2026\"\n  },\n  \"legibility\": 0.97\n}\n```",
+ "obj": {
+  "transcript": "INDEPENDENT CARGO INSPECTION REPORT\n\nReport: IR-260518-44     Claim: FCL-2026-0147\nInspection date: 2026-05-18     Location: MetroMart DC18, Dallas, TX\nPRO: BLF-77209115     BOL: BOL-884219\nInspector: Southwest Cargo Survey LLC / L. Greene\n\nObserved shipment condition\n- Consignee records 58 of 60 cartons received; 2 cartons not present at inspection.\n- Five cartons showed crush, puncture and/or moisture damage: C-017, C-018, C-021, C-022, C-023.\n- Internal molded foam inserts were present in all five opened cartons.\n- No evidence of product damage was observed in the 6 units classified as repackable.\n\nUnit disposition\nCarton | Units | Unsellable | Repackable | Primary observation\nC-017 | 4 | 3 | 1 | Corner crush / shell deformation\nC-018 | 4 | 2 | 2 | Moisture + retail box damage\nC-021 | 4 | 4 | 0 | Puncture / cracked housings\nC-022 | 4 | 2 | 2 | Compression / retail box damage\nC-023 | 4 | 3 | 1 | Side crush / screen damage\n\nTOTAL: 20 units examined; 14 unsellable; 6 functional but require repacking.\n\nCost documentation supplied by Northstar\nInspection fee: $420.00     Repack labor: $300.00\n\nInspector conclusion\nThe observed physical damage is consistent with compression/puncture during handling or transit. The presence of molded foam provides some internal protection; however, no vendor packaging specification or laboratory packaging test was provided to the inspector.\n\nPhotos supplied to surveyor: only C-021 and C-023.\n\nSigned: L. Greene     05/18/2026",
+  "report_no": {
+   "value": "IR-260518-44",
+   "quote": "Report: IR-260518-44"
+  },
+  "claim_id": {
+   "value": "FCL-2026-0147",
+   "quote": "Claim: FCL-2026-0147"
+  },
+  "pro_number": {
+   "value": "BLF-77209115",
+   "quote": "PRO: BLF-77209115"
+  },
+  "bol_number": {
+   "value": "BOL-884219",
+   "quote": "BOL: BOL-884219"
+  },
+  "inspection_date": {
+   "value": "2026-05-18",
+   "quote": "Inspection date: 2026-05-18"
+  },
+  "location": {
+   "value": "MetroMart DC18, Dallas, TX",
+   "quote": "Location: MetroMart DC18, Dallas, TX"
+  },
+  "inspector": {
+   "value": "Southwest Cargo Survey LLC / L. Greene",
+   "quote": "Inspector: Southwest Cargo Survey LLC / L. Greene"
+  },
+  "carton_rows": [
+   {
+    "carton_id": "C-017",
+    "units": 4,
+    "unsellable": 3,
+    "repackable": 1,
+    "observation": "Corner crush / shell deformation"
+   },
+   {
+    "carton_id": "C-018",
+    "units": 4,
+    "unsellable": 2,
+    "repackable": 2,
+    "observation": "Moisture + retail box damage"
+   },
+   {
+    "carton_id": "C-021",
+    "units": 4,
+    "unsellable": 4,
+    "repackable": 0,
+    "observation": "Puncture / cracked housings"
+   },
+   {
+    "carton_id": "C-022",
+    "units": 4,
+    "unsellable": 2,
+    "repackable": 2,
+    "observation": "Compression / retail box damage"
+   },
+   {
+    "carton_id": "C-023",
+    "units": 4,
+    "unsellable": 3,
+    "repackable": 1,
+    "observation": "Side crush / screen damage"
+   }
+  ],
+  "total_examined": {
+   "value": 20,
+   "quote": "TOTAL: 20 units examined; 14 unsellable; 6 functional but require repacking."
+  },
+  "total_unsellable": {
+   "value": 14,
+   "quote": "TOTAL: 20 units examined; 14 unsellable; 6 functional but require repacking."
+  },
+  "total_repackable": {
+   "value": 6,
+   "quote": "TOTAL: 20 units examined; 14 unsellable; 6 functional but require repacking."
+  },
+  "cartons_received_note": {
+   "value": "Consignee records 58 of 60 cartons received; 2 cartons not present at inspection.",
+   "quote": "Consignee records 58 of 60 cartons received; 2 cartons not present at inspection."
+  },
+  "foam_present": {
+   "value": true,
+   "quote": "Internal molded foam inserts were present in all five opened cartons."
+  },
+  "no_damage_in_repackable": {
+   "value": true,
+   "quote": "No evidence of product damage was observed in the 6 units classified as repackable."
+  },
+  "photos_provided_note": {
+   "value": "Photos supplied to surveyor: only C-021 and C-023.",
+   "quote": "Photos supplied to surveyor: only C-021 and C-023."
+  },
+  "inspection_fee_usd": {
+   "value": 420.0,
+   "quote": "Inspection fee: $420.00"
+  },
+  "repack_labor_usd": {
+   "value": 300.0,
+   "quote": "Repack labor: $300.00"
+  },
+  "conclusion": {
+   "value": "The observed physical damage is consistent with compression/puncture during handling or transit. The presence of molded foam provides some internal protection; however, no vendor packaging specification or laboratory packaging test was provided to the inspector.",
+   "quote": "The observed physical damage is consistent with compression/puncture during handling or transit. The presence of molded foam provides some internal protection; however, no vendor packaging specification or laboratory packaging test was provided to the inspector."
+  },
+  "packaging_spec_note": {
+   "value": "no vendor packaging specification or laboratory packaging test was provided to the inspector",
+   "quote": "no vendor packaging specification or laboratory packaging test was provided to the inspector."
+  },
+  "signed_by": {
+   "value": "L. Greene",
+   "quote": "Signed: L. Greene"
+  },
+  "signed_date": {
+   "value": "2026-05-18",
+   "quote": "05/18/2026"
+  },
+  "legibility": 0.97
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 17469,
+  "cache_read_input_tokens": 72617,
+  "output_tokens": 4025,
+  "output_tokens_details": {
+   "thinking_tokens": 1682
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 17469,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 3924,
+    "cache_read_input_tokens": 40533,
+    "cache_creation_input_tokens": 9020,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 9020
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "vision/inspection_report"
+}

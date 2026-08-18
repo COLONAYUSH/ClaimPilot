@@ -1,0 +1,135 @@
+{
+ "text": "```json\n{\n  \"claim_id\": {\n    \"value\": \"FCL-2026-0147\",\n    \"quote\": \"Claim FCL-2026-0147 - Northstar Retail Equipment LLC vs. BlueLine Freight Systems\"\n  },\n  \"claimant\": {\n    \"value\": \"Northstar Retail Equipment LLC\",\n    \"quote\": \"Northstar Retail Equipment LLC vs. BlueLine Freight Systems\"\n  },\n  \"respondent_carrier\": {\n    \"value\": \"BlueLine Freight Systems\",\n    \"quote\": \"Northstar Retail Equipment LLC vs. BlueLine Freight Systems\"\n  },\n  \"service\": {\n    \"value\": \"Standard LTL\",\n    \"quote\": \"Standard LTL\"\n  },\n  \"ship_date\": {\n    \"value\": \"2026-05-04\",\n    \"quote\": \"May 4, 2026\"\n  },\n  \"expected_delivery\": {\n    \"value\": \"2026-05-08T17:00:00\",\n    \"quote\": \"May 8, 2026 by 5:00 PM CT\"\n  },\n  \"actual_delivery\": {\n    \"value\": \"2026-05-12T10:42:00\",\n    \"quote\": \"May 12, 2026 at 10:42 AM CT\"\n  },\n  \"contents_units\": {\n    \"value\": 240,\n    \"quote\": \"240 NS-HS40 handheld barcode scanners in 60 cartons\"\n  },\n  \"contents_cartons\": {\n    \"value\": 60,\n    \"quote\": \"240 NS-HS40 handheld barcode scanners in 60 cartons (4 units/carton)\"\n  },\n  \"units_per_carton\": {\n    \"value\": 4,\n    \"quote\": \"in 60 cartons (4 units/carton)\"\n  },\n  \"invoice_value_usd\": {\n    \"value\": 102000.00,\n    \"quote\": \"Invoice value $102,000.00\"\n  },\n  \"demand_lines\": [\n    {\n      \"label\": \"Missing product\",\n      \"basis\": \"8 units x $425\",\n      \"amount_usd\": 3400.00,\n      \"quote\": \"Missing product 8 units x $425 $3,400.00\"\n    },\n    {\n      \"label\": \"Damaged/unsellable product\",\n      \"basis\": \"14 units x $425\",\n      \"amount_usd\": 5950.00,\n      \"quote\": \"Damaged/unsellable product 14 units x $425 $5,950.00\"\n    },\n    {\n      \"label\": \"Independent inspection\",\n      \"basis\": \"Vendor invoice\",\n      \"amount_usd\": 420.00,\n      \"quote\": \"Independent inspection Vendor invoice $420.00\"\n    },\n    {\n      \"label\": \"Repack labor\",\n      \"basis\": \"6 salvageable units\",\n      \"amount_usd\": 300.00,\n      \"quote\": \"Repack labor 6 salvageable units $300.00\"\n    },\n    {\n      \"label\": \"Late-delivery markdown\",\n      \"basis\": \"Commercial impact asserted by shipper\",\n      \"amount_usd\": 18000.00,\n      \"quote\": \"Late-delivery markdown Commercial impact asserted by shipper $18,000.00\"\n    },\n    {\n      \"label\": \"Freight charge\",\n      \"basis\": \"Requested refund\",\n      \"amount_usd\": 1850.00,\n      \"quote\": \"Freight charge Requested refund $1,850.00\"\n    }\n  ],\n  \"total_demand_usd\": {\n    \"value\": 29920.00,\n    \"quote\": \"Total initial demand $29,920.00\"\n  },\n  \"carrier_offer_usd\": {\n    \"value\": 7225.00,\n    \"quote\": \"The latest carrier offer in the email thread is $7,225.\"\n  },\n  \"trust_caveat\": {\n    \"value\": \"This overview is a convenience summary, not a source of truth. Candidate solutions should reconcile it against the underlying records.\",\n    \"quote\": \"This overview is a convenience summary, not a source of truth. Candidate solutions should reconcile it against the underlying records.\"\n  }\n}\n```",
+ "obj": {
+  "claim_id": {
+   "value": "FCL-2026-0147",
+   "quote": "Claim FCL-2026-0147 - Northstar Retail Equipment LLC vs. BlueLine Freight Systems"
+  },
+  "claimant": {
+   "value": "Northstar Retail Equipment LLC",
+   "quote": "Northstar Retail Equipment LLC vs. BlueLine Freight Systems"
+  },
+  "respondent_carrier": {
+   "value": "BlueLine Freight Systems",
+   "quote": "Northstar Retail Equipment LLC vs. BlueLine Freight Systems"
+  },
+  "service": {
+   "value": "Standard LTL",
+   "quote": "Standard LTL"
+  },
+  "ship_date": {
+   "value": "2026-05-04",
+   "quote": "May 4, 2026"
+  },
+  "expected_delivery": {
+   "value": "2026-05-08T17:00:00",
+   "quote": "May 8, 2026 by 5:00 PM CT"
+  },
+  "actual_delivery": {
+   "value": "2026-05-12T10:42:00",
+   "quote": "May 12, 2026 at 10:42 AM CT"
+  },
+  "contents_units": {
+   "value": 240,
+   "quote": "240 NS-HS40 handheld barcode scanners in 60 cartons"
+  },
+  "contents_cartons": {
+   "value": 60,
+   "quote": "240 NS-HS40 handheld barcode scanners in 60 cartons (4 units/carton)"
+  },
+  "units_per_carton": {
+   "value": 4,
+   "quote": "in 60 cartons (4 units/carton)"
+  },
+  "invoice_value_usd": {
+   "value": 102000.0,
+   "quote": "Invoice value $102,000.00"
+  },
+  "demand_lines": [
+   {
+    "label": "Missing product",
+    "basis": "8 units x $425",
+    "amount_usd": 3400.0,
+    "quote": "Missing product 8 units x $425 $3,400.00"
+   },
+   {
+    "label": "Damaged/unsellable product",
+    "basis": "14 units x $425",
+    "amount_usd": 5950.0,
+    "quote": "Damaged/unsellable product 14 units x $425 $5,950.00"
+   },
+   {
+    "label": "Independent inspection",
+    "basis": "Vendor invoice",
+    "amount_usd": 420.0,
+    "quote": "Independent inspection Vendor invoice $420.00"
+   },
+   {
+    "label": "Repack labor",
+    "basis": "6 salvageable units",
+    "amount_usd": 300.0,
+    "quote": "Repack labor 6 salvageable units $300.00"
+   },
+   {
+    "label": "Late-delivery markdown",
+    "basis": "Commercial impact asserted by shipper",
+    "amount_usd": 18000.0,
+    "quote": "Late-delivery markdown Commercial impact asserted by shipper $18,000.00"
+   },
+   {
+    "label": "Freight charge",
+    "basis": "Requested refund",
+    "amount_usd": 1850.0,
+    "quote": "Freight charge Requested refund $1,850.00"
+   }
+  ],
+  "total_demand_usd": {
+   "value": 29920.0,
+   "quote": "Total initial demand $29,920.00"
+  },
+  "carrier_offer_usd": {
+   "value": 7225.0,
+   "quote": "The latest carrier offer in the email thread is $7,225."
+  },
+  "trust_caveat": {
+   "value": "This overview is a convenience summary, not a source of truth. Candidate solutions should reconcile it against the underlying records.",
+   "quote": "This overview is a convenience summary, not a source of truth. Candidate solutions should reconcile it against the underlying records."
+  }
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 8121,
+  "cache_read_input_tokens": 32084,
+  "output_tokens": 4770,
+  "output_tokens_details": {
+   "thinking_tokens": 3461
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8121,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 4770,
+    "cache_read_input_tokens": 32084,
+    "cache_creation_input_tokens": 8121,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 8121
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "extract/case_overview"
+}

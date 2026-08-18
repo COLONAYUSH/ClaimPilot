@@ -1,0 +1,806 @@
+[
+ {
+  "backend": "fts5",
+  "hit_at_1": 0.7222,
+  "hit_at_3": 0.8889,
+  "mrr_at_5": 0.8074,
+  "false_answer_rate_unanswerable": 1.0,
+  "median_latency_ms": 0,
+  "per_kind": {
+   "cross_doc": {
+    "n": 3,
+    "hit_at_1": 0.6667,
+    "hit_at_3": 1.0
+   },
+   "entity": {
+    "n": 5,
+    "hit_at_1": 0.8,
+    "hit_at_3": 1.0
+   },
+   "paraphrase": {
+    "n": 3,
+    "hit_at_1": 0.3333,
+    "hit_at_3": 0.6667
+   },
+   "semantic": {
+    "n": 5,
+    "hit_at_1": 0.8,
+    "hit_at_3": 0.8
+   },
+   "verbatim": {
+    "n": 2,
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0
+   }
+  },
+  "per_query": [
+   {
+    "id": "q01",
+    "kind": "verbatim",
+    "query": "liability is limited to the lesser of the actual invoice value",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::2. Cargo Loss and Damage Liability",
+    "rank": 1
+   },
+   {
+    "id": "q02",
+    "kind": "verbatim",
+    "query": "shrink wrap torn on pallet 3",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "proof_of_delivery::Signed POD with consignee exceptions (receiving record of authority)",
+    "rank": 1
+   },
+   {
+    "id": "q03",
+    "kind": "paraphrase",
+    "query": "how much per pound is the carrier liable for damaged freight",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::2. Cargo Loss and Damage Liability",
+    "rank": 1
+   },
+   {
+    "id": "q04",
+    "kind": "paraphrase",
+    "query": "what is the deadline to file a cargo damage claim",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::2. Cargo Loss and Damage Liability",
+    "rank": 5
+   },
+   {
+    "id": "q05",
+    "kind": "paraphrase",
+    "query": "how many days do we have to submit a delay-only claim",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "email_thread::Email 5 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-20",
+    "rank": 3
+   },
+   {
+    "id": "q06",
+    "kind": "semantic",
+    "query": "can we recover lost promotion sales because the shipment arrived late",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "email_thread::Email 5 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-20",
+    "rank": null
+   },
+   {
+    "id": "q07",
+    "kind": "semantic",
+    "query": "who bears responsibility if the goods were packed inadequately",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::3. Packaging and Mitigation",
+    "rank": 1
+   },
+   {
+    "id": "q08",
+    "kind": "semantic",
+    "query": "do we have to credit the value of goods that can still be sold",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::3. Packaging and Mitigation",
+    "rank": 1
+   },
+   {
+    "id": "q09",
+    "kind": "semantic",
+    "query": "does settling this claim commercially set a precedent for future claims",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::6. Settlement and Commercial Resolution",
+    "rank": 1
+   },
+   {
+    "id": "q10",
+    "kind": "semantic",
+    "query": "does asking for delivery by a specific date make it guaranteed",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::1. Scope and Order of Precedence",
+    "rank": 1
+   },
+   {
+    "id": "q11",
+    "kind": "entity",
+    "query": "who signed the proof of delivery and when",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::3. Packaging and Mitigation",
+    "rank": 2
+   },
+   {
+    "id": "q12",
+    "kind": "entity",
+    "query": "which cartons did the inspector examine and what did he find",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "inspection_report::Independent inspection report; image-only scan, vision-transcribed",
+    "rank": 1
+   },
+   {
+    "id": "q13",
+    "kind": "entity",
+    "query": "what did the independent surveyor say about the internal foam packaging",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "inspection_report::Independent inspection report; image-only scan, vision-transcribed",
+    "rank": 1
+   },
+   {
+    "id": "q14",
+    "kind": "cross_doc",
+    "query": "what settlement amount has the carrier offered so far",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::6. Settlement and Commercial Resolution",
+    "rank": 2
+   },
+   {
+    "id": "q15",
+    "kind": "cross_doc",
+    "query": "why does the carrier refuse to pay for all five damaged cartons",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "email_thread::Email 6 - Daniel Ruiz <daniel.ruiz@blueline.example> (carrier) 2026-05-22",
+    "rank": 1
+   },
+   {
+    "id": "q16",
+    "kind": "entity",
+    "query": "how many units are packed in each carton",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "email_thread::Email 3 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-15",
+    "rank": 1
+   },
+   {
+    "id": "q17",
+    "kind": "entity",
+    "query": "what freight class and total weight was tendered on the bill of lading",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "bill_of_lading::Signed bill of lading (tender record)",
+    "rank": 1
+   },
+   {
+    "id": "q18",
+    "kind": "cross_doc",
+    "query": "past claims where the promotion markdown was denied but a freight refund was approved",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "historical_claims::Historical claim HC-2025-0094",
+    "rank": 1
+   },
+   {
+    "id": "q19",
+    "kind": "unanswerable",
+    "query": "what is the warranty period for the scanner battery",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::3. Packaging and Mitigation",
+    "correct_refusal": false
+   },
+   {
+    "id": "q20",
+    "kind": "unanswerable",
+    "query": "what temperature range applies to refrigerated shipments",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "carrier_agreement::1. Scope and Order of Precedence",
+    "correct_refusal": false
+   },
+   {
+    "id": "q21",
+    "kind": "unanswerable",
+    "query": "what fuel surcharge percentage does the carrier apply",
+    "status": "ok",
+    "elapsed_ms": 0,
+    "answered": true,
+    "sufficiency": null,
+    "top": "email_thread::Email 6 - Daniel Ruiz <daniel.ruiz@blueline.example> (carrier) 2026-05-22",
+    "correct_refusal": false
+   }
+  ]
+ },
+ {
+  "backend": "datum (default floor)",
+  "hit_at_1": 0.8889,
+  "hit_at_3": 0.9444,
+  "mrr_at_5": 0.9278,
+  "false_answer_rate_unanswerable": 1.0,
+  "median_latency_ms": 822,
+  "per_kind": {
+   "cross_doc": {
+    "n": 3,
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0
+   },
+   "entity": {
+    "n": 5,
+    "hit_at_1": 0.8,
+    "hit_at_3": 1.0
+   },
+   "paraphrase": {
+    "n": 3,
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0
+   },
+   "semantic": {
+    "n": 5,
+    "hit_at_1": 0.8,
+    "hit_at_3": 0.8
+   },
+   "verbatim": {
+    "n": 2,
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0
+   }
+  },
+  "per_query": [
+   {
+    "id": "q01",
+    "kind": "verbatim",
+    "query": "liability is limited to the lesser of the actual invoice value",
+    "status": "ok",
+    "elapsed_ms": 1109,
+    "answered": true,
+    "sufficiency": 0.725,
+    "top": "carrier_agreement::2. Cargo Loss and Damage Liability",
+    "rank": 1
+   },
+   {
+    "id": "q02",
+    "kind": "verbatim",
+    "query": "shrink wrap torn on pallet 3",
+    "status": "ok",
+    "elapsed_ms": 830,
+    "answered": true,
+    "sufficiency": 0.7488,
+    "top": "proof_of_delivery::Signed POD with consignee exceptions (receiving record of authority)",
+    "rank": 1
+   },
+   {
+    "id": "q03",
+    "kind": "paraphrase",
+    "query": "how much per pound is the carrier liable for damaged freight",
+    "status": "ok",
+    "elapsed_ms": 542,
+    "answered": true,
+    "sufficiency": 0.7367,
+    "top": "carrier_agreement::2. Cargo Loss and Damage Liability",
+    "rank": 1
+   },
+   {
+    "id": "q04",
+    "kind": "paraphrase",
+    "query": "what is the deadline to file a cargo damage claim",
+    "status": "ok",
+    "elapsed_ms": 847,
+    "answered": true,
+    "sufficiency": 0.7247,
+    "top": "carrier_agreement::5. Claim Notice and Documentation",
+    "rank": 1
+   },
+   {
+    "id": "q05",
+    "kind": "paraphrase",
+    "query": "how many days do we have to submit a delay-only claim",
+    "status": "ok",
+    "elapsed_ms": 782,
+    "answered": true,
+    "sufficiency": 0.7178,
+    "top": "carrier_agreement::5. Claim Notice and Documentation",
+    "rank": 1
+   },
+   {
+    "id": "q06",
+    "kind": "semantic",
+    "query": "can we recover lost promotion sales because the shipment arrived late",
+    "status": "ok",
+    "elapsed_ms": 1179,
+    "answered": true,
+    "sufficiency": 0.6512,
+    "top": "email_thread::Email 1 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-13",
+    "rank": 5
+   },
+   {
+    "id": "q07",
+    "kind": "semantic",
+    "query": "who bears responsibility if the goods were packed inadequately",
+    "status": "ok",
+    "elapsed_ms": 790,
+    "answered": true,
+    "sufficiency": 0.6819,
+    "top": "carrier_agreement::3. Packaging and Mitigation",
+    "rank": 1
+   },
+   {
+    "id": "q08",
+    "kind": "semantic",
+    "query": "do we have to credit the value of goods that can still be sold",
+    "status": "ok",
+    "elapsed_ms": 706,
+    "answered": true,
+    "sufficiency": 0.705,
+    "top": "carrier_agreement::3. Packaging and Mitigation",
+    "rank": 1
+   },
+   {
+    "id": "q09",
+    "kind": "semantic",
+    "query": "does settling this claim commercially set a precedent for future claims",
+    "status": "ok",
+    "elapsed_ms": 699,
+    "answered": true,
+    "sufficiency": 0.7109,
+    "top": "carrier_agreement::6. Settlement and Commercial Resolution",
+    "rank": 1
+   },
+   {
+    "id": "q10",
+    "kind": "semantic",
+    "query": "does asking for delivery by a specific date make it guaranteed",
+    "status": "ok",
+    "elapsed_ms": 1180,
+    "answered": true,
+    "sufficiency": 0.7368,
+    "top": "carrier_agreement::1. Scope and Order of Precedence",
+    "rank": 1
+   },
+   {
+    "id": "q11",
+    "kind": "entity",
+    "query": "who signed the proof of delivery and when",
+    "status": "ok",
+    "elapsed_ms": 1179,
+    "answered": true,
+    "sufficiency": 0.7208,
+    "top": "proof_of_delivery::Signed POD with consignee exceptions (receiving record of authority)",
+    "rank": 1
+   },
+   {
+    "id": "q12",
+    "kind": "entity",
+    "query": "which cartons did the inspector examine and what did he find",
+    "status": "ok",
+    "elapsed_ms": 825,
+    "answered": true,
+    "sufficiency": 0.7293,
+    "top": "email_thread::Email 5 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-20",
+    "rank": 2
+   },
+   {
+    "id": "q13",
+    "kind": "entity",
+    "query": "what did the independent surveyor say about the internal foam packaging",
+    "status": "ok",
+    "elapsed_ms": 826,
+    "answered": true,
+    "sufficiency": 0.6698,
+    "top": "inspection_report::Independent inspection report; image-only scan, vision-transcribed",
+    "rank": 1
+   },
+   {
+    "id": "q14",
+    "kind": "cross_doc",
+    "query": "what settlement amount has the carrier offered so far",
+    "status": "ok",
+    "elapsed_ms": 742,
+    "answered": true,
+    "sufficiency": 0.6562,
+    "top": "case_overview::Claimant-authored case summary; convenience only, must reconcile to primaries",
+    "rank": 1
+   },
+   {
+    "id": "q15",
+    "kind": "cross_doc",
+    "query": "why does the carrier refuse to pay for all five damaged cartons",
+    "status": "ok",
+    "elapsed_ms": 822,
+    "answered": true,
+    "sufficiency": 0.7449,
+    "top": "email_thread::Email 7 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-26",
+    "rank": 1
+   },
+   {
+    "id": "q16",
+    "kind": "entity",
+    "query": "how many units are packed in each carton",
+    "status": "ok",
+    "elapsed_ms": 811,
+    "answered": true,
+    "sufficiency": 0.7427,
+    "top": "email_thread::Email 3 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-15",
+    "rank": 1
+   },
+   {
+    "id": "q17",
+    "kind": "entity",
+    "query": "what freight class and total weight was tendered on the bill of lading",
+    "status": "ok",
+    "elapsed_ms": 1305,
+    "answered": true,
+    "sufficiency": 0.7161,
+    "top": "tms_shipment::TMS shipment record with EDI events (carrier-reported counts)",
+    "rank": 1
+   },
+   {
+    "id": "q18",
+    "kind": "cross_doc",
+    "query": "past claims where the promotion markdown was denied but a freight refund was approved",
+    "status": "ok",
+    "elapsed_ms": 796,
+    "answered": true,
+    "sufficiency": 0.7186,
+    "top": "historical_claims::Historical claim HC-2025-0094",
+    "rank": 1
+   },
+   {
+    "id": "q19",
+    "kind": "unanswerable",
+    "query": "what is the warranty period for the scanner battery",
+    "status": "ok",
+    "elapsed_ms": 812,
+    "answered": true,
+    "sufficiency": 0.6985,
+    "top": "bill_of_lading::Signed bill of lading (tender record)",
+    "correct_refusal": false
+   },
+   {
+    "id": "q20",
+    "kind": "unanswerable",
+    "query": "what temperature range applies to refrigerated shipments",
+    "status": "ok",
+    "elapsed_ms": 1326,
+    "answered": true,
+    "sufficiency": 0.701,
+    "top": "tms_shipment::TMS shipment record with EDI events (carrier-reported counts)",
+    "correct_refusal": false
+   },
+   {
+    "id": "q21",
+    "kind": "unanswerable",
+    "query": "what fuel surcharge percentage does the carrier apply",
+    "status": "ok",
+    "elapsed_ms": 741,
+    "answered": true,
+    "sufficiency": 0.634,
+    "top": "historical_claims::Historical claim HC-2026-0063",
+    "correct_refusal": false
+   }
+  ]
+ },
+ {
+  "backend": "datum (calibrated floor=0.5)",
+  "hit_at_1": 0.8333,
+  "hit_at_3": 0.8889,
+  "mrr_at_5": 0.8722,
+  "false_answer_rate_unanswerable": 0.3333,
+  "median_latency_ms": 812,
+  "per_kind": {
+   "cross_doc": {
+    "n": 3,
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0
+   },
+   "entity": {
+    "n": 5,
+    "hit_at_1": 0.8,
+    "hit_at_3": 1.0
+   },
+   "paraphrase": {
+    "n": 3,
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0
+   },
+   "semantic": {
+    "n": 5,
+    "hit_at_1": 0.6,
+    "hit_at_3": 0.6
+   },
+   "verbatim": {
+    "n": 2,
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0
+   }
+  },
+  "per_query": [
+   {
+    "id": "q01",
+    "kind": "verbatim",
+    "query": "liability is limited to the lesser of the actual invoice value",
+    "status": "ok",
+    "elapsed_ms": 788,
+    "answered": true,
+    "sufficiency": 0.725,
+    "top": "carrier_agreement::2. Cargo Loss and Damage Liability",
+    "rank": 1
+   },
+   {
+    "id": "q02",
+    "kind": "verbatim",
+    "query": "shrink wrap torn on pallet 3",
+    "status": "ok",
+    "elapsed_ms": 821,
+    "answered": true,
+    "sufficiency": 0.7488,
+    "top": "proof_of_delivery::Signed POD with consignee exceptions (receiving record of authority)",
+    "rank": 1
+   },
+   {
+    "id": "q03",
+    "kind": "paraphrase",
+    "query": "how much per pound is the carrier liable for damaged freight",
+    "status": "ok",
+    "elapsed_ms": 537,
+    "answered": true,
+    "sufficiency": 0.7367,
+    "top": "carrier_agreement::2. Cargo Loss and Damage Liability",
+    "rank": 1
+   },
+   {
+    "id": "q04",
+    "kind": "paraphrase",
+    "query": "what is the deadline to file a cargo damage claim",
+    "status": "ok",
+    "elapsed_ms": 838,
+    "answered": true,
+    "sufficiency": 0.7247,
+    "top": "carrier_agreement::5. Claim Notice and Documentation",
+    "rank": 1
+   },
+   {
+    "id": "q05",
+    "kind": "paraphrase",
+    "query": "how many days do we have to submit a delay-only claim",
+    "status": "ok",
+    "elapsed_ms": 780,
+    "answered": true,
+    "sufficiency": 0.7178,
+    "top": "carrier_agreement::5. Claim Notice and Documentation",
+    "rank": 1
+   },
+   {
+    "id": "q06",
+    "kind": "semantic",
+    "query": "can we recover lost promotion sales because the shipment arrived late",
+    "status": "ok",
+    "elapsed_ms": 1178,
+    "answered": true,
+    "sufficiency": 0.6512,
+    "top": "email_thread::Email 1 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-13",
+    "rank": 5
+   },
+   {
+    "id": "q07",
+    "kind": "semantic",
+    "query": "who bears responsibility if the goods were packed inadequately",
+    "status": "ok",
+    "elapsed_ms": 781,
+    "answered": true,
+    "sufficiency": 0.6819,
+    "top": "carrier_agreement::3. Packaging and Mitigation",
+    "rank": 1
+   },
+   {
+    "id": "q08",
+    "kind": "semantic",
+    "query": "do we have to credit the value of goods that can still be sold",
+    "status": "insufficient_evidence",
+    "elapsed_ms": 54,
+    "answered": false,
+    "sufficiency": 0.0,
+    "top": null,
+    "rank": null
+   },
+   {
+    "id": "q09",
+    "kind": "semantic",
+    "query": "does settling this claim commercially set a precedent for future claims",
+    "status": "ok",
+    "elapsed_ms": 700,
+    "answered": true,
+    "sufficiency": 0.7109,
+    "top": "carrier_agreement::6. Settlement and Commercial Resolution",
+    "rank": 1
+   },
+   {
+    "id": "q10",
+    "kind": "semantic",
+    "query": "does asking for delivery by a specific date make it guaranteed",
+    "status": "ok",
+    "elapsed_ms": 1179,
+    "answered": true,
+    "sufficiency": 0.7368,
+    "top": "carrier_agreement::1. Scope and Order of Precedence",
+    "rank": 1
+   },
+   {
+    "id": "q11",
+    "kind": "entity",
+    "query": "who signed the proof of delivery and when",
+    "status": "ok",
+    "elapsed_ms": 1184,
+    "answered": true,
+    "sufficiency": 0.7208,
+    "top": "proof_of_delivery::Signed POD with consignee exceptions (receiving record of authority)",
+    "rank": 1
+   },
+   {
+    "id": "q12",
+    "kind": "entity",
+    "query": "which cartons did the inspector examine and what did he find",
+    "status": "ok",
+    "elapsed_ms": 834,
+    "answered": true,
+    "sufficiency": 0.7293,
+    "top": "email_thread::Email 5 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-20",
+    "rank": 2
+   },
+   {
+    "id": "q13",
+    "kind": "entity",
+    "query": "what did the independent surveyor say about the internal foam packaging",
+    "status": "ok",
+    "elapsed_ms": 831,
+    "answered": true,
+    "sufficiency": 0.6698,
+    "top": "inspection_report::Independent inspection report; image-only scan, vision-transcribed",
+    "rank": 1
+   },
+   {
+    "id": "q14",
+    "kind": "cross_doc",
+    "query": "what settlement amount has the carrier offered so far",
+    "status": "ok",
+    "elapsed_ms": 745,
+    "answered": true,
+    "sufficiency": 0.6562,
+    "top": "case_overview::Claimant-authored case summary; convenience only, must reconcile to primaries",
+    "rank": 1
+   },
+   {
+    "id": "q15",
+    "kind": "cross_doc",
+    "query": "why does the carrier refuse to pay for all five damaged cartons",
+    "status": "ok",
+    "elapsed_ms": 823,
+    "answered": true,
+    "sufficiency": 0.7449,
+    "top": "email_thread::Email 7 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-26",
+    "rank": 1
+   },
+   {
+    "id": "q16",
+    "kind": "entity",
+    "query": "how many units are packed in each carton",
+    "status": "ok",
+    "elapsed_ms": 812,
+    "answered": true,
+    "sufficiency": 0.7427,
+    "top": "email_thread::Email 3 - Maya Chen <maya.chen@northstar.example> (shipper) 2026-05-15",
+    "rank": 1
+   },
+   {
+    "id": "q17",
+    "kind": "entity",
+    "query": "what freight class and total weight was tendered on the bill of lading",
+    "status": "ok",
+    "elapsed_ms": 1265,
+    "answered": true,
+    "sufficiency": 0.7161,
+    "top": "tms_shipment::TMS shipment record with EDI events (carrier-reported counts)",
+    "rank": 1
+   },
+   {
+    "id": "q18",
+    "kind": "cross_doc",
+    "query": "past claims where the promotion markdown was denied but a freight refund was approved",
+    "status": "ok",
+    "elapsed_ms": 799,
+    "answered": true,
+    "sufficiency": 0.7186,
+    "top": "historical_claims::Historical claim HC-2025-0094",
+    "rank": 1
+   },
+   {
+    "id": "q19",
+    "kind": "unanswerable",
+    "query": "what is the warranty period for the scanner battery",
+    "status": "insufficient_evidence",
+    "elapsed_ms": 57,
+    "answered": false,
+    "sufficiency": 0.0,
+    "top": null,
+    "correct_refusal": true
+   },
+   {
+    "id": "q20",
+    "kind": "unanswerable",
+    "query": "what temperature range applies to refrigerated shipments",
+    "status": "ok",
+    "elapsed_ms": 1322,
+    "answered": true,
+    "sufficiency": 0.701,
+    "top": "tms_shipment::TMS shipment record with EDI events (carrier-reported counts)",
+    "correct_refusal": false
+   },
+   {
+    "id": "q21",
+    "kind": "unanswerable",
+    "query": "what fuel surcharge percentage does the carrier apply",
+    "status": "insufficient_evidence",
+    "elapsed_ms": 53,
+    "answered": false,
+    "sufficiency": 0.0,
+    "top": null,
+    "correct_refusal": true
+   }
+  ]
+ }
+]

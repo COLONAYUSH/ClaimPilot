@@ -1,0 +1,76 @@
+{
+ "text": "```json\n{\n \"header_text\": {\n  \"value\": \"SYNTHETIC TRAINING EVIDENCE\",\n  \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n },\n \"footer_text\": {\n  \"value\": \"Claim FCL-2026-0147 | Warehouse photo | C-021\",\n  \"quote\": \"Claim FCL-2026-0147 | Warehouse photo | C-021\"\n },\n \"timestamp_text\": {\n  \"value\": \"2026-05-12T11:18:00\",\n  \"quote\": \"2026-05-12 11:18 CT\"\n },\n \"location_text\": {\n  \"value\": \"MetroMart DC18\",\n  \"quote\": \"MetroMart DC18\"\n },\n \"carton_labels_visible\": [\n  \"C-021\",\n  \"C-021\",\n  \"C-023\"\n ],\n \"cartons_shown_damaged\": [\n  \"C-021\"\n ],\n \"damage_observations\": [\n  \"Jagged, torn/ripped top edge on the middle carton (irregular zig-zag flap line instead of a flat closed top)\",\n  \"A dark, rigid object (stick/spike-like) protruding through the top of the middle carton, consistent with a puncture\",\n  \"A small dark triangular flap or debris piece torn loose near the puncture area on the middle carton\",\n  \"A large dark oval stain on the front face of the middle carton, consistent with liquid staining\"\n ],\n \"synthetic_watermark\": {\n  \"value\": true,\n  \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n },\n \"description\": \"The image is a labeled synthetic/training warehouse photo (banner reads 'SYNTHETIC TRAINING EVIDENCE') with a header showing 'MetroMart DC18 | 2026-05-12 11:18 CT' and a footer reading 'Claim FCL-2026-0147 | Warehouse photo | C-021'. Three cartons sit on a pallet against a plain gray background. The left carton is printed with the id 'C-021' and appears intact/undamaged. The middle carton has a jagged torn top edge, a dark stick-like object piercing through the top, a torn debris flap, and a large dark oval stain on its front face; a caption tag reading 'C-021' is overlaid pointing to this damaged carton. The right carton is printed with the id 'C-023' and appears intact/undamaged. Note: the id 'C-021' visibly appears on two distinct cartons in this image (the intact left carton and the tag on the damaged middle carton) — an apparent labeling inconsistency in the source image that is reported as-is without resolution.\"\n}\n```",
+ "obj": {
+  "header_text": {
+   "value": "SYNTHETIC TRAINING EVIDENCE",
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "footer_text": {
+   "value": "Claim FCL-2026-0147 | Warehouse photo | C-021",
+   "quote": "Claim FCL-2026-0147 | Warehouse photo | C-021"
+  },
+  "timestamp_text": {
+   "value": "2026-05-12T11:18:00",
+   "quote": "2026-05-12 11:18 CT"
+  },
+  "location_text": {
+   "value": "MetroMart DC18",
+   "quote": "MetroMart DC18"
+  },
+  "carton_labels_visible": [
+   "C-021",
+   "C-021",
+   "C-023"
+  ],
+  "cartons_shown_damaged": [
+   "C-021"
+  ],
+  "damage_observations": [
+   "Jagged, torn/ripped top edge on the middle carton (irregular zig-zag flap line instead of a flat closed top)",
+   "A dark, rigid object (stick/spike-like) protruding through the top of the middle carton, consistent with a puncture",
+   "A small dark triangular flap or debris piece torn loose near the puncture area on the middle carton",
+   "A large dark oval stain on the front face of the middle carton, consistent with liquid staining"
+  ],
+  "synthetic_watermark": {
+   "value": true,
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "description": "The image is a labeled synthetic/training warehouse photo (banner reads 'SYNTHETIC TRAINING EVIDENCE') with a header showing 'MetroMart DC18 | 2026-05-12 11:18 CT' and a footer reading 'Claim FCL-2026-0147 | Warehouse photo | C-021'. Three cartons sit on a pallet against a plain gray background. The left carton is printed with the id 'C-021' and appears intact/undamaged. The middle carton has a jagged torn top edge, a dark stick-like object piercing through the top, a torn debris flap, and a large dark oval stain on its front face; a caption tag reading 'C-021' is overlaid pointing to this damaged carton. The right carton is printed with the id 'C-023' and appears intact/undamaged. Note: the id 'C-021' visibly appears on two distinct cartons in this image (the intact left carton and the tag on the damaged middle carton) — an apparent labeling inconsistency in the source image that is reported as-is without resolution."
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 15208,
+  "cache_read_input_tokens": 70737,
+  "output_tokens": 3064,
+  "output_tokens_details": {
+   "thinking_tokens": 2097
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 15208,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2972,
+    "cache_read_input_tokens": 38653,
+    "cache_creation_input_tokens": 8639,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 8639
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "vision/damage_photo_1"
+}

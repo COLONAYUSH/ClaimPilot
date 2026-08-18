@@ -1,0 +1,5345 @@
+{
+  "claim": {
+    "claim_id": "FCL-2026-0147",
+    "claimant": "Northstar Retail Equipment LLC",
+    "carrier": "BlueLine Freight Systems",
+    "status": "NEGOTIATION",
+    "owner": "Maya Chen",
+    "demand_usd": "29920.00",
+    "carrier_offer_usd": "7225.00",
+    "reserve_usd": "15000.00"
+  },
+  "run": {
+    "generated_at": "2026-08-17T21:15:36+00:00",
+    "provider": "claude-cli",
+    "model": "claude-sonnet-5",
+    "retrieval_backend": "datum",
+    "retrieval_fallback_note": "",
+    "prompts_version": "2026-08-18.1",
+    "llm_cost_usd": 0.0,
+    "llm_calls": [
+      {
+        "label": "extract/commercial_invoice",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "bc3421c96178529c1a96e79b7fba69f2ddd2e3031d656dcd4cdff09c329a3420"
+      },
+      {
+        "label": "extract/bill_of_lading",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "a7bb9cd72d46b8c2074847ffa54d5546134300c4f1ff29daaf08397f1f04dba5"
+      },
+      {
+        "label": "extract/proof_of_delivery",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "6c63abbdbb0fb6aa4193d457a43dd1178e894f374e691d02712577d3a6e1be1d"
+      },
+      {
+        "label": "extract/case_overview",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "b1d8435da343e6a57014265031c6ee960789457eda1eeab2aad7003ef67e80cf"
+      },
+      {
+        "label": "extract/email_thread",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "a5c818a0d54afa85fe698e36cfb9c6c81edd4f6c2c22b3beeb4aea9791272533"
+      },
+      {
+        "label": "vision/damage_photo_1",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "08f88078df9e1ba509c67898996ea07bf10081c926b0194572c2d406ddb77ce5"
+      },
+      {
+        "label": "vision/damage_photo_2",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "ba06965bc2993ef817f977bdc899d55a2ad792bc5b575ca3cbf84a0f3cdd05d9"
+      },
+      {
+        "label": "extract/contract_terms",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "e0857e4b12404c45dc1a0be09a3a6fb094f55643e32e222923f9f7566e1783dd"
+      },
+      {
+        "label": "position/brief",
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5",
+        "cached": true,
+        "cost_usd": 0.0,
+        "elapsed_s": 0.0,
+        "cache_key": "20592a2fa18f61f948c469772b6827c0a987b5767df5fa5e96385f94267e0c35"
+      }
+    ],
+    "ablated_sources": [
+      "inspection_report"
+    ],
+    "skipped_sources": [
+      "inspection_report"
+    ],
+    "elapsed_s": 13.6
+  },
+  "sources": [
+    {
+      "source_id": "case_overview",
+      "filename": "01_case_overview.pdf",
+      "kind": "PDF_TEXT",
+      "trust_tier": "CONVENIENCE",
+      "status": "OK",
+      "sha256": "6dc4393dc1798dc325b7512424690f55c15cd47778f1e920f88395fcd7e30550",
+      "description": "Claimant-authored case summary; convenience only, must reconcile to primaries"
+    },
+    {
+      "source_id": "email_thread",
+      "filename": "02_claim_email_thread.eml",
+      "kind": "EMAIL",
+      "trust_tier": "CORRESPONDENCE",
+      "status": "OK",
+      "sha256": "4f7ee6a2f9376b3f0700511d8b55efbf7e546a0128a2d5ff06edde2eb596e252",
+      "description": "Negotiation history between shipper and carrier"
+    },
+    {
+      "source_id": "claim_snapshot",
+      "filename": "03_claim_snapshot.json",
+      "kind": "JSON",
+      "trust_tier": "OPERATIONAL",
+      "status": "OK",
+      "sha256": "c676e134a36a50f46f5685794b826854339bba4cb94c42d5152e0af90c5f540e",
+      "description": "Internal claim-system record"
+    },
+    {
+      "source_id": "tms_shipment",
+      "filename": "04_tms_shipment.json",
+      "kind": "JSON",
+      "trust_tier": "OPERATIONAL",
+      "status": "OK",
+      "sha256": "1f39d51247435f2d164c1e6a10e9c1eafb559a52188152857bb7b2ce790b8b5c",
+      "description": "TMS shipment record with EDI events (carrier-reported counts)"
+    },
+    {
+      "source_id": "erp_order_invoice",
+      "filename": "05_erp_order_invoice.csv",
+      "kind": "CSV",
+      "trust_tier": "OPERATIONAL",
+      "status": "OK",
+      "sha256": "d38b8038c0c991a5da652abada302aa15a6064e5b9e5c42873790d8d46e151a0",
+      "description": "ERP order/invoice line"
+    },
+    {
+      "source_id": "commercial_invoice",
+      "filename": "06_commercial_invoice.pdf",
+      "kind": "PDF_TEXT",
+      "trust_tier": "PRIMARY_RECORD",
+      "status": "OK",
+      "sha256": "82016be971ba95493eb229bd601e00e1509ac5159783ad94f1b692cb1c7fd06f",
+      "description": "Commercial invoice (proof of value)"
+    },
+    {
+      "source_id": "bill_of_lading",
+      "filename": "07_bill_of_lading.pdf",
+      "kind": "PDF_TEXT",
+      "trust_tier": "PRIMARY_RECORD",
+      "status": "OK",
+      "sha256": "f12f0775aa6fe15d649a4130ae92e224394ab56b6387b18adc37c8d5ea89df65",
+      "description": "Signed bill of lading (tender record)"
+    },
+    {
+      "source_id": "proof_of_delivery",
+      "filename": "08_proof_of_delivery.pdf",
+      "kind": "PDF_TEXT",
+      "trust_tier": "PRIMARY_RECORD",
+      "status": "OK",
+      "sha256": "4df2a160af7b1a37f7618a174c00df9d195174e7aaabc2ec53a052a3ed8115e5",
+      "description": "Signed POD with consignee exceptions (receiving record of authority)"
+    },
+    {
+      "source_id": "inspection_report",
+      "filename": "09_damage_inspection_report_scanned.pdf",
+      "kind": "PDF_SCAN",
+      "trust_tier": "PRIMARY_RECORD",
+      "status": "MISSING",
+      "sha256": "",
+      "description": "Independent inspection report; image-only scan, vision-transcribed"
+    },
+    {
+      "source_id": "carrier_agreement",
+      "filename": "10_carrier_service_agreement.pdf",
+      "kind": "PDF_TEXT",
+      "trust_tier": "PRIMARY_RECORD",
+      "status": "OK",
+      "sha256": "817e0094070434d189695695a307b1e729da6e06744238d1eb0f36818afa84f0",
+      "description": "Master transportation services agreement (governing terms)"
+    },
+    {
+      "source_id": "historical_claims_xlsx",
+      "filename": "11_historical_claims.xlsx",
+      "kind": "XLSX",
+      "trust_tier": "OPERATIONAL",
+      "status": "OK",
+      "sha256": "b0c71ebf220e6b0f95f0ea35f94ff1c98ee7fdf7454c973f640d423194d77bef",
+      "description": "Historical claims (xlsx twin; cross-checked against CSV)"
+    },
+    {
+      "source_id": "historical_claims",
+      "filename": "12_historical_claims.csv",
+      "kind": "CSV",
+      "trust_tier": "OPERATIONAL",
+      "status": "OK",
+      "sha256": "a40bcac2c19b7d26d6b8246fd3db1b2101480f2a01d241a82e1e4ed8969ca15c",
+      "description": "Historical claims and settlements"
+    },
+    {
+      "source_id": "damage_photo_1",
+      "filename": "13_damage_photo_1.png",
+      "kind": "IMAGE",
+      "trust_tier": "EVIDENCE_MEDIA",
+      "status": "OCR_DERIVED",
+      "sha256": "ab017907cefcb6377ba7a3a8eedf0b54e42d3c2d9f4b036a1c0a2e9f064a7d17",
+      "description": "Warehouse damage photo"
+    },
+    {
+      "source_id": "damage_photo_2",
+      "filename": "14_damage_photo_2.png",
+      "kind": "IMAGE",
+      "trust_tier": "EVIDENCE_MEDIA",
+      "status": "OCR_DERIVED",
+      "sha256": "6f17517012d7c4e36125d5fa7de1198f1e561ef26c3c0846bc4b4390dbdcede1",
+      "description": "Warehouse damage photo"
+    },
+    {
+      "source_id": "data_dictionary",
+      "filename": "15_data_dictionary.md",
+      "kind": "TEXT",
+      "trust_tier": "OPERATIONAL",
+      "status": "OK",
+      "sha256": "48186640e606af4ad164806991571d9b4fa4e1512d51fd0fa7b32ca9428b0c9d",
+      "description": "Field semantics and source-authority notes for the pack"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-001",
+      "key": "snapshot.claim_id",
+      "value": "FCL-2026-0147",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.claim_id",
+          "quote": "\"claim_id\": \"FCL-2026-0147\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-002",
+      "key": "snapshot.carrier",
+      "value": "BlueLine Freight Systems",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.carrier",
+          "quote": "\"carrier\": \"BlueLine Freight Systems\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-003",
+      "key": "snapshot.pro_number",
+      "value": "BLF-77209115",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.pro_number",
+          "quote": "\"pro_number\": \"BLF-77209115\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-004",
+      "key": "snapshot.claim_types",
+      "value": [
+        "SHORTAGE",
+        "DAMAGE",
+        "DELAY"
+      ],
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.claim_type_codes",
+          "quote": "\"claim_type_codes\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-005",
+      "key": "snapshot.status",
+      "value": "NEGOTIATION",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.status",
+          "quote": "\"status\": \"NEGOTIATION\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-006",
+      "key": "snapshot.owner",
+      "value": "Maya Chen",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.owner",
+          "quote": "\"owner\": \"Maya Chen\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-007",
+      "key": "snapshot.opened_at",
+      "value": "2026-05-13T09:02:11-05:00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.opened_at",
+          "quote": "\"opened_at\": \"2026-05-13T09:02:11-05:00\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-008",
+      "key": "snapshot.claim_amount_usd",
+      "value": "29920.00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.claim_amount_usd",
+          "quote": "\"claim_amount_usd\": 29920.0",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-009",
+      "key": "snapshot.reserve_usd",
+      "value": "15000.00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.reserve_usd",
+          "quote": "\"reserve_usd\": 15000.0",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-010",
+      "key": "snapshot.carrier_offer_usd",
+      "value": "7225.00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.carrier_offer_usd",
+          "quote": "\"carrier_offer_usd\": 7225.0",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-011",
+      "key": "snapshot.last_activity_at",
+      "value": "2026-05-26T08:54:00-05:00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.last_activity_at",
+          "quote": "\"last_activity_at\": \"2026-05-26T08:54:00-05:00\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-012",
+      "key": "snapshot.doc_flags",
+      "value": {
+        "commercial_invoice": "RECEIVED",
+        "bill_of_lading": "RECEIVED",
+        "proof_of_delivery": "RECEIVED",
+        "damage_photos": "PARTIAL",
+        "inspection_report": "RECEIVED",
+        "packaging_specification": "MISSING",
+        "carrier_agreement": "RECEIVED"
+      },
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.required_document_flags",
+          "quote": "\"required_document_flags\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-013",
+      "key": "snapshot.analyst_note",
+      "value": "Promotion-impact component is commercially important but may not be contractually recoverable. Need reconcile EDI piece count vs POD.",
+      "kind": "ASSERTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "claim_snapshot",
+          "locator": "$.analyst_note",
+          "quote": "\"analyst_note\": \"Promotion-impact component is commercially important but may not be contractually recoverable. Need reconcile EDI piece count vs POD.\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "internal analyst commentary, not an established fact"
+    },
+    {
+      "fact_id": "F-014",
+      "key": "tms.pro_number",
+      "value": "BLF-77209115",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.pro_number",
+          "quote": "\"pro_number\": \"BLF-77209115\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-015",
+      "key": "tms.bol_number",
+      "value": "BOL-884219",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.bol_number",
+          "quote": "\"bol_number\": \"BOL-884219\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-016",
+      "key": "tms.service_code",
+      "value": "LTL_STD",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.service.code",
+          "quote": "\"code\": \"LTL_STD\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-017",
+      "key": "tms.service_name",
+      "value": "Standard LTL",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.service.name",
+          "quote": "\"name\": \"MetroMart Stores - DC 18\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-018",
+      "key": "tms.service_guaranteed",
+      "value": false,
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.service.guaranteed",
+          "quote": "\"guaranteed\": false",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "no guaranteed-service accessorial recorded in TMS"
+    },
+    {
+      "fact_id": "F-019",
+      "key": "tms.pickup_date",
+      "value": "2026-05-04",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.shipment.pickup_date",
+          "quote": "\"pickup_date\": \"2026-05-04\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-020",
+      "key": "tms.pieces_tendered",
+      "value": 60,
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.shipment.pieces_tendered",
+          "quote": "\"pieces_tendered\": 60",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-021",
+      "key": "tms.pallets",
+      "value": 4,
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.shipment.pallets",
+          "quote": "\"pallets\": 4",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-022",
+      "key": "tms.weight_lb",
+      "value": 3600,
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.shipment.weight_lb",
+          "quote": "\"weight_lb\": 3600",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-023",
+      "key": "tms.freight_class",
+      "value": "125",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.shipment.freight_class",
+          "quote": "\"freight_class\": \"125\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-024",
+      "key": "tms.freight_charge_usd",
+      "value": "1850.00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.shipment.freight_charge_usd",
+          "quote": "\"freight_charge_usd\": 1850.0",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-025",
+      "key": "tms.declared_value_usd",
+      "value": "null (none declared)",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.shipment.declared_value_usd",
+          "quote": "\"declared_value_usd\": null",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-026",
+      "key": "tms.customer_requested_delivery",
+      "value": "2026-05-08T17:00:00-05:00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.customer_requested_delivery",
+          "quote": "\"customer_requested_delivery\": \"2026-05-08T17:00:00-05:00\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-027",
+      "key": "tms.carrier_estimated_delivery",
+      "value": "2026-05-08",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.carrier_estimated_delivery",
+          "quote": "\"carrier_estimated_delivery\": \"2026-05-08\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-028",
+      "key": "tms.delivered_at",
+      "value": "2026-05-12T10:42:00-05:00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.events[6].timestamp",
+          "quote": "2026-05-12T10:42:00-05:00",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-029",
+      "key": "tms.edi_delivered_pieces",
+      "value": 59,
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.events[6].pieces",
+          "quote": "\"pieces\": 59",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "carrier-reported EDI 214 count; not a consignee-signed receiving record"
+    },
+    {
+      "fact_id": "F-030",
+      "key": "tms.exception_events",
+      "value": [
+        {
+          "timestamp": "2026-05-08T08:31:00-05:00",
+          "detail": "Terminal backlog - delivery appointment rolled"
+        },
+        {
+          "timestamp": "2026-05-11T16:40:00-05:00",
+          "detail": "Driver hours; freight returned to terminal"
+        }
+      ],
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.events[*]",
+          "quote": "\"code\": \"EXCEPTION\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-031",
+      "key": "tms.exception_notes",
+      "value": [
+        "No guaranteed-service accessorial purchased",
+        "Final EDI piece count is carrier-reported and may not match consignee receiving count"
+      ],
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "tms_shipment",
+          "locator": "$.exception_notes",
+          "quote": "\"exception_notes\"",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-032",
+      "key": "erp.sales_order",
+      "value": "SO-483921",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-033",
+      "key": "erp.invoice",
+      "value": "INV-483921",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-034",
+      "key": "erp.customer",
+      "value": "MetroMart Stores",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-035",
+      "key": "erp.customer_po",
+      "value": "MM-PO-190733",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-036",
+      "key": "erp.sku",
+      "value": "NS-HS40",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-037",
+      "key": "erp.qty_ordered",
+      "value": 240,
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-038",
+      "key": "erp.qty_shipped",
+      "value": 240,
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-039",
+      "key": "erp.unit_price_usd",
+      "value": "425.00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-040",
+      "key": "erp.extended_value_usd",
+      "value": "102000.00",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-041",
+      "key": "erp.ship_date",
+      "value": "2026-05-04",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-042",
+      "key": "erp.promotion_launch_date",
+      "value": "2026-05-10",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-043",
+      "key": "erp.promotion_end_date",
+      "value": "2026-05-17",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-044",
+      "key": "erp.incoterm",
+      "value": "FOB Destination",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "erp_order_invoice",
+          "locator": "row:1",
+          "quote": "SO-483921,INV-483921,MetroMart Stores,MM-PO-190733,NS-HS40,Handheld barcode scanner - rugged wireless,240,240,425.00,102000.00,2026-05-04,2026-05-10,2026-05-17,FOB Destination,CMH-02",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-045",
+      "key": "dd.pod_authority",
+      "value": "The signed POD is the consignee's documented receiving exception at delivery.",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "data_dictionary",
+          "locator": "document",
+          "quote": "- The signed POD is the consignee's documented receiving exception at delivery.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-046",
+      "key": "dd.edi_semantics",
+      "value": "TMS `pieces_tendered` and EDI `pieces` are carrier/TMS operational counts. The final EDI event is not a consignee-signed receiving record.",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "data_dictionary",
+          "locator": "document",
+          "quote": "- TMS `pieces_tendered` and EDI `pieces` are carrier/TMS operational counts. The final EDI event is not a consignee-signed receiving record.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-047",
+      "key": "dd.claim_amount_semantics",
+      "value": "`claim_amount_usd` in the claim snapshot is the shipper's demand, not an adjudicated recoverable amount.",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "data_dictionary",
+          "locator": "document",
+          "quote": "- `claim_amount_usd` in the claim snapshot is the shipper's demand, not an adjudicated recoverable amount.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-048",
+      "key": "dd.service_guaranteed_semantics",
+      "value": "`service.guaranteed=false` means no guaranteed-service accessorial is recorded in TMS.",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "data_dictionary",
+          "locator": "document",
+          "quote": "- `service.guaranteed=false` means no guaranteed-service accessorial is recorded in TMS.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-049",
+      "key": "dd.settlement_pct_semantics",
+      "value": "Historical `settlement_pct` is settlement divided by claimed amount; it should not be treated as a contractual entitlement.",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "data_dictionary",
+          "locator": "document",
+          "quote": "- Historical `settlement_pct` is settlement divided by claimed amount; it should not be treated as a contractual entitlement.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-050",
+      "key": "history.row_count",
+      "value": 30,
+      "kind": "DERIVED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "historical_claims",
+          "locator": "rows",
+          "quote": "",
+          "verified": null,
+          "match_ratio": 0.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-051",
+      "key": "history.xlsx_consistent",
+      "value": true,
+      "kind": "DERIVED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "historical_claims",
+          "locator": "rows",
+          "quote": "",
+          "verified": null,
+          "match_ratio": 0.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "xlsx twin matches CSV (formula column recomputed)"
+    },
+    {
+      "fact_id": "F-052",
+      "key": "invoice.invoice_no",
+      "value": "INV-483921",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "INV-483921",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-053",
+      "key": "invoice.sales_order",
+      "value": "SO-483921",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "SO-483921",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-054",
+      "key": "invoice.seller",
+      "value": "Northstar Retail Equipment LLC",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "Northstar Retail Equipment LLC",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-055",
+      "key": "invoice.bill_to",
+      "value": "MetroMart Stores, Accounts Payable",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "MetroMart Stores, Accounts Payable",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-056",
+      "key": "invoice.invoice_date",
+      "value": "2026-05-04",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "May 4, 2026",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-057",
+      "key": "invoice.qty_units",
+      "value": 240,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "240",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-058",
+      "key": "invoice.unit_price_usd",
+      "value": "425.00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "$425.00",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-059",
+      "key": "invoice.extended_value_usd",
+      "value": "102000.00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "$102,000.00",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-060",
+      "key": "invoice.invoice_total_usd",
+      "value": "102000.00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "$102,000.00",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-061",
+      "key": "invoice.cartons",
+      "value": 60,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "60 cartons, 4 units per carton",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-062",
+      "key": "invoice.units_per_carton",
+      "value": 4,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "4 units per carton",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-063",
+      "key": "invoice.unit_weight_lb",
+      "value": 15,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "approximately 15 lb including retail packaging",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "Source states weight as approximate (\"approximately 15 lb\") and inclusive of retail packaging, not a precise net product weight."
+    },
+    {
+      "fact_id": "F-064",
+      "key": "invoice.freight_note",
+      "value": "Billed separately by carrier",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "commercial_invoice",
+          "locator": "page:1",
+          "quote": "Billed separately by carrier",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-065",
+      "key": "bol.bol_number",
+      "value": "BOL-884219",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "BOL-884219",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-066",
+      "key": "bol.pro_number",
+      "value": "BLF-77209115",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "BLF-77209115",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-067",
+      "key": "bol.shipper",
+      "value": "Northstar Retail Equipment LLC - Columbus, OH",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "Northstar Retail Equipment LLC - Columbus, OH",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-068",
+      "key": "bol.consignee",
+      "value": "MetroMart Stores - DC 18, Dallas, TX",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "MetroMart Stores - DC 18, Dallas, TX",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-069",
+      "key": "bol.pickup_date",
+      "value": "2026-05-04",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "May 4, 2026",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-070",
+      "key": "bol.carrier",
+      "value": "BlueLine Freight Systems",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "BlueLine Freight Systems",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-071",
+      "key": "bol.service_description",
+      "value": "Standard LTL - non-guaranteed",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "Standard LTL - non-guaranteed",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-072",
+      "key": "bol.pallets",
+      "value": 4,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "4 pallets",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-073",
+      "key": "bol.cartons",
+      "value": 60,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "60 cartons",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-074",
+      "key": "bol.weight_lb",
+      "value": 3600,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "3,600 lb",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-075",
+      "key": "bol.freight_class",
+      "value": "125",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "Class 125",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-076",
+      "key": "bol.declared_value_note",
+      "value": "No excess declared value entered on this BOL.",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "No excess declared value entered on this BOL.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-077",
+      "key": "bol.requested_delivery",
+      "value": "2026-05-08",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "Requested delivery by Friday, May 8, 2026, 5:00 PM local.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-078",
+      "key": "bol.promotion_note",
+      "value": "Customer promotion begins May 10.",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "Customer promotion begins May 10.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-079",
+      "key": "bol.guarantee_note",
+      "value": "requested delivery date is not shown as a guaranteed-service accessorial",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "Note: requested delivery date is not shown as a guaranteed-service accessorial.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-080",
+      "key": "bol.packaging_note",
+      "value": "Corrugated cartons, four units per carton, palletized and shrink-wrapped.",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "Corrugated cartons, four units per carton, palletized and shrink-wrapped.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-081",
+      "key": "bol.shipper_signature",
+      "value": "A. Patel / 05-04-2026 15:16",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "A. Patel / 05-04-2026 15:16",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-082",
+      "key": "bol.carrier_signature",
+      "value": "J. Roberts / BlueLine Freight",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "bill_of_lading",
+          "locator": "page:1",
+          "quote": "J. Roberts / BlueLine Freight",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-083",
+      "key": "pod.pro_number",
+      "value": "BLF-77209115",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "BLF-77209115",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-084",
+      "key": "pod.bol_number",
+      "value": "BOL-884219",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "BOL-884219",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-085",
+      "key": "pod.consignee",
+      "value": "MetroMart Stores - DC 18, Dallas, TX",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "MetroMart Stores - DC 18, Dallas, TX",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-086",
+      "key": "pod.carrier",
+      "value": "BlueLine Freight Systems",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "BlueLine Freight Systems",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-087",
+      "key": "pod.delivered_at",
+      "value": "2026-05-12T10:42:00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "May 12, 2026 - 10:42 AM CT",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-088",
+      "key": "pod.tendered_cartons",
+      "value": 60,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "60 cartons",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-089",
+      "key": "pod.received_cartons",
+      "value": 58,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "58 cartons",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-090",
+      "key": "pod.short_cartons",
+      "value": 2,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "2 cartons",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-091",
+      "key": "pod.damaged_cartons",
+      "value": 5,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "5 cartons",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-092",
+      "key": "pod.exception_text",
+      "value": "Received 58 of 60 cartons. 2 cartons short. 5 cartons crushed/wet; shrink wrap torn on pallet 3. Contents subject to inspection.",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "Received 58 of 60 cartons. 2 cartons short. 5 cartons crushed/wet; shrink wrap torn on pallet 3. Contents subject to inspection.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-093",
+      "key": "pod.consignee_signature",
+      "value": "M. Alvarez",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "M. Alvarez",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-094",
+      "key": "pod.signed_at",
+      "value": "2026-05-12T10:42:00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "05/12/2026 10:42 CT",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-095",
+      "key": "pod.driver_note",
+      "value": "Pallet 3 wrap torn at rear; exceptions written before departure.",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "proof_of_delivery",
+          "locator": "page:1",
+          "quote": "Pallet 3 wrap torn at rear; exceptions written before departure.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-096",
+      "key": "overview.claim_id",
+      "value": "FCL-2026-0147",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Claim FCL-2026-0147 - Northstar Retail Equipment LLC vs. BlueLine Freight Systems",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-097",
+      "key": "overview.claimant",
+      "value": "Northstar Retail Equipment LLC",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Northstar Retail Equipment LLC vs. BlueLine Freight Systems",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-098",
+      "key": "overview.respondent_carrier",
+      "value": "BlueLine Freight Systems",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Northstar Retail Equipment LLC vs. BlueLine Freight Systems",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-099",
+      "key": "overview.service",
+      "value": "Standard LTL",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Standard LTL",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-100",
+      "key": "overview.ship_date",
+      "value": "2026-05-04",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "May 4, 2026",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-101",
+      "key": "overview.expected_delivery",
+      "value": "2026-05-08T17:00:00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "May 8, 2026 by 5:00 PM CT",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-102",
+      "key": "overview.actual_delivery",
+      "value": "2026-05-12T10:42:00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "May 12, 2026 at 10:42 AM CT",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-103",
+      "key": "overview.contents_units",
+      "value": 240,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "240 NS-HS40 handheld barcode scanners in 60 cartons",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-104",
+      "key": "overview.contents_cartons",
+      "value": 60,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "240 NS-HS40 handheld barcode scanners in 60 cartons (4 units/carton)",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-105",
+      "key": "overview.units_per_carton",
+      "value": 4,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "in 60 cartons (4 units/carton)",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-106",
+      "key": "overview.invoice_value_usd",
+      "value": "102000.00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Invoice value $102,000.00",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-107",
+      "key": "overview.total_demand_usd",
+      "value": "29920.00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Total initial demand $29,920.00",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-108",
+      "key": "overview.carrier_offer_usd",
+      "value": "7225.00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "The latest carrier offer in the email thread is $7,225.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-109",
+      "key": "overview.trust_caveat",
+      "value": "This overview is a convenience summary, not a source of truth. Candidate solutions should reconcile it against the underlying records.",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "This overview is a convenience summary, not a source of truth. Candidate solutions should reconcile it against the underlying records.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-110",
+      "key": "overview.demand_lines",
+      "value": [
+        {
+          "label": "Missing product",
+          "basis": "8 units x $425",
+          "amount_usd": "3400.00"
+        },
+        {
+          "label": "Damaged/unsellable product",
+          "basis": "14 units x $425",
+          "amount_usd": "5950.00"
+        },
+        {
+          "label": "Independent inspection",
+          "basis": "Vendor invoice",
+          "amount_usd": "420.00"
+        },
+        {
+          "label": "Repack labor",
+          "basis": "6 salvageable units",
+          "amount_usd": "300.00"
+        },
+        {
+          "label": "Late-delivery markdown",
+          "basis": "Commercial impact asserted by shipper",
+          "amount_usd": "18000.00"
+        },
+        {
+          "label": "Freight charge",
+          "basis": "Requested refund",
+          "amount_usd": "1850.00"
+        }
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Missing product 8 units x $425 $3,400.00",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Damaged/unsellable product 14 units x $425 $5,950.00",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Independent inspection Vendor invoice $420.00",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Repack labor 6 salvageable units $300.00",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Late-delivery markdown Commercial impact asserted by shipper $18,000.00",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "case_overview",
+          "locator": "page:1",
+          "quote": "Freight charge Requested refund $1,850.00",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "claimant-authored summary; each line re-verified deterministically"
+    },
+    {
+      "fact_id": "F-111",
+      "key": "email.initial_demand_usd",
+      "value": "29920.00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:1",
+          "quote": "Our current demand is $29,920.00, consisting of product shortage/damage, inspection and rework costs, the commercial markdown caused by the missed promotion launch, and a refund of the freight charge.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-112",
+      "key": "email.demand_components_mentioned",
+      "value": [
+        {
+          "label": "product shortage/damage",
+          "amount_usd": 9350.0
+        },
+        {
+          "label": "inspection and rework costs",
+          "amount_usd": null
+        },
+        {
+          "label": "commercial markdown (missed promotion launch)",
+          "amount_usd": 18000
+        },
+        {
+          "label": "freight charge refund",
+          "amount_usd": null
+        }
+      ],
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:3",
+          "quote": "Our direct product shortage/damage is currently calculated at $9,350.00 before inspection/rework expense.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:1",
+          "quote": "inspection and rework costs",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:5",
+          "quote": "we incurred an $18,000 markdown to move the inventory",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:1",
+          "quote": "a refund of the freight charge",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "components as described in correspondence"
+    },
+    {
+      "fact_id": "F-113",
+      "key": "email.offer_total_usd",
+      "value": "7225.00",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "Offer: $7,225.00.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-114",
+      "key": "email.offer_components",
+      "value": [
+        {
+          "label": "Missing units",
+          "amount_usd": "3400.00"
+        },
+        {
+          "label": "Accepted damaged units",
+          "amount_usd": "3825.00"
+        }
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "Missing units: $3,400.00",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "Accepted damaged units: $3,825.00",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-115",
+      "key": "email.offer_accepted_missing_units",
+      "value": 8,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "we accept the 8 missing units.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-116",
+      "key": "email.offer_accepted_damaged_units",
+      "value": 9,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "we are accepting 9 of the 14 units claimed as unsellable",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-117",
+      "key": "email.offer_disputed_damaged_units",
+      "value": 5,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "the remaining 5 are disputed because the available photos do not show all affected cartons and we have not received the packaging specification requested.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-118",
+      "key": "email.offer_dispute_reasons",
+      "value": [
+        "photos do not show all affected cartons",
+        "packaging specification not received"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "the available photos do not show all affected cartons",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "we have not received the packaging specification requested",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-119",
+      "key": "email.offer_exclusions",
+      "value": [
+        "inspection/repack expense",
+        "late-delivery markdown",
+        "freight refund"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "This offer does not include inspection/repack expense, late-delivery markdown, or freight refund.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "This offer does not include inspection/repack expense, late-delivery markdown, or freight refund.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "This offer does not include inspection/repack expense, late-delivery markdown, or freight refund.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-120",
+      "key": "email.document_requests",
+      "value": [
+        {
+          "item": "signed BOL",
+          "requested_by": "carrier",
+          "message": 2,
+          "status": "fulfilled - BOL provided in message 3"
+        },
+        {
+          "item": "commercial invoice",
+          "requested_by": "carrier",
+          "message": 2,
+          "status": "fulfilled - invoice provided in message 3"
+        },
+        {
+          "item": "POD",
+          "requested_by": "carrier",
+          "message": 2,
+          "status": "fulfilled - POD provided in message 3"
+        },
+        {
+          "item": "photos of the damaged cartons",
+          "requested_by": "carrier",
+          "message": 2,
+          "status": "partially fulfilled - only two photos provided in message 3; carrier states in message 4 they do not document all five cartons"
+        },
+        {
+          "item": "inspection report",
+          "requested_by": "carrier",
+          "message": 2,
+          "status": "fulfilled - inspection report attached in message 5"
+        },
+        {
+          "item": "inspection report (re-requested)",
+          "requested_by": "carrier",
+          "message": 4,
+          "status": "fulfilled - inspection report attached in message 5"
+        },
+        {
+          "item": "packaging specification",
+          "requested_by": "carrier",
+          "message": 4,
+          "status": "not fulfilled - shipper states in message 5 they do not currently have the vendor packaging specification"
+        }
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:2",
+          "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:2",
+          "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:2",
+          "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:2",
+          "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:2",
+          "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:4",
+          "quote": "Please provide the inspection report and any packaging specification supporting your position that the internal packaging was adequate.",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "email_thread",
+          "locator": "message:4",
+          "quote": "Please provide the inspection report and any packaging specification supporting your position that the internal packaging was adequate.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-121",
+      "key": "email.assert.arrival_date_vs_expected_date",
+      "value": "arrived May 12, after May 8 delivery date",
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:1",
+          "quote": "This shipment arrived on May 12, after the May 8 delivery date",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-122",
+      "key": "email.assert.missing_cartons",
+      "value": 2,
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:3",
+          "quote": "The POD shows 2 cartons short and 5 cartons damaged.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-123",
+      "key": "email.assert.damaged_cartons",
+      "value": 5,
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:3",
+          "quote": "The POD shows 2 cartons short and 5 cartons damaged.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-124",
+      "key": "email.assert.units_per_carton",
+      "value": 4,
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:3",
+          "quote": "Each carton contains 4 units.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-125",
+      "key": "email.assert.invoice_units_and_unit_price",
+      "value": "240 units at $425 each",
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:3",
+          "quote": "The invoice shows 240 units at $425 each.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-126",
+      "key": "email.assert.direct_shortage_damage_subtotal",
+      "value": 9350.0,
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:3",
+          "quote": "Our direct product shortage/damage is currently calculated at $9,350.00 before inspection/rework expense.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-127",
+      "key": "email.assert.edi_piece_count_vs_pod_carton_count",
+      "value": "59 pieces (EDI) vs 58 cartons (POD)",
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:4",
+          "quote": "our EDI delivery event reflects 59 pieces delivered. Please reconcile that with the signed POD showing 58 cartons received.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by carrier in correspondence"
+    },
+    {
+      "fact_id": "F-128",
+      "key": "email.assert.inspection_findings_units_unsellable_repackable",
+      "value": "14 unsellable, 6 repackable, of 20 units from 5 cartons",
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:5",
+          "quote": "It identifies 20 units from 5 cartons: 14 are unsellable and 6 were functional but required repacking.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-129",
+      "key": "email.assert.internal_foam_presence",
+      "value": "present",
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:5",
+          "quote": "The inspector noted compression/puncture to the outer cartons and that internal foam was present.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-130",
+      "key": "email.assert.packaging_specification_availability",
+      "value": "not available",
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:5",
+          "quote": "We do not currently have the vendor packaging specification in the claim folder.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-131",
+      "key": "email.assert.late_delivery_markdown_amount_and_promotion",
+      "value": 18000,
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:5",
+          "quote": "these scanners were for MetroMart's May 10 promotion launch. Because they arrived after launch, we incurred an $18,000 markdown to move the inventory.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-132",
+      "key": "email.assert.freight_charge_refund_request",
+      "value": "a refund of the freight charge",
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:1",
+          "quote": "a refund of the freight charge",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by shipper in correspondence"
+    },
+    {
+      "fact_id": "F-133",
+      "key": "email.assert.carrier_s_service_level_position",
+      "value": "Standard LTL, not a guaranteed appointment service; excludes consequential and loss-of-market damages",
+      "kind": "ASSERTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "email_thread",
+          "locator": "message:6",
+          "quote": "Our position is that the service was Standard LTL, not a guaranteed appointment service. The agreement excludes consequential and loss-of-market damages for delay.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "asserted by carrier in correspondence"
+    },
+    {
+      "fact_id": "F-134",
+      "key": "email.thread_state",
+      "value": {
+        "last_message_index": 7,
+        "last_message_role": "shipper",
+        "open_points": [
+          "Disputed 5 damaged units - carrier withholds acceptance citing incomplete photo documentation and missing packaging specification; shipper disputes this exclusion",
+          "Vendor packaging specification still not provided by shipper",
+          "Inspection/repack expense not included in carrier's offer and remains unresolved",
+          "Late-delivery markdown ($18,000) disputed under carrier's Standard LTL/consequential-damages exclusion; shipper requests reconsideration as a commercial compromise",
+          "Freight charge refund not addressed in carrier's offer",
+          "EDI 59-piece count vs POD 58-carton count discrepancy not yet reconciled",
+          "Only two of five damaged cartons documented by photos"
+        ]
+      },
+      "kind": "DERIVED",
+      "method": "LLM",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "negotiation state as read from the thread"
+    },
+    {
+      "fact_id": "F-135",
+      "key": "damage_photo_1.header_text",
+      "value": "SYNTHETIC TRAINING EVIDENCE",
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_1",
+          "locator": "image",
+          "quote": "SYNTHETIC TRAINING EVIDENCE",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-136",
+      "key": "damage_photo_1.footer_text",
+      "value": "Claim FCL-2026-0147 | Warehouse photo | C-021",
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_1",
+          "locator": "image",
+          "quote": "Claim FCL-2026-0147 | Warehouse photo | C-021",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-137",
+      "key": "damage_photo_1.timestamp_text",
+      "value": "2026-05-12T11:18:00",
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_1",
+          "locator": "image",
+          "quote": "2026-05-12 11:18 CT",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-138",
+      "key": "damage_photo_1.carton_labels",
+      "value": [
+        "C-021",
+        "C-023"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_1",
+          "locator": "image",
+          "quote": "carton labels visible: C-021, C-021, C-023",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-139",
+      "key": "damage_photo_1.cartons_shown_damaged",
+      "value": [
+        "C-021"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_1",
+          "locator": "image",
+          "quote": "cartons shown damaged: C-021",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": "cartons whose damage this photo documents; intact cartons visible in frame are excluded"
+    },
+    {
+      "fact_id": "F-140",
+      "key": "damage_photo_1.damage_observations",
+      "value": [
+        "Jagged, torn/ripped top edge on the middle carton (irregular zig-zag flap line instead of a flat closed top)",
+        "A dark, rigid object (stick/spike-like) protruding through the top of the middle carton, consistent with a puncture",
+        "A small dark triangular flap or debris piece torn loose near the puncture area on the middle carton",
+        "A large dark oval stain on the front face of the middle carton, consistent with liquid staining"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_1",
+          "locator": "image",
+          "quote": "damage observations: Jagged, torn/ripped top edge on the middle carton (irregular zig-zag flap line instead of a flat closed top); A dark, rigid object (stick/spike-like) protruding through the top of the middle carton, consistent with a puncture; A small dark triangular flap or debris piece torn loose near the puncture area on the middle carton; A large dark oval stain on the front face of the middle carton, consistent with liquid staining",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.85,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-141",
+      "key": "damage_photo_2.header_text",
+      "value": "SYNTHETIC TRAINING EVIDENCE",
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_2",
+          "locator": "image",
+          "quote": "SYNTHETIC TRAINING EVIDENCE",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-142",
+      "key": "damage_photo_2.footer_text",
+      "value": "Claim FCL-2026-0147 | Warehouse photo | C-023",
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_2",
+          "locator": "image",
+          "quote": "Claim FCL-2026-0147 | Warehouse photo | C-023",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-143",
+      "key": "damage_photo_2.timestamp_text",
+      "value": "2026-05-12T11:18:00",
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_2",
+          "locator": "image",
+          "quote": "2026-05-12 11:18 CT",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-144",
+      "key": "damage_photo_2.carton_labels",
+      "value": [
+        "C-022",
+        "C-023"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_2",
+          "locator": "image",
+          "quote": "carton labels visible: C-023, C-022, C-023",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-145",
+      "key": "damage_photo_2.cartons_shown_damaged",
+      "value": [
+        "C-023"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_2",
+          "locator": "image",
+          "quote": "cartons shown damaged: C-023",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.9,
+      "inputs": [],
+      "formula": "",
+      "note": "cartons whose damage this photo documents; intact cartons visible in frame are excluded"
+    },
+    {
+      "fact_id": "F-146",
+      "key": "damage_photo_2.damage_observations",
+      "value": [
+        "Large irregular dark-colored torn flap/puncture on the front face of the leftmost carton (tagged C-023), exposing a darker interior surface",
+        "Thin jagged crack lines run diagonally from the torn area down to the bottom-right edge of the same leftmost carton, consistent with a split or tear in the cardboard",
+        "No stains visible on any carton",
+        "No visible damage (tears, punctures, crush, or stains) on the middle carton (C-022) or the rightmost carton (C-023), which appear intact"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM_VISION",
+      "citations": [
+        {
+          "source_id": "damage_photo_2",
+          "locator": "image",
+          "quote": "damage observations: Large irregular dark-colored torn flap/puncture on the front face of the leftmost carton (tagged C-023), exposing a darker interior surface; Thin jagged crack lines run diagonally from the torn area down to the bottom-right edge of the same leftmost carton, consistent with a split or tear in the cardboard; No stains visible on any carton; No visible damage (tears, punctures, crush, or stains) on the middle carton (C-022) or the rightmost carton (C-023), which appear intact",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 0.85,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    },
+    {
+      "fact_id": "F-147",
+      "key": "derived.shortage_cartons",
+      "value": 2,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-020",
+        "F-089"
+      ],
+      "formula": "60 tendered - 58 received (signed POD)",
+      "note": ""
+    },
+    {
+      "fact_id": "F-148",
+      "key": "derived.shortage_units",
+      "value": 8,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-147",
+        "F-062"
+      ],
+      "formula": "2 short cartons x 4 units/carton",
+      "note": ""
+    },
+    {
+      "fact_id": "F-149",
+      "key": "derived.damage_units_affected",
+      "value": 20,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-091",
+        "F-062"
+      ],
+      "formula": "5 damaged cartons x 4 units/carton",
+      "note": ""
+    },
+    {
+      "fact_id": "F-150",
+      "key": "derived.photo_cartons_covered",
+      "value": [
+        "C-021",
+        "C-023"
+      ],
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-139",
+        "F-145"
+      ],
+      "formula": "union of carton ids shown damaged in the supplied photos",
+      "note": ""
+    },
+    {
+      "fact_id": "F-151",
+      "key": "derived.invoice_value_verified",
+      "value": "102000.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-057",
+        "F-058",
+        "F-059"
+      ],
+      "formula": "240 units x $425.00 = $102,000.00",
+      "note": ""
+    },
+    {
+      "fact_id": "F-152",
+      "key": "derived.unit_weight_lb",
+      "value": "15.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-022",
+        "F-057"
+      ],
+      "formula": "3600 lb shipment / 240 units",
+      "note": "matches the invoice's stated ~15 lb per unit"
+    },
+    {
+      "fact_id": "F-153",
+      "key": "derived.demand.missing_product",
+      "value": "3400.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-148",
+        "F-058"
+      ],
+      "formula": "8 missing units x $425.00",
+      "note": ""
+    },
+    {
+      "fact_id": "F-154",
+      "key": "derived.demand_total",
+      "value": "29920.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-110"
+      ],
+      "formula": "$3,400.00 + $5,950.00 + $420.00 + $300.00 + $18,000.00 + $1,850.00",
+      "note": ""
+    },
+    {
+      "fact_id": "F-155",
+      "key": "derived.offer_accepted_damage_value",
+      "value": "3825.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-116",
+        "F-058"
+      ],
+      "formula": "9 accepted damaged units x $425.00",
+      "note": ""
+    },
+    {
+      "fact_id": "F-156",
+      "key": "derived.disputed_units_value",
+      "value": "2125.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-117",
+        "F-058"
+      ],
+      "formula": "5 disputed damaged units x $425.00",
+      "note": ""
+    },
+    {
+      "fact_id": "F-157",
+      "key": "derived.delivery_delay",
+      "value": "3 days 17 hours 42 minutes",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-028",
+        "F-026",
+        "F-087"
+      ],
+      "formula": "delivered 2026-05-12T10:42:00-05:00 - requested 2026-05-08T17:00:00-05:00",
+      "note": ""
+    },
+    {
+      "fact_id": "F-158",
+      "key": "derived.delivered_days_late",
+      "value": 4,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-028",
+        "F-026"
+      ],
+      "formula": "calendar days from requested date to actual delivery date",
+      "note": ""
+    },
+    {
+      "fact_id": "F-159",
+      "key": "derived.delay_causes_carrier_side",
+      "value": [
+        "Terminal backlog - delivery appointment rolled",
+        "Driver hours; freight returned to terminal"
+      ],
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-030"
+      ],
+      "formula": "TMS exception events during transit",
+      "note": "both recorded exceptions are carrier operational events"
+    },
+    {
+      "fact_id": "F-160",
+      "key": "derived.days_delivery_to_claim",
+      "value": 1,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-007",
+        "F-028"
+      ],
+      "formula": "claim opened 2026-05-13 - delivered 2026-05-12",
+      "note": ""
+    },
+    {
+      "fact_id": "F-161",
+      "key": "derived.guaranteed_service_purchased",
+      "value": false,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-018",
+        "F-079",
+        "F-071"
+      ],
+      "formula": "consistent across TMS, BOL, BOL service",
+      "note": ""
+    },
+    {
+      "fact_id": "F-162",
+      "key": "contract.liability_cap_per_lb",
+      "value": 50.0,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:2",
+          "quote": "BlueLine liability is limited to the lesser of (a) the actual invoice value of the goods lost or damaged, or (b) $50.00 per pound multiplied by the weight of the goods lost or damaged, unless a higher released value is declared in writing and the applicable charge is paid before pickup.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 2. Cargo Loss and Damage Liability (liability_rule)"
+    },
+    {
+      "fact_id": "F-163",
+      "key": "contract.liability_basis",
+      "value": "Liability is limited to the lesser of the actual invoice value of the goods lost or damaged, or $50.00 per pound multiplied by the weight of the goods lost or damaged, unless a higher released value is declared in writing and paid for before pickup.",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:2",
+          "quote": "BlueLine liability is limited to the lesser of (a) the actual invoice value of the goods lost or damaged, or (b) $50.00 per pound multiplied by the weight of the goods lost or damaged, unless a higher released value is declared in writing and the applicable charge is paid before pickup.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 2. Cargo Loss and Damage Liability (liability_rule)"
+    },
+    {
+      "fact_id": "F-164",
+      "key": "contract.delay_consequential_excluded",
+      "value": true,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:4",
+          "quote": "BlueLine is not liable for special, incidental, consequential, punitive, or loss-of-market damages, including lost profits, customer penalties, markdowns, loss of promotion value, or business interruption arising from delay.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 4. Delay, Service Failures, and Consequential Damages (delay_exclusions)"
+    },
+    {
+      "fact_id": "F-165",
+      "key": "contract.delay_exclusion_examples",
+      "value": [
+        "lost profits",
+        "customer penalties",
+        "markdowns",
+        "loss of promotion value",
+        "business interruption"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:4",
+          "quote": "BlueLine is not liable for special, incidental, consequential, punitive, or loss-of-market damages, including lost profits, customer penalties, markdowns, loss of promotion value, or business interruption arising from delay.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 4. Delay, Service Failures, and Consequential Damages (delay_exclusions)"
+    },
+    {
+      "fact_id": "F-166",
+      "key": "contract.guarantee_requires_purchase",
+      "value": true,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:4",
+          "quote": "If the shipper purchases a written Guaranteed Appointment service and BlueLine fails to meet the confirmed appointment for reasons within BlueLine control, the shipper may request a service refund.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 4. Delay, Service Failures, and Consequential Damages (guaranteed_service)"
+    },
+    {
+      "fact_id": "F-167",
+      "key": "contract.guarantee_delay_cap",
+      "value": "Maximum liability for that delay is the freight charge for the affected shipment.",
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:4",
+          "quote": "If the shipper purchases a written Guaranteed Appointment service and BlueLine fails to meet the confirmed appointment for reasons within BlueLine control, the shipper may request a service refund.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 4. Delay, Service Failures, and Consequential Damages (guaranteed_service)"
+    },
+    {
+      "fact_id": "F-168",
+      "key": "contract.notice_cargo_months",
+      "value": 9,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:5",
+          "quote": "Cargo loss or damage claims must be filed in writing within nine (9) months of delivery or the scheduled delivery date for non-delivery. Claims based solely on delay or guaranteed-service failure must be submitted within thirty (30) days after delivery.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 5. Claim Notice and Documentation (claim_notice)"
+    },
+    {
+      "fact_id": "F-169",
+      "key": "contract.notice_delay_days",
+      "value": 30,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:5",
+          "quote": "Cargo loss or damage claims must be filed in writing within nine (9) months of delivery or the scheduled delivery date for non-delivery. Claims based solely on delay or guaranteed-service failure must be submitted within thirty (30) days after delivery.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 5. Claim Notice and Documentation (claim_notice)"
+    },
+    {
+      "fact_id": "F-170",
+      "key": "contract.packaging_shipper_responsible",
+      "value": true,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:3",
+          "quote": "The shipper is responsible for packaging reasonably suitable for normal LTL handling. BlueLine is not liable to the extent loss is caused by insufficient packaging.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 3. Packaging and Mitigation (packaging)"
+    },
+    {
+      "fact_id": "F-171",
+      "key": "contract.packaging_carrier_relief",
+      "value": true,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:3",
+          "quote": "The shipper is responsible for packaging reasonably suitable for normal LTL handling. BlueLine is not liable to the extent loss is caused by insufficient packaging.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 3. Packaging and Mitigation (packaging)"
+    },
+    {
+      "fact_id": "F-172",
+      "key": "contract.salvage_credit_required",
+      "value": true,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:3",
+          "quote": "The claimant must mitigate loss where commercially reasonable and credit the value of salvage or usable goods.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 3. Packaging and Mitigation (salvage_mitigation)"
+    },
+    {
+      "fact_id": "F-173",
+      "key": "contract.inspection_third_party_considered",
+      "value": true,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:3",
+          "quote": "Reasonable third-party inspection costs may be considered when requested or reasonably necessary to establish the loss; internal administrative labor is not separately reimbursable unless agreed in writing.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 3. Packaging and Mitigation (inspection_costs)"
+    },
+    {
+      "fact_id": "F-174",
+      "key": "contract.internal_labor_reimbursable",
+      "value": false,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:3",
+          "quote": "Reasonable third-party inspection costs may be considered when requested or reasonably necessary to establish the loss; internal administrative labor is not separately reimbursable unless agreed in writing.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 3. Packaging and Mitigation (inspection_costs)"
+    },
+    {
+      "fact_id": "F-175",
+      "key": "contract.compromise_allowed",
+      "value": true,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:6",
+          "quote": "Nothing in this agreement prevents the parties from negotiating a commercial compromise. A settlement amount does not amend the agreement or establish a precedent unless expressly stated in a signed writing.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 6. Settlement and Commercial Resolution (commercial_compromise)"
+    },
+    {
+      "fact_id": "F-176",
+      "key": "contract.compromise_non_precedential",
+      "value": true,
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:6",
+          "quote": "Nothing in this agreement prevents the parties from negotiating a commercial compromise. A settlement amount does not amend the agreement or establish a precedent unless expressly stated in a signed writing.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 6. Settlement and Commercial Resolution (commercial_compromise)"
+    },
+    {
+      "fact_id": "F-177",
+      "key": "contract.documentation_items",
+      "value": [
+        "reasonable proof of quantity tendered",
+        "quantity delivered",
+        "product value",
+        "the nature and extent of loss",
+        "photographs",
+        "inspection records",
+        "packaging information",
+        "salvage information"
+      ],
+      "kind": "EXTRACTED",
+      "method": "LLM",
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:2",
+          "quote": "The claimant must provide reasonable proof of quantity tendered, quantity delivered, product value, and the nature and extent of loss. BlueLine may request photographs, inspection records, packaging information, salvage information, and other evidence reasonably necessary to evaluate the claim.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": "agreement 2. Cargo Loss and Damage Liability (documentation_required)"
+    },
+    {
+      "fact_id": "F-178",
+      "key": "entitlement.cargo_notice_deadline",
+      "value": "2027-02-12",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-028",
+        "F-168"
+      ],
+      "formula": "delivered 2026-05-12 + 9 months",
+      "note": ""
+    },
+    {
+      "fact_id": "F-179",
+      "key": "entitlement.cargo_notice_ok",
+      "value": true,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-007"
+      ],
+      "formula": "filed 2026-05-13 <= deadline 2027-02-12",
+      "note": "cargo loss/damage notice requirement met"
+    },
+    {
+      "fact_id": "F-180",
+      "key": "entitlement.delay_notice_deadline",
+      "value": "2026-06-11",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-028",
+        "F-169"
+      ],
+      "formula": "delivered 2026-05-12 + 30 days",
+      "note": ""
+    },
+    {
+      "fact_id": "F-181",
+      "key": "entitlement.delay_notice_ok",
+      "value": true,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-007"
+      ],
+      "formula": "delay asserted 2026-05-13 <= deadline 2026-06-11",
+      "note": "delay-claim notice requirement met"
+    },
+    {
+      "fact_id": "F-182",
+      "key": "entitlement.missing_weight_lb",
+      "value": "120.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-148",
+        "F-058",
+        "F-152",
+        "F-162"
+      ],
+      "formula": "8 units x 15.00 lb/unit",
+      "note": ""
+    },
+    {
+      "fact_id": "F-183",
+      "key": "entitlement.missing_cap_usd",
+      "value": "6000.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-148",
+        "F-058",
+        "F-152",
+        "F-162"
+      ],
+      "formula": "120.00 lb x $50.00/lb (agreement section 2)",
+      "note": ""
+    },
+    {
+      "fact_id": "F-184",
+      "key": "entitlement.missing_basis_usd",
+      "value": "3400.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-148",
+        "F-058",
+        "F-152",
+        "F-162"
+      ],
+      "formula": "lesser of invoice value $3,400.00 and cap $6,000.00",
+      "note": "invoice value governs"
+    },
+    {
+      "fact_id": "F-185",
+      "key": "position.core_low",
+      "value": "3400.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "missing_product $3,400.00",
+      "note": "sum of STRONG entitlements (evidence floor)"
+    },
+    {
+      "fact_id": "F-186",
+      "key": "position.core_high",
+      "value": "10070.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "missing_product $3,400.00 + damaged_product $5,950.00 + inspection_fee $420.00 + repack_labor $300.00",
+      "note": "full supportable cargo/cost case (STRONG + MODERATE + NEEDS_INFO at their documented amounts)"
+    },
+    {
+      "fact_id": "F-187",
+      "key": "position.goodwill_high",
+      "value": "1850.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "freight charge (commercial lever ceiling)",
+      "note": "freight-scale goodwill ceiling per precedent"
+    },
+    {
+      "fact_id": "F-188",
+      "key": "position.recommended_counter",
+      "value": "11920.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "core_high $10,070.00 + goodwill_high $1,850.00",
+      "note": "anchor for the next counter-offer; every component is documented or precedent-backed, so it is defensible line by line"
+    },
+    {
+      "fact_id": "F-189",
+      "key": "position.offer_gap",
+      "value": "4695.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-010"
+      ],
+      "formula": "recommended counter $11,920.00 - current offer $7,225.00",
+      "note": ""
+    },
+    {
+      "fact_id": "F-190",
+      "key": "position.expected_band_low",
+      "value": "3820.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "core_low $3,400.00 + inspection fee $420.00",
+      "note": "conservative settlement outcome"
+    },
+    {
+      "fact_id": "F-191",
+      "key": "position.expected_band_high",
+      "value": "11920.00",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "equal to the recommended counter",
+      "note": "full-success settlement outcome"
+    },
+    {
+      "fact_id": "F-192",
+      "key": "position.reserve_covers_counter",
+      "value": true,
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [],
+      "confidence": 1.0,
+      "inputs": [
+        "F-009"
+      ],
+      "formula": "reserve $15,000.00 >= counter $11,920.00",
+      "note": ""
+    },
+    {
+      "fact_id": "F-193",
+      "key": "comps.damage_with_inspection_median_pct",
+      "value": "83.77",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [
+        {
+          "source_id": "historical_claims",
+          "locator": "row:1",
+          "quote": "HC-2025-0067",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "historical_claims",
+          "locator": "row:3",
+          "quote": "HC-2025-0118",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "historical_claims",
+          "locator": "row:14",
+          "quote": "HC-2024-0205",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "median settlement pct of 5 rows: HC-2025-0067, HC-2025-0118, HC-2024-0205, HC-2024-0207, HC-2024-0209",
+      "note": "BlueLine Freight Systems DAMAGE claims on Standard LTL with inspection evidence"
+    },
+    {
+      "fact_id": "F-194",
+      "key": "comps.delay_only_median_pct",
+      "value": "8.51",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [
+        {
+          "source_id": "historical_claims",
+          "locator": "row:2",
+          "quote": "HC-2025-0094",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "historical_claims",
+          "locator": "row:11",
+          "quote": "HC-2024-0202",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "historical_claims",
+          "locator": "row:12",
+          "quote": "HC-2024-0203",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "median settlement pct of 3 rows: HC-2025-0094, HC-2024-0202, HC-2024-0203",
+      "note": "BlueLine Freight Systems DELAY-only claims"
+    },
+    {
+      "fact_id": "F-195",
+      "key": "comps.damage_plus_delay_median_pct",
+      "value": "49.93",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [
+        {
+          "source_id": "historical_claims",
+          "locator": "row:4",
+          "quote": "HC-2025-0142",
+          "verified": true,
+          "match_ratio": 1.0
+        },
+        {
+          "source_id": "historical_claims",
+          "locator": "row:27",
+          "quote": "HC-2024-0218",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "median settlement pct of 2 rows: HC-2025-0142, HC-2024-0218",
+      "note": "BlueLine Freight Systems combined DAMAGE+DELAY claims"
+    },
+    {
+      "fact_id": "F-196",
+      "key": "comps.delay_component_pattern",
+      "value": "3 of 5 BlueLine Freight Systems claims involving DELAY show the delay/commercial component denied or excluded in the settlement summary",
+      "kind": "DERIVED",
+      "method": "COMPUTED",
+      "citations": [
+        {
+          "source_id": "historical_claims",
+          "locator": "rows",
+          "quote": "",
+          "verified": null,
+          "match_ratio": 0.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "string scan of negotiation_summary over DELAY rows",
+      "note": ""
+    },
+    {
+      "fact_id": "F-197",
+      "key": "comps.caveat",
+      "value": "Historical settlement_pct is settlement divided by claimed amount; it should not be treated as a contractual entitlement.",
+      "kind": "EXTRACTED",
+      "method": "DETERMINISTIC",
+      "citations": [
+        {
+          "source_id": "data_dictionary",
+          "locator": "document",
+          "quote": "Historical `settlement_pct` is settlement divided by claimed amount; it should not be treated as a contractual entitlement.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "inputs": [],
+      "formula": "",
+      "note": ""
+    }
+  ],
+  "discrepancies": [
+    {
+      "disc_id": "D-01",
+      "severity": "INFO",
+      "category": "VERIFIED_CONSISTENT",
+      "title": "PRO number consistent across 4 sources",
+      "description": "All sources agree: BLF-77209115.",
+      "fact_ids": [
+        "F-003",
+        "F-014",
+        "F-066",
+        "F-083"
+      ],
+      "authority_note": "",
+      "status": "VERIFIED_CONSISTENT"
+    },
+    {
+      "disc_id": "D-02",
+      "severity": "INFO",
+      "category": "VERIFIED_CONSISTENT",
+      "title": "BOL number consistent across 3 sources",
+      "description": "All sources agree: BOL-884219.",
+      "fact_ids": [
+        "F-015",
+        "F-065",
+        "F-084"
+      ],
+      "authority_note": "",
+      "status": "VERIFIED_CONSISTENT"
+    },
+    {
+      "disc_id": "D-03",
+      "severity": "INFO",
+      "category": "VERIFIED_CONSISTENT",
+      "title": "claim id consistent across 2 sources",
+      "description": "All sources agree: FCL-2026-0147.",
+      "fact_ids": [
+        "F-001",
+        "F-096"
+      ],
+      "authority_note": "",
+      "status": "VERIFIED_CONSISTENT"
+    },
+    {
+      "disc_id": "D-04",
+      "severity": "HIGH",
+      "category": "COUNT_CONFLICT",
+      "title": "Carrier EDI reports 59 pieces delivered; signed POD records 58",
+      "description": "The final EDI 214 event and the consignee-signed POD disagree by 1 carton(s). The carrier raised this in the thread and asked for a reconciliation.",
+      "fact_ids": [
+        "F-029",
+        "F-089",
+        "F-031",
+        "F-045",
+        "F-046"
+      ],
+      "authority_note": "The signed POD is the consignee's documented receiving record; the TMS record itself notes the final EDI piece count is carrier-reported and may not match the consignee receiving count. The POD count (58) governs the shortage calculation.",
+      "status": "OPEN"
+    },
+    {
+      "disc_id": "D-05",
+      "severity": "INFO",
+      "category": "VERIFIED_CONSISTENT",
+      "title": "Demand decomposition verified: six lines sum to $29,920.00",
+      "description": "Recomputed from primary evidence: missing_product, freight_refund. The markdown line is a commercial assertion with no supporting document in the folder.",
+      "fact_ids": [
+        "F-154"
+      ],
+      "authority_note": "",
+      "status": "VERIFIED_CONSISTENT"
+    },
+    {
+      "disc_id": "D-06",
+      "severity": "HIGH",
+      "category": "CONTRACT_TENSION",
+      "title": "Delay-loss demand ($18,000.00) rides on a non-guaranteed service",
+      "description": "TMS, the BOL and the carrier's own position agree no guaranteed-appointment service was purchased. The markdown and freight-refund components therefore depend on contract terms for non-guaranteed Standard LTL (resolved in the entitlement analysis).",
+      "fact_ids": [
+        "F-161",
+        "F-018",
+        "F-079"
+      ],
+      "authority_note": "",
+      "status": "OPEN"
+    },
+    {
+      "disc_id": "D-07",
+      "severity": "MEDIUM",
+      "category": "MISSING_DOCUMENT",
+      "title": "Claim system marks inspection_report RECEIVED but it is absent from the folder",
+      "description": "Flagged RECEIVED in the claim snapshot yet not present/readable in this run's folder.",
+      "fact_ids": [
+        "F-012"
+      ],
+      "authority_note": "",
+      "status": "OPEN"
+    },
+    {
+      "disc_id": "D-08",
+      "severity": "INFO",
+      "category": "VERIFIED_CONSISTENT",
+      "title": "Convenience summary verified against primary records (9 checks)",
+      "description": "The overview document itself warns it is not a source of truth; every figure it shows was re-verified against the underlying records.",
+      "fact_ids": [
+        "F-109"
+      ],
+      "authority_note": "",
+      "status": "VERIFIED_CONSISTENT"
+    },
+    {
+      "disc_id": "D-09",
+      "severity": "INFO",
+      "category": "VERIFIED_CONSISTENT",
+      "title": "Historical-claims xlsx twin matches the CSV",
+      "description": "Same dataset held in two systems; values agree (the xlsx stores the settlement percentage as a formula, recomputed for comparison).",
+      "fact_ids": [
+        "F-051"
+      ],
+      "authority_note": "",
+      "status": "VERIFIED_CONSISTENT"
+    }
+  ],
+  "gaps": [
+    {
+      "gap_id": "G-01",
+      "item": "Independent inspection report",
+      "why_needed": "The unsellable/repackable split of the 5 damaged cartons cannot be verified without it",
+      "requested_by": "carrier (email message 2)",
+      "impact": "Damage entitlement can only be supported at the carrier-accepted level; the disputed units lack corroboration.",
+      "fact_ids": [
+        "F-091"
+      ]
+    },
+    {
+      "gap_id": "G-02",
+      "item": "Vendor packaging specification",
+      "why_needed": "Carrier requested it to assess the internal-packaging adequacy defense; the shipper confirmed it is not in the claim folder; the inspector notes none was provided",
+      "requested_by": "carrier (email message 4)",
+      "impact": "Weakens rebuttal of the packaging argument on the disputed units, partially offset by the inspector's finding that molded foam was present in all opened cartons.",
+      "fact_ids": [
+        "F-012"
+      ]
+    }
+  ],
+  "demand_lines": [
+    {
+      "key": "missing_product",
+      "label": "Missing product",
+      "claimed": "3400.00",
+      "basis": "8 units x $425",
+      "asserted_only": false,
+      "fact_ids": [
+        "F-110"
+      ]
+    },
+    {
+      "key": "damaged_product",
+      "label": "Damaged/unsellable product",
+      "claimed": "5950.00",
+      "basis": "14 units x $425",
+      "asserted_only": false,
+      "fact_ids": [
+        "F-110"
+      ]
+    },
+    {
+      "key": "inspection_fee",
+      "label": "Independent inspection",
+      "claimed": "420.00",
+      "basis": "Vendor invoice",
+      "asserted_only": true,
+      "fact_ids": [
+        "F-110"
+      ]
+    },
+    {
+      "key": "repack_labor",
+      "label": "Repack labor",
+      "claimed": "300.00",
+      "basis": "6 salvageable units",
+      "asserted_only": true,
+      "fact_ids": [
+        "F-110"
+      ]
+    },
+    {
+      "key": "late_markdown",
+      "label": "Late-delivery markdown",
+      "claimed": "18000.00",
+      "basis": "Commercial impact asserted by shipper",
+      "asserted_only": true,
+      "fact_ids": [
+        "F-110"
+      ]
+    },
+    {
+      "key": "freight_refund",
+      "label": "Freight charge",
+      "claimed": "1850.00",
+      "basis": "Requested refund",
+      "asserted_only": false,
+      "fact_ids": [
+        "F-110"
+      ]
+    }
+  ],
+  "entitlements": [
+    {
+      "key": "missing_product",
+      "label": "Missing product (shortage)",
+      "claimed": "3400.00",
+      "entitled_low": "3400.00",
+      "entitled_high": "3400.00",
+      "classification": "STRONG",
+      "rationale": "Signed POD records the shortage; agreement section 2 limits liability to the lesser of invoice value ($3,400.00) and the per-pound cap ($6,000.00); invoice value governs. Carrier has already accepted this component.",
+      "term_ids": [
+        "CT-1"
+      ],
+      "fact_ids": [
+        "F-148",
+        "F-090",
+        "F-184",
+        "F-115"
+      ],
+      "flags": [],
+      "ent_id": "E-1"
+    },
+    {
+      "key": "damaged_product",
+      "label": "Damaged/unsellable product",
+      "claimed": "5950.00",
+      "entitled_low": "3825.00",
+      "entitled_high": "5950.00",
+      "classification": "NEEDS_INFO",
+      "rationale": "The unsellable count cannot be independently verified this run (inspection report unavailable); only the carrier-accepted portion is safely supportable.",
+      "term_ids": [
+        "CT-1"
+      ],
+      "fact_ids": [
+        "F-091",
+        "F-155"
+      ],
+      "flags": [],
+      "ent_id": "E-2"
+    },
+    {
+      "key": "inspection_fee",
+      "label": "Independent inspection fee",
+      "claimed": "420.00",
+      "entitled_low": "0.00",
+      "entitled_high": "420.00",
+      "classification": "NEEDS_INFO",
+      "rationale": "Fee documentation or the enabling clause is unavailable this run.",
+      "term_ids": [
+        "CT-7"
+      ],
+      "fact_ids": [
+        "F-120"
+      ],
+      "flags": [],
+      "ent_id": "E-3"
+    },
+    {
+      "key": "repack_labor",
+      "label": "Repack labor (salvageable units)",
+      "claimed": "300.00",
+      "entitled_low": "0.00",
+      "entitled_high": "300.00",
+      "classification": "NEEDS_INFO",
+      "rationale": "Recoverable only if third-party (section 3 excludes internal administrative labor unless agreed in writing); the folder does not show who performed the repack.",
+      "term_ids": [
+        "CT-7"
+      ],
+      "fact_ids": [],
+      "flags": [
+        "classification (internal vs third-party) undocumented"
+      ],
+      "ent_id": "E-4"
+    },
+    {
+      "key": "late_markdown",
+      "label": "Late-delivery markdown",
+      "claimed": "18000.00",
+      "entitled_low": "0.00",
+      "entitled_high": "0.00",
+      "classification": "EXCLUDED_CONTRACTUAL",
+      "rationale": "Section 4 excludes loss-of-market and markdown damages for delay on Standard LTL; no guaranteed-appointment service was purchased (TMS and BOL agree), and section 1 says requested dates and promotion dates do not create a delivery commitment. The amount is also a commercial assertion with no supporting documentation in the folder.",
+      "term_ids": [
+        "CT-2",
+        "CT-3"
+      ],
+      "fact_ids": [
+        "F-161",
+        "F-079"
+      ],
+      "flags": [
+        "asserted amount; no markdown documentation provided",
+        "commercial-compromise ask only (section 6)"
+      ],
+      "ent_id": "E-5"
+    },
+    {
+      "key": "freight_refund",
+      "label": "Freight charge refund",
+      "claimed": "1850.00",
+      "entitled_low": "0.00",
+      "entitled_high": "1850.00",
+      "classification": "GOODWILL_LEVER",
+      "rationale": "Not owed under section 4 (a service refund attaches to a purchased Guaranteed Appointment service, which this shipment did not have) - but the delivery was late by the carrier's own records with carrier-side causes, and precedent shows BlueLine grants freight-scale commercial refunds on delay complaints (section 6 allows non-precedential compromise).",
+      "term_ids": [
+        "CT-3"
+      ],
+      "fact_ids": [
+        "F-024",
+        "F-157",
+        "F-159",
+        "F-161"
+      ],
+      "flags": [
+        "commercial lever, not a contractual entitlement"
+      ],
+      "ent_id": "E-6"
+    }
+  ],
+  "contract_terms": [
+    {
+      "term_id": "CT-1",
+      "topic": "liability_rule",
+      "section": "2. Cargo Loss and Damage Liability",
+      "quote": "BlueLine liability is limited to the lesser of (a) the actual invoice value of the goods lost or damaged, or (b) $50.00 per pound multiplied by the weight of the goods lost or damaged, unless a higher released value is declared in writing and the applicable charge is paid before pickup.",
+      "params": {
+        "cap_per_lb_usd": 50.0,
+        "basis_description": "Liability is limited to the lesser of the actual invoice value of the goods lost or damaged, or $50.00 per pound multiplied by the weight of the goods lost or damaged, unless a higher released value is declared in writing and paid for before pickup.",
+        "applies_to": "cargo loss or physical damage while in BlueLine custody"
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:2",
+          "quote": "BlueLine liability is limited to the lesser of (a) the actual invoice value of the goods lost or damaged, or (b) $50.00 per pound multiplied by the weight of the goods lost or damaged, unless a higher released value is declared in writing and the applicable charge is paid before pickup.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    },
+    {
+      "term_id": "CT-2",
+      "topic": "delay_exclusions",
+      "section": "4. Delay, Service Failures, and Consequential Damages",
+      "quote": "BlueLine is not liable for special, incidental, consequential, punitive, or loss-of-market damages, including lost profits, customer penalties, markdowns, loss of promotion value, or business interruption arising from delay.",
+      "params": {
+        "consequential_excluded": true,
+        "examples_listed": [
+          "lost profits",
+          "customer penalties",
+          "markdowns",
+          "loss of promotion value",
+          "business interruption"
+        ]
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:4",
+          "quote": "BlueLine is not liable for special, incidental, consequential, punitive, or loss-of-market damages, including lost profits, customer penalties, markdowns, loss of promotion value, or business interruption arising from delay.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    },
+    {
+      "term_id": "CT-3",
+      "topic": "guaranteed_service",
+      "section": "4. Delay, Service Failures, and Consequential Damages",
+      "quote": "If the shipper purchases a written Guaranteed Appointment service and BlueLine fails to meet the confirmed appointment for reasons within BlueLine control, the shipper may request a service refund.",
+      "params": {
+        "requires_written_purchase": true,
+        "delay_liability_cap_description": "Maximum liability for that delay is the freight charge for the affected shipment."
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:4",
+          "quote": "If the shipper purchases a written Guaranteed Appointment service and BlueLine fails to meet the confirmed appointment for reasons within BlueLine control, the shipper may request a service refund.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    },
+    {
+      "term_id": "CT-4",
+      "topic": "claim_notice",
+      "section": "5. Claim Notice and Documentation",
+      "quote": "Cargo loss or damage claims must be filed in writing within nine (9) months of delivery or the scheduled delivery date for non-delivery. Claims based solely on delay or guaranteed-service failure must be submitted within thirty (30) days after delivery.",
+      "params": {
+        "cargo_claim_months": 9,
+        "delay_claim_days": 30
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:5",
+          "quote": "Cargo loss or damage claims must be filed in writing within nine (9) months of delivery or the scheduled delivery date for non-delivery. Claims based solely on delay or guaranteed-service failure must be submitted within thirty (30) days after delivery.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    },
+    {
+      "term_id": "CT-5",
+      "topic": "packaging",
+      "section": "3. Packaging and Mitigation",
+      "quote": "The shipper is responsible for packaging reasonably suitable for normal LTL handling. BlueLine is not liable to the extent loss is caused by insufficient packaging.",
+      "params": {
+        "shipper_responsible": true,
+        "carrier_relief_if_insufficient": true
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:3",
+          "quote": "The shipper is responsible for packaging reasonably suitable for normal LTL handling. BlueLine is not liable to the extent loss is caused by insufficient packaging.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    },
+    {
+      "term_id": "CT-6",
+      "topic": "salvage_mitigation",
+      "section": "3. Packaging and Mitigation",
+      "quote": "The claimant must mitigate loss where commercially reasonable and credit the value of salvage or usable goods.",
+      "params": {
+        "salvage_credit_required": true
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:3",
+          "quote": "The claimant must mitigate loss where commercially reasonable and credit the value of salvage or usable goods.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    },
+    {
+      "term_id": "CT-7",
+      "topic": "inspection_costs",
+      "section": "3. Packaging and Mitigation",
+      "quote": "Reasonable third-party inspection costs may be considered when requested or reasonably necessary to establish the loss; internal administrative labor is not separately reimbursable unless agreed in writing.",
+      "params": {
+        "third_party_may_be_considered": true,
+        "internal_labor_reimbursable": false,
+        "condition": "when requested or reasonably necessary to establish the loss"
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:3",
+          "quote": "Reasonable third-party inspection costs may be considered when requested or reasonably necessary to establish the loss; internal administrative labor is not separately reimbursable unless agreed in writing.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    },
+    {
+      "term_id": "CT-8",
+      "topic": "commercial_compromise",
+      "section": "6. Settlement and Commercial Resolution",
+      "quote": "Nothing in this agreement prevents the parties from negotiating a commercial compromise. A settlement amount does not amend the agreement or establish a precedent unless expressly stated in a signed writing.",
+      "params": {
+        "allowed": true,
+        "non_precedential": true
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:6",
+          "quote": "Nothing in this agreement prevents the parties from negotiating a commercial compromise. A settlement amount does not amend the agreement or establish a precedent unless expressly stated in a signed writing.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    },
+    {
+      "term_id": "CT-9",
+      "topic": "documentation_required",
+      "section": "2. Cargo Loss and Damage Liability",
+      "quote": "The claimant must provide reasonable proof of quantity tendered, quantity delivered, product value, and the nature and extent of loss. BlueLine may request photographs, inspection records, packaging information, salvage information, and other evidence reasonably necessary to evaluate the claim.",
+      "params": {
+        "items": [
+          "reasonable proof of quantity tendered",
+          "quantity delivered",
+          "product value",
+          "the nature and extent of loss",
+          "photographs",
+          "inspection records",
+          "packaging information",
+          "salvage information"
+        ]
+      },
+      "citations": [
+        {
+          "source_id": "carrier_agreement",
+          "locator": "section:2",
+          "quote": "The claimant must provide reasonable proof of quantity tendered, quantity delivered, product value, and the nature and extent of loss. BlueLine may request photographs, inspection records, packaging information, salvage information, and other evidence reasonably necessary to evaluate the claim.",
+          "verified": true,
+          "match_ratio": 1.0
+        }
+      ],
+      "retrieval": {}
+    }
+  ],
+  "comparables": [
+    {
+      "claim_id": "HC-2025-0142",
+      "score": 0.9,
+      "carrier": "BlueLine Freight Systems",
+      "issue_type": "DAMAGE+DELAY",
+      "service_level": "Standard LTL",
+      "claimed": "21400.00",
+      "settled": "9100.00",
+      "settlement_pct": "42.52",
+      "days_to_settle": 41,
+      "evidence": "POD+photos+invoice",
+      "negotiation_summary": "Delay damages denied; product damage settled near invoice value",
+      "notes": "Retail launch missed",
+      "locator": "row:4",
+      "match_basis": "structural"
+    },
+    {
+      "claim_id": "HC-2024-0206",
+      "score": 0.9,
+      "carrier": "BlueLine Freight Systems",
+      "issue_type": "DAMAGE+SHORTAGE",
+      "service_level": "Standard LTL",
+      "claimed": "11650.00",
+      "settled": "9525.00",
+      "settlement_pct": "81.76",
+      "days_to_settle": 33,
+      "evidence": "POD+invoice+photos",
+      "negotiation_summary": "Shortage corroborated by consignee record",
+      "notes": "Salvage credited",
+      "locator": "row:15",
+      "match_basis": "structural"
+    },
+    {
+      "claim_id": "HC-2024-0218",
+      "score": 0.9,
+      "carrier": "BlueLine Freight Systems",
+      "issue_type": "DAMAGE+DELAY",
+      "service_level": "Standard LTL",
+      "claimed": "16350.00",
+      "settled": "9375.00",
+      "settlement_pct": "57.34",
+      "days_to_settle": 48,
+      "evidence": "POD+invoice+photos",
+      "negotiation_summary": "Direct cargo loss paid; commercial damages excluded",
+      "notes": "Evidence complete",
+      "locator": "row:27",
+      "match_basis": "structural"
+    },
+    {
+      "claim_id": "HC-2024-0213",
+      "score": 0.8333,
+      "carrier": "BlueLine Freight Systems",
+      "issue_type": "DAMAGE+SHORTAGE",
+      "service_level": "Standard LTL",
+      "claimed": "10400.00",
+      "settled": "9875.00",
+      "settlement_pct": "94.95",
+      "days_to_settle": 23,
+      "evidence": "POD+invoice",
+      "negotiation_summary": "Settled after two counteroffers",
+      "notes": "No guaranteed service",
+      "locator": "row:22",
+      "match_basis": "structural"
+    },
+    {
+      "claim_id": "HC-2025-0067",
+      "score": 0.8,
+      "carrier": "BlueLine Freight Systems",
+      "issue_type": "DAMAGE+SHORTAGE",
+      "service_level": "Standard LTL",
+      "claimed": "12750.00",
+      "settled": "10980.00",
+      "settlement_pct": "86.12",
+      "days_to_settle": 29,
+      "evidence": "Photos+POD+inspection",
+      "negotiation_summary": "Carrier initially disputed 3 damaged units; settled after inspection corroboration",
+      "notes": "No delay component",
+      "locator": "row:1",
+      "match_basis": "structural + dispute-pattern: carrier, damage, damaged, delay, inspection, unit, units"
+    },
+    {
+      "claim_id": "HC-2025-0094",
+      "score": 0.65,
+      "carrier": "BlueLine Freight Systems",
+      "issue_type": "DELAY",
+      "service_level": "Standard LTL",
+      "claimed": "18000.00",
+      "settled": "1450.00",
+      "settlement_pct": "8.06",
+      "days_to_settle": 18,
+      "evidence": "POD+TMS",
+      "negotiation_summary": "Promotion markdown denied; commercial freight refund approved",
+      "notes": "No guaranteed service",
+      "locator": "row:2",
+      "match_basis": "dispute-pattern: freight, markdown, promotion, refund, service"
+    },
+    {
+      "claim_id": "HC-2025-0118",
+      "score": 0.7,
+      "carrier": "BlueLine Freight Systems",
+      "issue_type": "DAMAGE",
+      "service_level": "Standard LTL",
+      "claimed": "9350.00",
+      "settled": "7600.00",
+      "settlement_pct": "81.28",
+      "days_to_settle": 34,
+      "evidence": "POD+2 photos+inspection",
+      "negotiation_summary": "Partial packaging dispute; missing packaging spec",
+      "notes": "Very similar evidence profile",
+      "locator": "row:3",
+      "match_basis": "dispute-pattern: missing, packaging, spec"
+    }
+  ],
+  "cohorts": [
+    {
+      "name": "damage_with_inspection",
+      "description": "BlueLine Freight Systems DAMAGE claims on Standard LTL with inspection evidence",
+      "n": 5,
+      "median_pct": "83.77",
+      "min_pct": "73.55",
+      "max_pct": "92.86",
+      "member_ids": [
+        "HC-2025-0067",
+        "HC-2025-0118",
+        "HC-2024-0205",
+        "HC-2024-0207",
+        "HC-2024-0209"
+      ]
+    },
+    {
+      "name": "delay_only",
+      "description": "BlueLine Freight Systems DELAY-only claims",
+      "n": 3,
+      "median_pct": "8.51",
+      "min_pct": "8.06",
+      "max_pct": "11.07",
+      "member_ids": [
+        "HC-2025-0094",
+        "HC-2024-0202",
+        "HC-2024-0203"
+      ]
+    },
+    {
+      "name": "damage_plus_delay",
+      "description": "BlueLine Freight Systems combined DAMAGE+DELAY claims",
+      "n": 2,
+      "median_pct": "49.93",
+      "min_pct": "42.52",
+      "max_pct": "57.34",
+      "member_ids": [
+        "HC-2025-0142",
+        "HC-2024-0218"
+      ]
+    }
+  ],
+  "position_numbers": {
+    "position.core_low": {
+      "id": "F-185",
+      "value": "3400.00",
+      "formula": "missing_product $3,400.00",
+      "note": "sum of STRONG entitlements (evidence floor)"
+    },
+    "position.core_high": {
+      "id": "F-186",
+      "value": "10070.00",
+      "formula": "missing_product $3,400.00 + damaged_product $5,950.00 + inspection_fee $420.00 + repack_labor $300.00",
+      "note": "full supportable cargo/cost case (STRONG + MODERATE + NEEDS_INFO at their documented amounts)"
+    },
+    "position.goodwill_high": {
+      "id": "F-187",
+      "value": "1850.00",
+      "formula": "freight charge (commercial lever ceiling)",
+      "note": "freight-scale goodwill ceiling per precedent"
+    },
+    "position.recommended_counter": {
+      "id": "F-188",
+      "value": "11920.00",
+      "formula": "core_high $10,070.00 + goodwill_high $1,850.00",
+      "note": "anchor for the next counter-offer; every component is documented or precedent-backed, so it is defensible line by line"
+    },
+    "position.offer_gap": {
+      "id": "F-189",
+      "value": "4695.00",
+      "formula": "recommended counter $11,920.00 - current offer $7,225.00",
+      "note": ""
+    },
+    "position.expected_band_low": {
+      "id": "F-190",
+      "value": "3820.00",
+      "formula": "core_low $3,400.00 + inspection fee $420.00",
+      "note": "conservative settlement outcome"
+    },
+    "position.expected_band_high": {
+      "id": "F-191",
+      "value": "11920.00",
+      "formula": "equal to the recommended counter",
+      "note": "full-success settlement outcome"
+    },
+    "position.reserve_covers_counter": {
+      "id": "F-192",
+      "value": true,
+      "formula": "reserve $15,000.00 >= counter $11,920.00",
+      "note": ""
+    },
+    "entitlement.cargo_notice_deadline": {
+      "id": "F-178",
+      "value": "2027-02-12",
+      "formula": "delivered 2026-05-12 + 9 months",
+      "note": ""
+    },
+    "entitlement.cargo_notice_ok": {
+      "id": "F-179",
+      "value": true,
+      "formula": "filed 2026-05-13 <= deadline 2027-02-12",
+      "note": "cargo loss/damage notice requirement met"
+    },
+    "entitlement.delay_notice_deadline": {
+      "id": "F-180",
+      "value": "2026-06-11",
+      "formula": "delivered 2026-05-12 + 30 days",
+      "note": ""
+    },
+    "entitlement.delay_notice_ok": {
+      "id": "F-181",
+      "value": true,
+      "formula": "delay asserted 2026-05-13 <= deadline 2026-06-11",
+      "note": "delay-claim notice requirement met"
+    }
+  },
+  "position": {
+    "ok": true,
+    "data": {
+      "executive_summary": "BlueLine has offered $7,225.00 against Northstar's $29,920.00 demand [F-010][F-008], having already accepted the $3,400.00 missing-product component in full [E-1][F-115] and $3,825.00 of the damaged-product claim while disputing 5 of 14 damaged units worth $2,125.00 [F-116][F-117][F-156]. The system's computed entitlement position is $11,920.00, combining a full supportable cargo/cost case of $10,070.00 with a $1,850.00 freight-refund goodwill lever [F-186][F-187][F-188]. Recommendation: counter at that figure, a $4,695.00 gap above the current offer and well within the $15,000.00 reserve [F-189][F-192][F-009]. The $18,000.00 late-delivery markdown is contractually excluded given the non-guaranteed Standard LTL service and should be conceded [E-5][F-164][F-161]; the disputed damaged units and the EDI-59-vs-POD-58 piece count remain open items requiring the missing inspection report and packaging specification to fully corroborate [G-01][G-02][D-04][D-07].",
+      "negotiation_analysis": [
+        "Northstar's demand totals $29,920.00 against BlueLine's current offer of $7,225.00 [F-008][F-010]. Both notice requirements are met: the cargo claim was filed within the 9-month window and the delay claim within the 30-day window [CT-4][F-179][F-181]. The offer breaks down as $3,400.00 for the missing-product line (8 units) and $3,825.00 for damaged product (9 of 14 accepted units), while explicitly excluding the independent-inspection fee, repack labor, the late-delivery markdown, and the freight-charge refund [F-114][F-115][F-116][F-119]. The disputed remainder of the damaged-product line — 5 units — is valued at $2,125.00 [F-117][F-156].",
+        "The missing-product component is fully supported: the signed POD records 58 of 60 cartons received, a shortfall of 2 cartons or 8 units at 4 units per carton [F-089][F-090][F-062][F-148]. Under the carrier agreement's liability cap of $50.00 per pound, the 120-pound shortfall would cap at $6,000.00, but the lesser measure — invoice value — governs at $3,400.00 [F-162][F-182][F-183][F-184]. This entitlement is classified STRONG and BlueLine has already accepted it in full [E-1][F-115].",
+        "Of the 14 damaged units claimed at $5,950.00, BlueLine has accepted 9 units ($3,825.00) and disputes the remaining 5 ($2,125.00), citing incomplete photo documentation and the absence of a packaging specification [F-116][F-117][F-155][F-156][F-118]. The supplied damage photographs document only 2 of the 5 damaged cartons (C-021 and C-023), consistent with the claim system's own PARTIAL flag on damage photos [F-150][F-012]. The independent inspection report that would corroborate the full unsellable/repackable split is not present in the claim folder, so this component is classified NEEDS_INFO with an entitled range of $3,825.00 to $5,950.00 — the disputed units lack independent corroboration in this run [E-2][G-01][D-07].",
+        "The $18,000.00 late-delivery markdown is contractually excluded. Section 4 of the carrier agreement excludes markdowns and loss-of-promotion-value damages arising from delay, and no guaranteed-appointment service was purchased on this shipment per the TMS record and the bill of lading [CT-2][F-164][F-165][F-161][F-018][F-079]. This entitlement is classified EXCLUDED_CONTRACTUAL with $0.00 entitled [E-5]. The demand's reliance on a non-guaranteed service for a commercial-impact claim is itself flagged as an open contract-tension discrepancy [D-06].",
+        "The freight-charge refund ($1,850.00) is not a contractual entitlement either, since a service refund under Section 4 attaches only to a purchased guaranteed-appointment service [CT-3][F-024]. However, delivery occurred 4 calendar days after the requested date, a delay of 3 days 17 hours 42 minutes, driven by two carrier-side exception events (terminal backlog and a driver-hours return-to-terminal) [F-157][F-158][F-159]. It is classified GOODWILL_LEVER, entitled up to $1,850.00 as a commercial compromise, which the agreement's settlement section permits without precedent [E-6][CT-8][F-175][F-176]. The inspection fee ($420.00) and repack labor ($300.00) are both classified NEEDS_INFO: third-party inspection costs may be considered under Section 3, but internal administrative labor is not separately reimbursable absent written agreement, and the folder does not establish who performed the repack [CT-7][F-174][E-3][E-4].",
+        "Historical BlueLine settlements on damage claims with inspection evidence show a median settlement of 83.77% of the claimed amount across 5 comparable claims, including HC-2025-0118 (a very similar evidence profile — partial packaging dispute, missing packaging spec, settled at 81.28%) and HC-2025-0067 (carrier initially disputed 3 damaged units, settled after inspection corroboration, at 86.12%) [F-193][HC-2025-0118][HC-2025-0067]. By contrast, delay-only claims settle at a median of just 8.51%, and in 3 of 5 BlueLine claims involving a delay component the delay/commercial piece was denied or excluded outright [F-194][F-196]; HC-2025-0094 shows the same carrier denying a promotion markdown while separately approving a freight-scale refund [HC-2025-0094]. Recommendation: counter at $11,920.00 — the full supportable cargo/cost case of $10,070.00 (missing product, full damaged-product value, inspection fee, and repack labor) plus the $1,850.00 freight-refund goodwill ceiling [F-188][F-186][F-187], leaving a $4,695.00 gap to BlueLine's current offer and sitting well inside the $15,000.00 reserve [F-189][F-192][F-009]. This position mirrors the comparable pattern of paying cargo/cost claims near full value while capping delay-driven commercial damages separately [F-193][F-194][F-196]."
+      ],
+      "recommended_next_steps": [
+        {
+          "action": "Send a counter-offer of $11,920.00 [F-188], itemized as missing product $3,400.00 [E-1], full damaged-product value $5,950.00 [E-2], inspection fee $420.00 [E-3], repack labor $300.00 [E-4], and a $1,850.00 freight-refund gesture [E-6], while withdrawing the $18,000.00 markdown [E-5].",
+          "rationale": "This matches the computed entitlement position line-by-line and is fully defensible against Section 4's delay-damages exclusion [CT-2]."
+        },
+        {
+          "action": "Ask BlueLine to reconcile the EDI 59-piece count against the signed POD's 58-carton count [D-04] and confirm the POD governs the shortage figure [F-045][F-046].",
+          "rationale": "D-04 is an open HIGH-severity discrepancy the carrier itself raised, and the TMS record notes the EDI count may not match the consignee-signed receiving record."
+        },
+        {
+          "action": "Locate the independent inspection report for the internal file, since it is flagged RECEIVED in the claim snapshot but absent from the working folder [D-07][G-01], even though correspondence shows a copy was sent to BlueLine [F-120].",
+          "rationale": "Having the report on hand internally lets the team verify the full unsellable/repackable split before making further concessions on the 5 disputed units [E-2]."
+        },
+        {
+          "action": "Continue to pursue the vendor packaging specification or formally document that it cannot be produced [G-02].",
+          "rationale": "The gap could support BlueLine's insufficient-packaging defense under Section 3 [CT-5], and closing it out reduces exposure on the disputed units."
+        },
+        {
+          "action": "Concede the $18,000.00 late-delivery markdown as contractually excluded [E-5], and frame the $1,850.00 freight-refund ask strictly as a one-time, non-precedential commercial compromise [CT-8].",
+          "rationale": "Section 6 confirms compromise settlements don't amend the agreement or set precedent [F-175][F-176], protecting future claims while still capturing the delay-driven goodwill lever supported by comparable HC-2025-0094."
+        },
+        {
+          "action": "Track the negotiation against the $15,000.00 reserve [F-009] and the expected settlement band of $3,820.00 to $11,920.00 [F-190][F-191].",
+          "rationale": "The reserve comfortably covers the recommended counter [F-192], giving Maya a pre-agreed floor and ceiling for further back-and-forth."
+        }
+      ],
+      "risks_and_watchouts": [
+        "The independent inspection report is absent from the working folder despite being flagged RECEIVED in the claim snapshot; if it cannot be located, the 5 disputed damaged units may have to be conceded at the carrier's accepted level of $3,825.00 rather than the full $5,950.00 [D-07][G-01][E-2].",
+        "The vendor packaging specification remains unavailable; if BlueLine presses the insufficient-packaging defense under Section 3, the disputed units are more exposed since Northstar cannot currently produce it [G-02][CT-5].",
+        "Only 2 of the 5 damaged cartons are documented by photographs, and the claim system itself flags damage photos as PARTIAL — the same gap BlueLine cited for disputing the 5 units [F-150][F-012][F-118].",
+        "The counter's $5,950.00 damaged-product figure and $300.00 repack-labor figure do not reflect any salvage credit, but the agreement requires crediting the value of salvage or usable goods on the 6 units identified as repackable; BlueLine can invoke this obligation, and no salvage-credit amount exists in the file to net against these lines [CT-6][F-172][E-2][E-4].",
+        "Repack labor may ultimately be non-reimbursable if it turns out to be internal administrative labor rather than third-party work, since the agreement excludes internal labor absent written agreement; the $300.00 line is at risk in the counter if this isn't clarified [F-174][CT-7][E-4]."
+      ],
+      "draft_reply": {
+        "subject": "Re: Claim FCL-2026-0147 (PRO BLF-77209115) — Response and Counter-Proposal",
+        "body": "Dear Daniel,\n\nThank you for your continued attention to this claim and for the offer you sent through on the missing-product and accepted damaged-unit lines. I want to respond to each open item and put forward a counter-proposal.\n\nOn the missing product, we're aligned — the signed proof of delivery documents 58 of 60 cartons received, and we agree the $3,400.00 figure for the 8 missing units is correct.\n\nOn the damaged product, we'd like you to reconsider the 5 units you've held back. We understand your concern that the photographs on file don't show every affected carton, and that you're still waiting on the vendor packaging specification — that document is not currently available on our end, and we're continuing to look for it. The independent inspection we commissioned did report molded foam present in the cartons that were opened, and separately found 14 of the 20 units in the affected cartons unsellable and 6 repackable, which is the basis for our $5,950.00 damaged-product figure versus the $3,825.00 currently offered. We'd welcome the chance to walk through that inspection report with you directly.\n\nOn the piece-count question you raised — the EDI count of 59 versus the 58 cartons noted on the signed proof of delivery — we'd treat the signed, consignee-executed proof of delivery as the governing receiving record for this shipment, and ask that the shortage calculation be based on that document.\n\nOn the late-delivery markdown, we recognize this shipment moved under standard, non-guaranteed service, and we're withdrawing that $18,000.00 line rather than continue to press it as a contractual matter.\n\nWe would, however, ask you to reconsider the freight charge. The shipment arrived four days after the requested delivery date, and the delay records point to terminal and driver-hours issues on your side. We're not asserting this as a contractual entitlement, but we'd like to request the $1,850.00 freight charge be refunded as a good-faith gesture given the circumstances, separate from and without prejudice to how either of us handles similar situations going forward.\n\nWe'd also ask that the independent inspection fee of $420.00, supported by the vendor's invoice, be included in the settlement. On the $300.00 repack labor line, we're glad to confirm with you how that work was performed so we can agree on the appropriate treatment.\n\nPutting this together, our counter-proposal is $11,920.00, made up of the missing-product line, the full damaged-product line, the inspection fee, the repack labor, and the freight-charge refund — with the late-delivery markdown withdrawn from the claim entirely.\n\nWe're glad to discuss any of this by phone this week. Thank you again for working through it with us.\n\nBest regards,\nMaya Chen\nNorthstar Retail Equipment LLC"
+      }
+    },
+    "violations": [],
+    "attempts": 1,
+    "refs_used": [
+      "CT-2",
+      "CT-3",
+      "CT-4",
+      "CT-5",
+      "CT-6",
+      "CT-7",
+      "CT-8",
+      "D-04",
+      "D-06",
+      "D-07",
+      "E-1",
+      "E-2",
+      "E-3",
+      "E-4",
+      "E-5",
+      "E-6",
+      "F-008",
+      "F-009",
+      "F-010",
+      "F-012",
+      "F-018",
+      "F-024",
+      "F-045",
+      "F-046",
+      "F-062",
+      "F-079",
+      "F-089",
+      "F-090",
+      "F-114",
+      "F-115",
+      "F-116",
+      "F-117",
+      "F-118",
+      "F-119",
+      "F-120",
+      "F-148",
+      "F-150",
+      "F-155",
+      "F-156",
+      "F-157",
+      "F-158",
+      "F-159",
+      "F-161",
+      "F-162",
+      "F-164",
+      "F-165",
+      "F-172",
+      "F-174",
+      "F-175",
+      "F-176",
+      "F-179",
+      "F-181",
+      "F-182",
+      "F-183",
+      "F-184",
+      "F-186",
+      "F-187",
+      "F-188",
+      "F-189",
+      "F-190",
+      "F-191",
+      "F-192",
+      "F-193",
+      "F-194",
+      "F-196",
+      "G-01",
+      "G-02"
+    ]
+  },
+  "retrieval": {
+    "log": [
+      {
+        "topic": "liability_limit",
+        "query": "carrier liability limit per pound and invoice value for lost or damaged cargo",
+        "attempt": 1,
+        "backend": "datum",
+        "status": "ok",
+        "sufficiency": 0.7324,
+        "plan_id": "pl_3d333c06bf8a331b41a7",
+        "top": "2. Cargo Loss and Damage Liability",
+        "elapsed_ms": 7634
+      },
+      {
+        "topic": "delay_exclusions",
+        "query": "is the carrier responsible for lost profits or promotion losses caused by late delivery",
+        "attempt": 1,
+        "backend": "datum",
+        "status": "ok",
+        "sufficiency": 0.7208,
+        "plan_id": "pl_8b64a0d559210bd8feea",
+        "top": "4. Delay, Service Failures, and Consequential Damages",
+        "elapsed_ms": 725
+      },
+      {
+        "topic": "notice_deadlines",
+        "query": "deadline to file a cargo damage claim and a delay claim",
+        "attempt": 1,
+        "backend": "datum",
+        "status": "ok",
+        "sufficiency": 0.7323,
+        "plan_id": "pl_afbd6f57c02539b380bf",
+        "top": "5. Claim Notice and Documentation",
+        "elapsed_ms": 819
+      },
+      {
+        "topic": "packaging",
+        "query": "who is responsible if packaging was insufficient for normal handling",
+        "attempt": 1,
+        "backend": "datum",
+        "status": "ok",
+        "sufficiency": 0.731,
+        "plan_id": "pl_1a8ff97b657258a69729",
+        "top": "3. Packaging and Mitigation",
+        "elapsed_ms": 782
+      },
+      {
+        "topic": "salvage",
+        "query": "must the claimant credit salvage value and mitigate the loss",
+        "attempt": 1,
+        "backend": "datum",
+        "status": "ok",
+        "sufficiency": 0.719,
+        "plan_id": "pl_29ed208a375590ec4ac4",
+        "top": "3. Packaging and Mitigation",
+        "elapsed_ms": 525
+      },
+      {
+        "topic": "guaranteed_service",
+        "query": "refund when a guaranteed appointment delivery is missed",
+        "attempt": 1,
+        "backend": "datum",
+        "status": "ok",
+        "sufficiency": 0.7407,
+        "plan_id": "pl_f2de059841fe8ec09976",
+        "top": "4. Delay, Service Failures, and Consequential Damages",
+        "elapsed_ms": 1208
+      },
+      {
+        "topic": "inspection_costs",
+        "query": "are third-party inspection costs and internal labor reimbursable",
+        "attempt": 1,
+        "backend": "datum",
+        "status": "ok",
+        "sufficiency": 0.7371,
+        "plan_id": "pl_b421760422ab799a8333",
+        "top": "3. Packaging and Mitigation",
+        "elapsed_ms": 833
+      },
+      {
+        "topic": "compromise",
+        "query": "can the parties settle commercially without setting a precedent",
+        "attempt": 1,
+        "backend": "datum",
+        "status": "ok",
+        "sufficiency": 0.7187,
+        "plan_id": "pl_f32cec1ac2f1e495e6aa",
+        "top": "6. Settlement and Commercial Resolution",
+        "elapsed_ms": 696
+      }
+    ],
+    "no_clause_topics": [],
+    "explain_sample": "Plan(plan_id='pl_3d333c06bf8a331b41a7', plan_selector='rule-table@2026-08-11')\n  -> acl_filter(namespace='tenant:northstar')  [fails closed]\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='grep', fusion_weight=1.0)\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='bm25', fusion_weight=1.0)\n  -> search(k=50, query='carrier liability limit per pound and invoice value for lost or damaged cargo', operator='ann', fusion_weight=1.0)\n  -> rerank(depth=16, reranker='BAAI/bge-reranker-v2-m3@v1')\n  -> abstain_check(min_dense_similarity=0.5)\n  -> sufficiency_check(method='uncalibrated-heuristic-v2')"
+  },
+  "qa": {
+    "quotes_total": 186,
+    "quotes_exact": 186,
+    "quotes_fuzzy": 0,
+    "quotes_failed": 0,
+    "citation_validity_rate": 1.0,
+    "quote_failures": [],
+    "quarantined_facts": [],
+    "vision_verify": {},
+    "notes": [
+      "sources unavailable this run: inspection_report",
+      "R04: photo coverage vs damaged-carton ids unverifiable without inspection",
+      "R10: claim system already flags damage photos as PARTIAL, consistent with the photo-coverage finding",
+      "R14: photo timestamps fall on the delivery date (2026-05-12) - consistent with photos taken at receiving"
+    ]
+  }
+}

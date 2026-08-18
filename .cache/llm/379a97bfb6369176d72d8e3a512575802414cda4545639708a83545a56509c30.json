@@ -1,0 +1,97 @@
+{
+ "text": "```json\n{\n \"checks\": [\n  {\"field\": \"report_no\", \"expected\": \"IR-260518-44\", \"matches\": true, \"actual_if_different\": null},\n  {\"field\": \"inspection_date\", \"expected\": \"2026-05-18\", \"matches\": true, \"actual_if_different\": null},\n  {\"field\": \"total_examined\", \"expected\": 20, \"matches\": true, \"actual_if_different\": null},\n  {\"field\": \"total_unsellable\", \"expected\": 14, \"matches\": true, \"actual_if_different\": null},\n  {\"field\": \"total_repackable\", \"expected\": 6, \"matches\": true, \"actual_if_different\": null},\n  {\"field\": \"inspection_fee_usd\", \"expected\": 420.0, \"matches\": true, \"actual_if_different\": null},\n  {\"field\": \"repack_labor_usd\", \"expected\": 300.0, \"matches\": true, \"actual_if_different\": null},\n  {\"field\": \"carton_ids\", \"expected\": [\"C-017\", \"C-018\", \"C-021\", \"C-022\", \"C-023\"], \"matches\": true, \"actual_if_different\": null}\n ]\n}\n```",
+ "obj": {
+  "checks": [
+   {
+    "field": "report_no",
+    "expected": "IR-260518-44",
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "inspection_date",
+    "expected": "2026-05-18",
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "total_examined",
+    "expected": 20,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "total_unsellable",
+    "expected": 14,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "total_repackable",
+    "expected": 6,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "inspection_fee_usd",
+    "expected": 420.0,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "repack_labor_usd",
+    "expected": 300.0,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "carton_ids",
+    "expected": [
+     "C-017",
+     "C-018",
+     "C-021",
+     "C-022",
+     "C-023"
+    ],
+    "matches": true,
+    "actual_if_different": null
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 8,
+  "cache_creation_input_tokens": 16593,
+  "cache_read_input_tokens": 163740,
+  "output_tokens": 1209,
+  "output_tokens_details": {
+   "thinking_tokens": 638
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 16593,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 353,
+    "cache_read_input_tokens": 48137,
+    "cache_creation_input_tokens": 276,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 276
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "vision-verify/inspection_report"
+}

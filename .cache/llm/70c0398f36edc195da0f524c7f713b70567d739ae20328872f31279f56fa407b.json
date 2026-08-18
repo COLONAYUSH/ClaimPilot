@@ -1,0 +1,74 @@
+{
+ "text": "```json\n{\n  \"header_text\": {\n    \"value\": \"SYNTHETIC TRAINING EVIDENCE\",\n    \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n  },\n  \"footer_text\": {\n    \"value\": \"Claim FCL-2026-0147 | Warehouse photo | C-021\",\n    \"quote\": \"Claim FCL-2026-0147 | Warehouse photo | C-021\"\n  },\n  \"timestamp_text\": {\n    \"value\": \"2026-05-12T11:18\",\n    \"quote\": \"2026-05-12 11:18 CT\"\n  },\n  \"location_text\": {\n    \"value\": \"MetroMart DC18\",\n    \"quote\": \"MetroMart DC18\"\n  },\n  \"carton_labels_visible\": [\n    \"C-021\",\n    \"C-021\",\n    \"C-023\"\n  ],\n  \"damage_observations\": [\n    \"The middle carton (marked with a C-021 label) has a jagged, zigzag-shaped tear across its entire top edge, exposing a darker interior color beneath the torn flap.\",\n    \"A dark brown rod/stick-like object protrudes upward through the torn top opening of the middle carton.\",\n    \"A large dark brown oval-shaped stain is visible on the lower-left portion of the middle carton's front face.\",\n    \"A small dark triangular torn flap is visible on the right side of the middle carton's front face, near the stain.\",\n    \"The left carton (labeled C-021) and the right carton (labeled C-023) show intact, unmarked surfaces with no visible tears, punctures, crush damage, or stains.\"\n  ],\n  \"synthetic_watermark\": {\n    \"value\": true,\n    \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n  },\n  \"description\": \"The image shows three cartons on a pallet against a plain gray background. A header bar reads \\\"SYNTHETIC TRAINING EVIDENCE\\\" on the left and \\\"MetroMart DC18 | 2026-05-12 11:18 CT\\\" on the right. The leftmost carton is labeled \\\"C-021\\\" and appears intact. The center carton, also associated with a \\\"C-021\\\" label (shown in a white callout box over the carton), has a jagged torn top edge with a dark rod-like object sticking out of it, a large oval stain on its lower-front face, and a smaller torn triangular flap on its front face. The rightmost carton is labeled \\\"C-023\\\" and appears intact. A footer at the bottom reads \\\"Claim FCL-2026-0147 | Warehouse photo | C-021\\\".\"\n}\n```",
+ "obj": {
+  "header_text": {
+   "value": "SYNTHETIC TRAINING EVIDENCE",
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "footer_text": {
+   "value": "Claim FCL-2026-0147 | Warehouse photo | C-021",
+   "quote": "Claim FCL-2026-0147 | Warehouse photo | C-021"
+  },
+  "timestamp_text": {
+   "value": "2026-05-12T11:18",
+   "quote": "2026-05-12 11:18 CT"
+  },
+  "location_text": {
+   "value": "MetroMart DC18",
+   "quote": "MetroMart DC18"
+  },
+  "carton_labels_visible": [
+   "C-021",
+   "C-021",
+   "C-023"
+  ],
+  "damage_observations": [
+   "The middle carton (marked with a C-021 label) has a jagged, zigzag-shaped tear across its entire top edge, exposing a darker interior color beneath the torn flap.",
+   "A dark brown rod/stick-like object protrudes upward through the torn top opening of the middle carton.",
+   "A large dark brown oval-shaped stain is visible on the lower-left portion of the middle carton's front face.",
+   "A small dark triangular torn flap is visible on the right side of the middle carton's front face, near the stain.",
+   "The left carton (labeled C-021) and the right carton (labeled C-023) show intact, unmarked surfaces with no visible tears, punctures, crush damage, or stains."
+  ],
+  "synthetic_watermark": {
+   "value": true,
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "description": "The image shows three cartons on a pallet against a plain gray background. A header bar reads \"SYNTHETIC TRAINING EVIDENCE\" on the left and \"MetroMart DC18 | 2026-05-12 11:18 CT\" on the right. The leftmost carton is labeled \"C-021\" and appears intact. The center carton, also associated with a \"C-021\" label (shown in a white callout box over the carton), has a jagged torn top edge with a dark rod-like object sticking out of it, a large oval stain on its lower-front face, and a smaller torn triangular flap on its front face. The rightmost carton is labeled \"C-023\" and appears intact. A footer at the bottom reads \"Claim FCL-2026-0147 | Warehouse photo | C-021\"."
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 14170,
+  "cache_read_input_tokens": 70605,
+  "output_tokens": 4300,
+  "output_tokens_details": {
+   "thinking_tokens": 3364
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 14170,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 4204,
+    "cache_read_input_tokens": 38521,
+    "cache_creation_input_tokens": 7733,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 7733
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "vision/damage_photo_1"
+}

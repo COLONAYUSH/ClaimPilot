@@ -1,0 +1,329 @@
+{
+ "text": "```json\n{\n  \"messages\": [\n    {\n      \"index\": 1,\n      \"role\": \"shipper\",\n      \"sent_at\": \"2026-05-13T09:16:00-05:00\",\n      \"summary\": \"Shipper submits claim for PRO BLF-77209115; shipment arrived May 12 (after May 8 delivery date) with 2 cartons missing and 5 cartons crushed/wet; demands $29,920.00 covering shortage/damage, inspection/rework, promotion markdown, and freight refund.\"\n    },\n    {\n      \"index\": 2,\n      \"role\": \"carrier\",\n      \"sent_at\": \"2026-05-14T14:03:00-05:00\",\n      \"summary\": \"Carrier requests BOL, invoice, POD, photos, and inspection report, and asks for cargo loss amount to be separated from late-delivery business impact.\"\n    },\n    {\n      \"index\": 3,\n      \"role\": \"shipper\",\n      \"sent_at\": \"2026-05-15T11:27:00-05:00\",\n      \"summary\": \"Shipper provides BOL, invoice, POD, and two photos; invoice shows 240 units at $425 each; POD shows 2 short/5 damaged cartons of 4 units each; direct shortage/damage calculated at $9,350.00; inspection write-up still pending.\"\n    },\n    {\n      \"index\": 4,\n      \"role\": \"carrier\",\n      \"sent_at\": \"2026-05-19T16:18:00-05:00\",\n      \"summary\": \"Carrier notes only two photos received, not covering all five cartons; requests inspection report and packaging specification; flags EDI 59-piece count vs POD 58-carton discrepancy.\"\n    },\n    {\n      \"index\": 5,\n      \"role\": \"shipper\",\n      \"sent_at\": \"2026-05-20T10:05:00-05:00\",\n      \"summary\": \"Shipper submits inspection report finding 20 units from 5 cartons, 14 unsellable/6 repackable, with internal foam present; no vendor packaging spec available; asserts $18,000 markdown from missed MetroMart May 10 promotion launch.\"\n    },\n    {\n      \"index\": 6,\n      \"role\": \"carrier\",\n      \"sent_at\": \"2026-05-22T15:41:00-05:00\",\n      \"summary\": \"Carrier asserts Standard LTL service position excluding consequential/loss-of-market damages; accepts 8 missing units and 9 of 14 damaged units, disputes remaining 5; offers $7,225.00 excluding inspection/repack, markdown, and freight refund.\"\n    },\n    {\n      \"index\": 7,\n      \"role\": \"shipper\",\n      \"sent_at\": \"2026-05-26T08:54:00-05:00\",\n      \"summary\": \"Shipper disputes exclusion of the 5 units, citing POD and inspection corroboration and internal foam finding; asks carrier to reconsider cargo amount, inspection/repack costs, and delay impact as a commercial compromise.\"\n    }\n  ],\n  \"demand\": {\n    \"initial_total_usd\": {\n      \"value\": 29920.00,\n      \"quote\": \"Our current demand is $29,920.00, consisting of product shortage/damage, inspection and rework costs, the commercial markdown caused by the missed promotion launch, and a refund of the freight charge.\"\n    },\n    \"components_mentioned\": [\n      {\n        \"label\": \"product shortage/damage\",\n        \"amount_usd\": 9350.00,\n        \"message_index\": 3,\n        \"quote\": \"Our direct product shortage/damage is currently calculated at $9,350.00 before inspection/rework expense.\"\n      },\n      {\n        \"label\": \"inspection and rework costs\",\n        \"amount_usd\": null,\n        \"message_index\": 1,\n        \"quote\": \"inspection and rework costs\"\n      },\n      {\n        \"label\": \"commercial markdown (missed promotion launch)\",\n        \"amount_usd\": 18000,\n        \"message_index\": 5,\n        \"quote\": \"we incurred an $18,000 markdown to move the inventory\"\n      },\n      {\n        \"label\": \"freight charge refund\",\n        \"amount_usd\": null,\n        \"message_index\": 1,\n        \"quote\": \"a refund of the freight charge\"\n      }\n    ]\n  },\n  \"carrier_offer\": {\n    \"total_usd\": {\n      \"value\": 7225.00,\n      \"quote\": \"Offer: $7,225.00.\"\n    },\n    \"components\": [\n      {\n        \"label\": \"Missing units\",\n        \"amount_usd\": 3400.00,\n        \"quote\": \"Missing units: $3,400.00\"\n      },\n      {\n        \"label\": \"Accepted damaged units\",\n        \"amount_usd\": 3825.00,\n        \"quote\": \"Accepted damaged units: $3,825.00\"\n      }\n    ],\n    \"accepted_missing_units\": {\n      \"value\": 8,\n      \"quote\": \"we accept the 8 missing units.\"\n    },\n    \"accepted_damaged_units\": {\n      \"value\": 9,\n      \"quote\": \"we are accepting 9 of the 14 units claimed as unsellable\"\n    },\n    \"disputed_damaged_units\": {\n      \"value\": 5,\n      \"quote\": \"the remaining 5 are disputed because the available photos do not show all affected cartons and we have not received the packaging specification requested.\"\n    },\n    \"dispute_reasons\": [\n      {\n        \"reason\": \"photos do not show all affected cartons\",\n        \"quote\": \"the available photos do not show all affected cartons\"\n      },\n      {\n        \"reason\": \"packaging specification not received\",\n        \"quote\": \"we have not received the packaging specification requested\"\n      }\n    ],\n    \"explicitly_excluded\": [\n      {\n        \"item\": \"inspection/repack expense\",\n        \"quote\": \"This offer does not include inspection/repack expense, late-delivery markdown, or freight refund.\"\n      },\n      {\n        \"item\": \"late-delivery markdown\",\n        \"quote\": \"This offer does not include inspection/repack expense, late-delivery markdown, or freight refund.\"\n      },\n      {\n        \"item\": \"freight refund\",\n        \"quote\": \"This offer does not include inspection/repack expense, late-delivery markdown, or freight refund.\"\n      }\n    ],\n    \"message_index\": 6\n  },\n  \"document_requests\": [\n    {\n      \"item\": \"signed BOL\",\n      \"requested_by\": \"carrier\",\n      \"message_index\": 2,\n      \"status_per_thread\": \"fulfilled - BOL provided in message 3\",\n      \"quote\": \"Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.\"\n    },\n    {\n      \"item\": \"commercial invoice\",\n      \"requested_by\": \"carrier\",\n      \"message_index\": 2,\n      \"status_per_thread\": \"fulfilled - invoice provided in message 3\",\n      \"quote\": \"Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.\"\n    },\n    {\n      \"item\": \"POD\",\n      \"requested_by\": \"carrier\",\n      \"message_index\": 2,\n      \"status_per_thread\": \"fulfilled - POD provided in message 3\",\n      \"quote\": \"Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.\"\n    },\n    {\n      \"item\": \"photos of the damaged cartons\",\n      \"requested_by\": \"carrier\",\n      \"message_index\": 2,\n      \"status_per_thread\": \"partially fulfilled - only two photos provided in message 3; carrier states in message 4 they do not document all five cartons\",\n      \"quote\": \"Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.\"\n    },\n    {\n      \"item\": \"inspection report\",\n      \"requested_by\": \"carrier\",\n      \"message_index\": 2,\n      \"status_per_thread\": \"fulfilled - inspection report attached in message 5\",\n      \"quote\": \"Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report.\"\n    },\n    {\n      \"item\": \"inspection report (re-requested)\",\n      \"requested_by\": \"carrier\",\n      \"message_index\": 4,\n      \"status_per_thread\": \"fulfilled - inspection report attached in message 5\",\n      \"quote\": \"Please provide the inspection report and any packaging specification supporting your position that the internal packaging was adequate.\"\n    },\n    {\n      \"item\": \"packaging specification\",\n      \"requested_by\": \"carrier\",\n      \"message_index\": 4,\n      \"status_per_thread\": \"not fulfilled - shipper states in message 5 they do not currently have the vendor packaging specification\",\n      \"quote\": \"Please provide the inspection report and any packaging specification supporting your position that the internal packaging was adequate.\"\n    }\n  ],\n  \"key_assertions\": [\n    {\n      \"topic\": \"arrival date vs expected date\",\n      \"by\": \"shipper\",\n      \"message_index\": 1,\n      \"value\": \"arrived May 12, after May 8 delivery date\",\n      \"quote\": \"This shipment arrived on May 12, after the May 8 delivery date\"\n    },\n    {\n      \"topic\": \"missing cartons\",\n      \"by\": \"shipper\",\n      \"message_index\": 3,\n      \"value\": 2,\n      \"quote\": \"The POD shows 2 cartons short and 5 cartons damaged.\"\n    },\n    {\n      \"topic\": \"damaged cartons\",\n      \"by\": \"shipper\",\n      \"message_index\": 3,\n      \"value\": 5,\n      \"quote\": \"The POD shows 2 cartons short and 5 cartons damaged.\"\n    },\n    {\n      \"topic\": \"units per carton\",\n      \"by\": \"shipper\",\n      \"message_index\": 3,\n      \"value\": 4,\n      \"quote\": \"Each carton contains 4 units.\"\n    },\n    {\n      \"topic\": \"invoice units and unit price\",\n      \"by\": \"shipper\",\n      \"message_index\": 3,\n      \"value\": \"240 units at $425 each\",\n      \"quote\": \"The invoice shows 240 units at $425 each.\"\n    },\n    {\n      \"topic\": \"direct shortage/damage subtotal\",\n      \"by\": \"shipper\",\n      \"message_index\": 3,\n      \"value\": 9350.00,\n      \"quote\": \"Our direct product shortage/damage is currently calculated at $9,350.00 before inspection/rework expense.\"\n    },\n    {\n      \"topic\": \"EDI piece count vs POD carton count\",\n      \"by\": \"carrier\",\n      \"message_index\": 4,\n      \"value\": \"59 pieces (EDI) vs 58 cartons (POD)\",\n      \"quote\": \"our EDI delivery event reflects 59 pieces delivered. Please reconcile that with the signed POD showing 58 cartons received.\"\n    },\n    {\n      \"topic\": \"inspection findings (units unsellable/repackable)\",\n      \"by\": \"shipper\",\n      \"message_index\": 5,\n      \"value\": \"14 unsellable, 6 repackable, of 20 units from 5 cartons\",\n      \"quote\": \"It identifies 20 units from 5 cartons: 14 are unsellable and 6 were functional but required repacking.\"\n    },\n    {\n      \"topic\": \"internal foam presence\",\n      \"by\": \"shipper\",\n      \"message_index\": 5,\n      \"value\": \"present\",\n      \"quote\": \"The inspector noted compression/puncture to the outer cartons and that internal foam was present.\"\n    },\n    {\n      \"topic\": \"packaging specification availability\",\n      \"by\": \"shipper\",\n      \"message_index\": 5,\n      \"value\": \"not available\",\n      \"quote\": \"We do not currently have the vendor packaging specification in the claim folder.\"\n    },\n    {\n      \"topic\": \"late-delivery markdown amount and promotion\",\n      \"by\": \"shipper\",\n      \"message_index\": 5,\n      \"value\": 18000,\n      \"quote\": \"these scanners were for MetroMart's May 10 promotion launch. Because they arrived after launch, we incurred an $18,000 markdown to move the inventory.\"\n    },\n    {\n      \"topic\": \"freight charge refund request\",\n      \"by\": \"shipper\",\n      \"message_index\": 1,\n      \"value\": null,\n      \"quote\": \"a refund of the freight charge\"\n    },\n    {\n      \"topic\": \"carrier's service-level position\",\n      \"by\": \"carrier\",\n      \"message_index\": 6,\n      \"value\": \"Standard LTL, not a guaranteed appointment service; excludes consequential and loss-of-market damages\",\n      \"quote\": \"Our position is that the service was Standard LTL, not a guaranteed appointment service. The agreement excludes consequential and loss-of-market damages for delay.\"\n    }\n  ],\n  \"thread_state\": {\n    \"last_message_index\": 7,\n    \"last_message_role\": \"shipper\",\n    \"open_points\": [\n      \"Disputed 5 damaged units - carrier withholds acceptance citing incomplete photo documentation and missing packaging specification; shipper disputes this exclusion\",\n      \"Vendor packaging specification still not provided by shipper\",\n      \"Inspection/repack expense not included in carrier's offer and remains unresolved\",\n      \"Late-delivery markdown ($18,000) disputed under carrier's Standard LTL/consequential-damages exclusion; shipper requests reconsideration as a commercial compromise\",\n      \"Freight charge refund not addressed in carrier's offer\",\n      \"EDI 59-piece count vs POD 58-carton count discrepancy not yet reconciled\",\n      \"Only two of five damaged cartons documented by photos\"\n    ]\n  }\n}\n```",
+ "obj": {
+  "messages": [
+   {
+    "index": 1,
+    "role": "shipper",
+    "sent_at": "2026-05-13T09:16:00-05:00",
+    "summary": "Shipper submits claim for PRO BLF-77209115; shipment arrived May 12 (after May 8 delivery date) with 2 cartons missing and 5 cartons crushed/wet; demands $29,920.00 covering shortage/damage, inspection/rework, promotion markdown, and freight refund."
+   },
+   {
+    "index": 2,
+    "role": "carrier",
+    "sent_at": "2026-05-14T14:03:00-05:00",
+    "summary": "Carrier requests BOL, invoice, POD, photos, and inspection report, and asks for cargo loss amount to be separated from late-delivery business impact."
+   },
+   {
+    "index": 3,
+    "role": "shipper",
+    "sent_at": "2026-05-15T11:27:00-05:00",
+    "summary": "Shipper provides BOL, invoice, POD, and two photos; invoice shows 240 units at $425 each; POD shows 2 short/5 damaged cartons of 4 units each; direct shortage/damage calculated at $9,350.00; inspection write-up still pending."
+   },
+   {
+    "index": 4,
+    "role": "carrier",
+    "sent_at": "2026-05-19T16:18:00-05:00",
+    "summary": "Carrier notes only two photos received, not covering all five cartons; requests inspection report and packaging specification; flags EDI 59-piece count vs POD 58-carton discrepancy."
+   },
+   {
+    "index": 5,
+    "role": "shipper",
+    "sent_at": "2026-05-20T10:05:00-05:00",
+    "summary": "Shipper submits inspection report finding 20 units from 5 cartons, 14 unsellable/6 repackable, with internal foam present; no vendor packaging spec available; asserts $18,000 markdown from missed MetroMart May 10 promotion launch."
+   },
+   {
+    "index": 6,
+    "role": "carrier",
+    "sent_at": "2026-05-22T15:41:00-05:00",
+    "summary": "Carrier asserts Standard LTL service position excluding consequential/loss-of-market damages; accepts 8 missing units and 9 of 14 damaged units, disputes remaining 5; offers $7,225.00 excluding inspection/repack, markdown, and freight refund."
+   },
+   {
+    "index": 7,
+    "role": "shipper",
+    "sent_at": "2026-05-26T08:54:00-05:00",
+    "summary": "Shipper disputes exclusion of the 5 units, citing POD and inspection corroboration and internal foam finding; asks carrier to reconsider cargo amount, inspection/repack costs, and delay impact as a commercial compromise."
+   }
+  ],
+  "demand": {
+   "initial_total_usd": {
+    "value": 29920.0,
+    "quote": "Our current demand is $29,920.00, consisting of product shortage/damage, inspection and rework costs, the commercial markdown caused by the missed promotion launch, and a refund of the freight charge."
+   },
+   "components_mentioned": [
+    {
+     "label": "product shortage/damage",
+     "amount_usd": 9350.0,
+     "message_index": 3,
+     "quote": "Our direct product shortage/damage is currently calculated at $9,350.00 before inspection/rework expense."
+    },
+    {
+     "label": "inspection and rework costs",
+     "amount_usd": null,
+     "message_index": 1,
+     "quote": "inspection and rework costs"
+    },
+    {
+     "label": "commercial markdown (missed promotion launch)",
+     "amount_usd": 18000,
+     "message_index": 5,
+     "quote": "we incurred an $18,000 markdown to move the inventory"
+    },
+    {
+     "label": "freight charge refund",
+     "amount_usd": null,
+     "message_index": 1,
+     "quote": "a refund of the freight charge"
+    }
+   ]
+  },
+  "carrier_offer": {
+   "total_usd": {
+    "value": 7225.0,
+    "quote": "Offer: $7,225.00."
+   },
+   "components": [
+    {
+     "label": "Missing units",
+     "amount_usd": 3400.0,
+     "quote": "Missing units: $3,400.00"
+    },
+    {
+     "label": "Accepted damaged units",
+     "amount_usd": 3825.0,
+     "quote": "Accepted damaged units: $3,825.00"
+    }
+   ],
+   "accepted_missing_units": {
+    "value": 8,
+    "quote": "we accept the 8 missing units."
+   },
+   "accepted_damaged_units": {
+    "value": 9,
+    "quote": "we are accepting 9 of the 14 units claimed as unsellable"
+   },
+   "disputed_damaged_units": {
+    "value": 5,
+    "quote": "the remaining 5 are disputed because the available photos do not show all affected cartons and we have not received the packaging specification requested."
+   },
+   "dispute_reasons": [
+    {
+     "reason": "photos do not show all affected cartons",
+     "quote": "the available photos do not show all affected cartons"
+    },
+    {
+     "reason": "packaging specification not received",
+     "quote": "we have not received the packaging specification requested"
+    }
+   ],
+   "explicitly_excluded": [
+    {
+     "item": "inspection/repack expense",
+     "quote": "This offer does not include inspection/repack expense, late-delivery markdown, or freight refund."
+    },
+    {
+     "item": "late-delivery markdown",
+     "quote": "This offer does not include inspection/repack expense, late-delivery markdown, or freight refund."
+    },
+    {
+     "item": "freight refund",
+     "quote": "This offer does not include inspection/repack expense, late-delivery markdown, or freight refund."
+    }
+   ],
+   "message_index": 6
+  },
+  "document_requests": [
+   {
+    "item": "signed BOL",
+    "requested_by": "carrier",
+    "message_index": 2,
+    "status_per_thread": "fulfilled - BOL provided in message 3",
+    "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report."
+   },
+   {
+    "item": "commercial invoice",
+    "requested_by": "carrier",
+    "message_index": 2,
+    "status_per_thread": "fulfilled - invoice provided in message 3",
+    "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report."
+   },
+   {
+    "item": "POD",
+    "requested_by": "carrier",
+    "message_index": 2,
+    "status_per_thread": "fulfilled - POD provided in message 3",
+    "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report."
+   },
+   {
+    "item": "photos of the damaged cartons",
+    "requested_by": "carrier",
+    "message_index": 2,
+    "status_per_thread": "partially fulfilled - only two photos provided in message 3; carrier states in message 4 they do not document all five cartons",
+    "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report."
+   },
+   {
+    "item": "inspection report",
+    "requested_by": "carrier",
+    "message_index": 2,
+    "status_per_thread": "fulfilled - inspection report attached in message 5",
+    "quote": "Please send the signed BOL, commercial invoice, POD, photos of the damaged cartons, and any inspection report."
+   },
+   {
+    "item": "inspection report (re-requested)",
+    "requested_by": "carrier",
+    "message_index": 4,
+    "status_per_thread": "fulfilled - inspection report attached in message 5",
+    "quote": "Please provide the inspection report and any packaging specification supporting your position that the internal packaging was adequate."
+   },
+   {
+    "item": "packaging specification",
+    "requested_by": "carrier",
+    "message_index": 4,
+    "status_per_thread": "not fulfilled - shipper states in message 5 they do not currently have the vendor packaging specification",
+    "quote": "Please provide the inspection report and any packaging specification supporting your position that the internal packaging was adequate."
+   }
+  ],
+  "key_assertions": [
+   {
+    "topic": "arrival date vs expected date",
+    "by": "shipper",
+    "message_index": 1,
+    "value": "arrived May 12, after May 8 delivery date",
+    "quote": "This shipment arrived on May 12, after the May 8 delivery date"
+   },
+   {
+    "topic": "missing cartons",
+    "by": "shipper",
+    "message_index": 3,
+    "value": 2,
+    "quote": "The POD shows 2 cartons short and 5 cartons damaged."
+   },
+   {
+    "topic": "damaged cartons",
+    "by": "shipper",
+    "message_index": 3,
+    "value": 5,
+    "quote": "The POD shows 2 cartons short and 5 cartons damaged."
+   },
+   {
+    "topic": "units per carton",
+    "by": "shipper",
+    "message_index": 3,
+    "value": 4,
+    "quote": "Each carton contains 4 units."
+   },
+   {
+    "topic": "invoice units and unit price",
+    "by": "shipper",
+    "message_index": 3,
+    "value": "240 units at $425 each",
+    "quote": "The invoice shows 240 units at $425 each."
+   },
+   {
+    "topic": "direct shortage/damage subtotal",
+    "by": "shipper",
+    "message_index": 3,
+    "value": 9350.0,
+    "quote": "Our direct product shortage/damage is currently calculated at $9,350.00 before inspection/rework expense."
+   },
+   {
+    "topic": "EDI piece count vs POD carton count",
+    "by": "carrier",
+    "message_index": 4,
+    "value": "59 pieces (EDI) vs 58 cartons (POD)",
+    "quote": "our EDI delivery event reflects 59 pieces delivered. Please reconcile that with the signed POD showing 58 cartons received."
+   },
+   {
+    "topic": "inspection findings (units unsellable/repackable)",
+    "by": "shipper",
+    "message_index": 5,
+    "value": "14 unsellable, 6 repackable, of 20 units from 5 cartons",
+    "quote": "It identifies 20 units from 5 cartons: 14 are unsellable and 6 were functional but required repacking."
+   },
+   {
+    "topic": "internal foam presence",
+    "by": "shipper",
+    "message_index": 5,
+    "value": "present",
+    "quote": "The inspector noted compression/puncture to the outer cartons and that internal foam was present."
+   },
+   {
+    "topic": "packaging specification availability",
+    "by": "shipper",
+    "message_index": 5,
+    "value": "not available",
+    "quote": "We do not currently have the vendor packaging specification in the claim folder."
+   },
+   {
+    "topic": "late-delivery markdown amount and promotion",
+    "by": "shipper",
+    "message_index": 5,
+    "value": 18000,
+    "quote": "these scanners were for MetroMart's May 10 promotion launch. Because they arrived after launch, we incurred an $18,000 markdown to move the inventory."
+   },
+   {
+    "topic": "freight charge refund request",
+    "by": "shipper",
+    "message_index": 1,
+    "value": null,
+    "quote": "a refund of the freight charge"
+   },
+   {
+    "topic": "carrier's service-level position",
+    "by": "carrier",
+    "message_index": 6,
+    "value": "Standard LTL, not a guaranteed appointment service; excludes consequential and loss-of-market damages",
+    "quote": "Our position is that the service was Standard LTL, not a guaranteed appointment service. The agreement excludes consequential and loss-of-market damages for delay."
+   }
+  ],
+  "thread_state": {
+   "last_message_index": 7,
+   "last_message_role": "shipper",
+   "open_points": [
+    "Disputed 5 damaged units - carrier withholds acceptance citing incomplete photo documentation and missing packaging specification; shipper disputes this exclusion",
+    "Vendor packaging specification still not provided by shipper",
+    "Inspection/repack expense not included in carrier's offer and remains unresolved",
+    "Late-delivery markdown ($18,000) disputed under carrier's Standard LTL/consequential-damages exclusion; shipper requests reconsideration as a commercial compromise",
+    "Freight charge refund not addressed in carrier's offer",
+    "EDI 59-piece count vs POD 58-carton count discrepancy not yet reconciled",
+    "Only two of five damaged cartons documented by photos"
+   ]
+  }
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 9582,
+  "cache_read_input_tokens": 32084,
+  "output_tokens": 14671,
+  "output_tokens_details": {
+   "thinking_tokens": 10268
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9582,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 14671,
+    "cache_read_input_tokens": 32084,
+    "cache_creation_input_tokens": 9582,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 9582
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "extract/email_thread"
+}

@@ -1,0 +1,97 @@
+{
+ "text": "```json\n{\n \"checks\": [\n  {\n   \"field\": \"report_no\",\n   \"expected\": \"IR-260518-44\",\n   \"matches\": true,\n   \"actual_if_different\": null\n  },\n  {\n   \"field\": \"inspection_date\",\n   \"expected\": \"2026-05-18\",\n   \"matches\": true,\n   \"actual_if_different\": null\n  },\n  {\n   \"field\": \"total_examined\",\n   \"expected\": 20,\n   \"matches\": true,\n   \"actual_if_different\": null\n  },\n  {\n   \"field\": \"total_unsellable\",\n   \"expected\": 14,\n   \"matches\": true,\n   \"actual_if_different\": null\n  },\n  {\n   \"field\": \"total_repackable\",\n   \"expected\": 6,\n   \"matches\": true,\n   \"actual_if_different\": null\n  },\n  {\n   \"field\": \"inspection_fee_usd\",\n   \"expected\": 420.0,\n   \"matches\": true,\n   \"actual_if_different\": null\n  },\n  {\n   \"field\": \"repack_labor_usd\",\n   \"expected\": 300.0,\n   \"matches\": true,\n   \"actual_if_different\": null\n  },\n  {\n   \"field\": \"carton_ids\",\n   \"expected\": [\"C-017\", \"C-018\", \"C-021\", \"C-022\", \"C-023\"],\n   \"matches\": true,\n   \"actual_if_different\": null\n  }\n ]\n}\n```",
+ "obj": {
+  "checks": [
+   {
+    "field": "report_no",
+    "expected": "IR-260518-44",
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "inspection_date",
+    "expected": "2026-05-18",
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "total_examined",
+    "expected": 20,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "total_unsellable",
+    "expected": 14,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "total_repackable",
+    "expected": 6,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "inspection_fee_usd",
+    "expected": 420.0,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "repack_labor_usd",
+    "expected": 300.0,
+    "matches": true,
+    "actual_if_different": null
+   },
+   {
+    "field": "carton_ids",
+    "expected": [
+     "C-017",
+     "C-018",
+     "C-021",
+     "C-022",
+     "C-023"
+    ],
+    "matches": true,
+    "actual_if_different": null
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 44376,
+  "cache_read_input_tokens": 37876,
+  "output_tokens": 705,
+  "output_tokens_details": {
+   "thinking_tokens": 183
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 44376,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 604,
+    "cache_read_input_tokens": 37876,
+    "cache_creation_input_tokens": 6500,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 6500
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "vision-verify/inspection_report"
+}

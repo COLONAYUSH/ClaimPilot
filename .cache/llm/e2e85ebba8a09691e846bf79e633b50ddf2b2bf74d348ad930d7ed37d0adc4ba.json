@@ -1,0 +1,73 @@
+{
+ "text": "```json\n{\n \"header_text\": {\n  \"value\": \"SYNTHETIC TRAINING EVIDENCE\",\n  \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n },\n \"footer_text\": {\n  \"value\": \"Claim FCL-2026-0147 | Warehouse photo | C-023\",\n  \"quote\": \"Claim FCL-2026-0147 | Warehouse photo | C-023\"\n },\n \"timestamp_text\": {\n  \"value\": \"2026-05-12T11:18\",\n  \"quote\": \"2026-05-12 11:18 CT\"\n },\n \"location_text\": {\n  \"value\": \"MetroMart DC18\",\n  \"quote\": \"MetroMart DC18\"\n },\n \"carton_labels_visible\": [\n  \"C-023\",\n  \"C-022\",\n  \"C-023\"\n ],\n \"damage_observations\": [\n  \"Left carton (labeled C-023): dark irregular quadrilateral shape on the front face, overlapping the carton's label box, consistent with a puncture/tear mark or stain\",\n  \"Left carton (labeled C-023): jagged line running from the dark shape down to the bottom-right area of the carton face, consistent with a tear in the carton material\",\n  \"Middle carton (labeled C-022): no visible tears, punctures, crush damage, or stains\",\n  \"Right carton (labeled C-023): no visible tears, punctures, crush damage, or stains\"\n ],\n \"synthetic_watermark\": {\n  \"value\": true,\n  \"quote\": \"SYNTHETIC TRAINING EVIDENCE\"\n },\n \"description\": \"Flat vector-style illustration of three cartons on a pallet in a warehouse setting. Header text at top-left reads 'SYNTHETIC TRAINING EVIDENCE' and top-right reads 'MetroMart DC18 | 2026-05-12 11:18 CT'. Footer text at bottom-left reads 'Claim FCL-2026-0147 | Warehouse photo | C-023'. Three distinct cartons are visible: the leftmost (tallest) carton bears a white label box reading 'C-023' and has a dark irregular quadrilateral shape with a jagged line extending to its lower edge, depicting a tear/puncture or stain; the middle carton is labeled 'C-022' with no visible damage; the rightmost carton is labeled 'C-023' with no visible damage.\"\n}\n```",
+ "obj": {
+  "header_text": {
+   "value": "SYNTHETIC TRAINING EVIDENCE",
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "footer_text": {
+   "value": "Claim FCL-2026-0147 | Warehouse photo | C-023",
+   "quote": "Claim FCL-2026-0147 | Warehouse photo | C-023"
+  },
+  "timestamp_text": {
+   "value": "2026-05-12T11:18",
+   "quote": "2026-05-12 11:18 CT"
+  },
+  "location_text": {
+   "value": "MetroMart DC18",
+   "quote": "MetroMart DC18"
+  },
+  "carton_labels_visible": [
+   "C-023",
+   "C-022",
+   "C-023"
+  ],
+  "damage_observations": [
+   "Left carton (labeled C-023): dark irregular quadrilateral shape on the front face, overlapping the carton's label box, consistent with a puncture/tear mark or stain",
+   "Left carton (labeled C-023): jagged line running from the dark shape down to the bottom-right area of the carton face, consistent with a tear in the carton material",
+   "Middle carton (labeled C-022): no visible tears, punctures, crush damage, or stains",
+   "Right carton (labeled C-023): no visible tears, punctures, crush damage, or stains"
+  ],
+  "synthetic_watermark": {
+   "value": true,
+   "quote": "SYNTHETIC TRAINING EVIDENCE"
+  },
+  "description": "Flat vector-style illustration of three cartons on a pallet in a warehouse setting. Header text at top-left reads 'SYNTHETIC TRAINING EVIDENCE' and top-right reads 'MetroMart DC18 | 2026-05-12 11:18 CT'. Footer text at bottom-left reads 'Claim FCL-2026-0147 | Warehouse photo | C-023'. Three distinct cartons are visible: the leftmost (tallest) carton bears a white label box reading 'C-023' and has a dark irregular quadrilateral shape with a jagged line extending to its lower edge, depicting a tear/puncture or stain; the middle carton is labeled 'C-022' with no visible damage; the rightmost carton is labeled 'C-023' with no visible damage."
+ },
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 15003,
+  "cache_read_input_tokens": 70605,
+  "output_tokens": 3120,
+  "output_tokens_details": {
+   "thinking_tokens": 2233
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 15003,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 3001,
+    "cache_read_input_tokens": 38521,
+    "cache_creation_input_tokens": 8566,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 8566
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "vision/damage_photo_2"
+}

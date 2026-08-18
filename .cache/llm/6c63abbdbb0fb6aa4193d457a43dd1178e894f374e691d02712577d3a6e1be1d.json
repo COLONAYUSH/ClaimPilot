@@ -1,0 +1,93 @@
+{
+ "text": "```json\n{\n  \"pro_number\": {\n    \"value\": \"BLF-77209115\",\n    \"quote\": \"BLF-77209115\"\n  },\n  \"bol_number\": {\n    \"value\": \"BOL-884219\",\n    \"quote\": \"BOL-884219\"\n  },\n  \"consignee\": {\n    \"value\": \"MetroMart Stores - DC 18, Dallas, TX\",\n    \"quote\": \"MetroMart Stores - DC 18, Dallas, TX\"\n  },\n  \"carrier\": {\n    \"value\": \"BlueLine Freight Systems\",\n    \"quote\": \"BlueLine Freight Systems\"\n  },\n  \"delivered_at\": {\n    \"value\": \"2026-05-12T10:42:00\",\n    \"quote\": \"May 12, 2026 - 10:42 AM CT\"\n  },\n  \"tendered_cartons\": {\n    \"value\": 60,\n    \"quote\": \"60 cartons\"\n  },\n  \"received_cartons\": {\n    \"value\": 58,\n    \"quote\": \"58 cartons\"\n  },\n  \"short_cartons\": {\n    \"value\": 2,\n    \"quote\": \"2 cartons\"\n  },\n  \"damaged_cartons\": {\n    \"value\": 5,\n    \"quote\": \"5 cartons\"\n  },\n  \"exception_text\": {\n    \"value\": \"Received 58 of 60 cartons. 2 cartons short. 5 cartons crushed/wet; shrink wrap torn on pallet 3. Contents subject to inspection.\",\n    \"quote\": \"Received 58 of 60 cartons. 2 cartons short. 5 cartons crushed/wet; shrink wrap torn on pallet 3. Contents subject to inspection.\"\n  },\n  \"consignee_signature\": {\n    \"value\": \"M. Alvarez\",\n    \"quote\": \"M. Alvarez\"\n  },\n  \"signed_at\": {\n    \"value\": \"2026-05-12T10:42:00\",\n    \"quote\": \"05/12/2026 10:42 CT\"\n  },\n  \"driver_note\": {\n    \"value\": \"Pallet 3 wrap torn at rear; exceptions written before departure.\",\n    \"quote\": \"Pallet 3 wrap torn at rear; exceptions written before departure.\"\n  }\n}\n```",
+ "obj": {
+  "pro_number": {
+   "value": "BLF-77209115",
+   "quote": "BLF-77209115"
+  },
+  "bol_number": {
+   "value": "BOL-884219",
+   "quote": "BOL-884219"
+  },
+  "consignee": {
+   "value": "MetroMart Stores - DC 18, Dallas, TX",
+   "quote": "MetroMart Stores - DC 18, Dallas, TX"
+  },
+  "carrier": {
+   "value": "BlueLine Freight Systems",
+   "quote": "BlueLine Freight Systems"
+  },
+  "delivered_at": {
+   "value": "2026-05-12T10:42:00",
+   "quote": "May 12, 2026 - 10:42 AM CT"
+  },
+  "tendered_cartons": {
+   "value": 60,
+   "quote": "60 cartons"
+  },
+  "received_cartons": {
+   "value": 58,
+   "quote": "58 cartons"
+  },
+  "short_cartons": {
+   "value": 2,
+   "quote": "2 cartons"
+  },
+  "damaged_cartons": {
+   "value": 5,
+   "quote": "5 cartons"
+  },
+  "exception_text": {
+   "value": "Received 58 of 60 cartons. 2 cartons short. 5 cartons crushed/wet; shrink wrap torn on pallet 3. Contents subject to inspection.",
+   "quote": "Received 58 of 60 cartons. 2 cartons short. 5 cartons crushed/wet; shrink wrap torn on pallet 3. Contents subject to inspection."
+  },
+  "consignee_signature": {
+   "value": "M. Alvarez",
+   "quote": "M. Alvarez"
+  },
+  "signed_at": {
+   "value": "2026-05-12T10:42:00",
+   "quote": "05/12/2026 10:42 CT"
+  },
+  "driver_note": {
+   "value": "Pallet 3 wrap torn at rear; exceptions written before departure.",
+   "quote": "Pallet 3 wrap torn at rear; exceptions written before departure."
+  }
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 7541,
+  "cache_read_input_tokens": 32084,
+  "output_tokens": 2383,
+  "output_tokens_details": {
+   "thinking_tokens": 1663
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7541,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2383,
+    "cache_read_input_tokens": 32084,
+    "cache_creation_input_tokens": 7541,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 7541
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard"
+ },
+ "model": "claude-sonnet-5",
+ "provider": "claude-cli",
+ "label": "extract/proof_of_delivery"
+}
