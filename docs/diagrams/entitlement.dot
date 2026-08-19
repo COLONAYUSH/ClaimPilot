@@ -1,0 +1,33 @@
+digraph entitlement {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.55;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  dl [label=<<B>demand lines (from reconcile)</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  rc [label=<<B>retrieve_clauses</B><BR/><FONT POINT-SIZE="9">8 topics, primary + fallback<BR/>abstention to unresolved</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  et [label=<<B>extract_terms (LLM)</B><BR/><FONT POINT-SIZE="9">read params, quoted + verified</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  params [label=<<B>contract facts</B><BR/><FONT POINT-SIZE="9">cap $50/lb, notice 9mo/30d,<BR/>delay excluded, salvage required</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  subgraph cluster_calc {
+    label=<<B>deterministic calculator</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#E7F6EC";
+    color="#A9DBBE"; penwidth=1.4; margin=14;
+  cap [label=<<B>_cap_math per line</B><BR/><FONT POINT-SIZE="9">min(units x price,<BR/>units x weight x $50/lb)</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  dead [label=<<B>check_timeliness</B><BR/><FONT POINT-SIZE="9">_add_months(delivered, 9)<BR/>filed &lt;= deadline?</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  cls [label=<<B>classify each line</B><BR/><FONT POINT-SIZE="9">STRONG / MODERATE / NEEDS_INFO<BR/>EXCLUDED / GOODWILL</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  }
+  pos [label=<<B>compute_position_numbers</B><BR/><FONT POINT-SIZE="9">core_low/high, goodwill,<BR/>counter, band, reserve check</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  led [label=<<B>DERIVED facts + Entitlement objects</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  dl -> rc;
+  rc -> et;
+  et -> params;
+  params -> cap;
+  cap -> pos;
+  dead -> pos;
+  cls -> pos;
+  pos -> led;
+}

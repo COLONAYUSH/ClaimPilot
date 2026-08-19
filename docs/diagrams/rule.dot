@@ -1,0 +1,29 @@
+digraph rule {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.5;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  rule [label=<<B>rule r02_piece_counts</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  guard [label=<has(tendered,<BR/>received)?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  skip [label=<<B>skip() with a note</B><BR/><FONT POINT-SIZE="9">graceful degradation</FONT>>, fillcolor="#F0F2F5", color="#7A828E"];
+  read [label=<<B>read facts</B><BR/><FONT POINT-SIZE="9">tendered=60, received=58, edi=59</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  derive [label=<<B>derive shortage = 60 - 58</B><BR/><FONT POINT-SIZE="9">formula + input fact_ids</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  conflict [label=<edi != received?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  disc [label=<<B>discrepancy (HIGH)</B><BR/><FONT POINT-SIZE="9">authority: signed POD governs<BR/>cite dd.pod_authority</FONT>>, fillcolor="#FBEAE9", color="#D64540"];
+  out [label=<<B>new DERIVED facts +</B><BR/><FONT POINT-SIZE="9">Discrepancy / Gap objects</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  runner [label=<<B>run_reconciliation</B><BR/><FONT POINT-SIZE="9">try/except per rule, continue</FONT>>, fillcolor="#F0F2F5", color="#7A828E"];
+  rule -> guard;
+  guard -> skip [label="no", color="#D64540", fontcolor="#D64540"];
+  guard -> read [label="yes", color="#1E9E57", fontcolor="#1E9E57"];
+  read -> derive;
+  read -> conflict;
+  conflict -> disc [label="yes", color="#D64540", fontcolor="#D64540"];
+  derive -> out;
+  disc -> out;
+  runner -> rule [label="for each rule", style=dashed];
+}

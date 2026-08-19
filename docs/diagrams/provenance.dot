@@ -1,0 +1,34 @@
+digraph provenance {
+  bgcolor="white"; rankdir=RL; pad=0.35; nodesep=0.5; ranksep=0.6;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  counter [label=<<B>$11,920 counter</B><BR/><FONT POINT-SIZE="9">F-217 (DERIVED)<BR/>core_high + goodwill_high</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  ch [label=<<B>core_high $10,070</B><BR/><FONT POINT-SIZE="9">F-215 (DERIVED)<BR/>sum of supportable lines</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  gh [label=<<B>goodwill_high $1,850</B><BR/><FONT POINT-SIZE="9">F-216 (DERIVED)<BR/>freight charge ceiling</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  miss [label=<<B>missing $3,400</B><BR/><FONT POINT-SIZE="9">8 units x $425</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  dmg [label=<<B>damaged $5,950</B><BR/><FONT POINT-SIZE="9">14 units x $425</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  fee [label=<<B>inspection $420</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  rep [label=<<B>repack $300</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  short [label=<<B>shortage 8 units</B><BR/><FONT POINT-SIZE="9">(60 - 58) x 4/carton</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  podq [label=<<B>POD quote '58 cartons'</B><BR/><FONT POINT-SIZE="9">verified vs proof_of_delivery</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  unsell [label=<<B>14 unsellable</B><BR/><FONT POINT-SIZE="9">inspection carton table</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  inspq [label=<<B>inspection transcript</B><BR/><FONT POINT-SIZE="9">vision-read, second-pass verified</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  frq [label=<<B>freight $1,850</B><BR/><FONT POINT-SIZE="9">TMS quote, verified</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  counter -> ch;
+  counter -> gh;
+  ch -> miss;
+  ch -> dmg;
+  ch -> fee;
+  ch -> rep;
+  miss -> short;
+  short -> podq;
+  dmg -> unsell;
+  unsell -> inspq;
+  gh -> frq;
+}

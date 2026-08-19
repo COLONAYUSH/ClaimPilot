@@ -26,46 +26,7 @@ Imports run one way: `cli` and `pipeline` sit on top and wire everything; the le
 modules (`util`, `models`, `config`) depend on nothing internal. Nothing under a stage
 imports the orchestrator, so each stage is testable in isolation.
 
-```mermaid
-flowchart TD
-    cli["cli.py<br/><i>run · ask · eval · bench · robustness</i>"] --> pipeline
-    pipeline["pipeline.py<br/><i>orchestrator</i>"]
-
-    pipeline --> ingest["ingest.py"]
-    pipeline --> extract["extract.py"]
-    pipeline --> grounding["grounding.py"]
-    pipeline --> security["security.py"]
-    pipeline --> reconcile["reconcile.py"]
-    pipeline --> entitlement["entitlement.py"]
-    pipeline --> benchmark["benchmark.py"]
-    pipeline --> position["position.py"]
-    pipeline --> report["report.py"]
-
-    extract --> llm["llm.py<br/><i>providers · cache · schema repair</i>"]
-    entitlement --> llm
-    position --> llm
-    extract --> prompts["prompts.py<br/><i>schemas + templates</i>"]
-    entitlement --> prompts
-    position --> prompts
-
-    entitlement --> retrieval["retrieval.py"]
-    retrieval --> bridge["datum_bridge.py<br/><i>runs under datum's venv</i>"]
-
-    ingest --> models["models.py<br/><i>FactLedger + domain types</i>"]
-    extract --> models
-    reconcile --> models
-    grounding --> models
-    security --> models
-    pipeline --> config["config.py<br/><i>manifest · trust tiers · run config</i>"]
-    models --> util["util.py<br/><i>money · hashing · quote match · json</i>"]
-
-    classDef top fill:#1f6feb,stroke:#0b3d91,color:#fff;
-    classDef llmnode fill:#D97757,stroke:#8a3b1e,color:#fff;
-    classDef leaf fill:#57606a,stroke:#2b2f36,color:#fff;
-    class cli,pipeline top;
-    class llm llmnode;
-    class util,models,config leaf;
-```
+<p align="center"><img src="../diagrams/modules.png" alt="Module dependency graph" width="100%"></p>
 
 Two design rules hold the shape:
 
@@ -83,37 +44,7 @@ Everything the system knows is a `Fact` in an ordered `FactLedger` with a by-key
 Three registers are kept apart by the `kind` field, and nothing promotes one to another
 silently.
 
-```mermaid
-classDiagram
-    class FactLedger {
-        +list~Fact~ facts
-        +dict by_key
-        +add(key, value, kind, method, citations) Fact
-        +fact(key) Fact
-        +value(key) Any
-        +dec(key) Decimal
-    }
-    class Fact {
-        +str fact_id
-        +str key
-        +Any value
-        +str kind
-        +str method
-        +list~Citation~ citations
-        +float confidence
-        +list~str~ inputs
-        +str formula
-    }
-    class Citation {
-        +str source_id
-        +str locator
-        +str quote
-        +bool verified
-        +float match_ratio
-    }
-    FactLedger "1" o-- "many" Fact
-    Fact "1" o-- "many" Citation
-```
+<p align="center"><img src="../diagrams/ledger.png" alt="FactLedger, Fact and Citation class model" width="900"></p>
 
 Field notes: `fact_id` is a stable label like `F-217`; `key` is the dotted namespace such
 as `pod.received_cartons`; `kind` is one of `EXTRACTED | ASSERTED | DERIVED`; `method` is
@@ -138,38 +69,7 @@ One run spans two Python interpreters and up to two external services. The split
 because the app targets the system Python 3.9 while datum needs 3.11+, and because datum
 is stateful (Postgres). Keeping datum out of process is also how it deploys for real.
 
-```mermaid
-flowchart LR
-    subgraph proc1["Process A - claimpilot (Python 3.9)"]
-        orch["pipeline orchestrator"]
-        llmc["llm.LLMClient<br/>+ DiskCache"]
-        dret["retrieval.DatumRetriever"]
-    end
-
-    subgraph proc2["Process B - datum bridge (Python 3.12 venv)"]
-        br["datum_bridge.py<br/>stdin/stdout JSON-lines"]
-        corpus["datum.Corpus"]
-    end
-
-    cache[("Disk cache<br/>.cache/llm/*.json<br/>content-addressed")]
-    pg[("PostgreSQL 17<br/>+ pgvector")]
-    prov{{"Model provider<br/>Anthropic API · Claude CLI · replay"}}
-
-    orch --> llmc
-    llmc <-->|"sha256 key"| cache
-    llmc -->|"HTTPS or subprocess"| prov
-    orch --> dret
-    dret <-->|"newline-delimited JSON<br/>over a pipe"| br
-    br --> corpus
-    corpus <-->|"SQL + vector ops"| pg
-
-    classDef p1 fill:#1f6feb,stroke:#0b3d91,color:#fff;
-    classDef p2 fill:#6f42c1,stroke:#3f2374,color:#fff;
-    classDef ext fill:#1a7f37,stroke:#0b4a20,color:#fff;
-    class orch,llmc,dret p1;
-    class br,corpus p2;
-    class cache,pg,prov ext;
-```
+<p align="center"><img src="../diagrams/topology.png" alt="Process and network topology" width="100%"></p>
 
 Process boundaries double as isolation boundaries. The bridge speaks one JSON object per
 line and nothing else; its stdout is reserved for protocol replies, and every noisy
@@ -182,45 +82,7 @@ query.
 `run_pipeline(cfg)` in `pipeline.py` is the whole control flow. Each row below is a real
 function boundary with a fixed contract.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant P as pipeline
-    participant I as ingest
-    participant X as extract
-    participant G as grounding
-    participant S as security
-    participant R as reconcile
-    participant E as entitlement
-    participant D as datum bridge
-    participant B as benchmark
-    participant C as position (compose)
-    participant O as report
-
-    P->>I: load_registry(cfg)
-    I-->>P: {source_id: SourceDoc}  (sha256, trust tier, parsed text)
-    P->>X: run_extraction(registry, ledger, client)
-    X->>X: structured sources -> facts (deterministic)
-    X->>X: text + vision sources -> facts (LLM, quoted)
-    X-->>P: ledger populated (~168 facts)
-    P->>S: scan_registry(registry)
-    S-->>P: security findings (injection, unicode, smuggled text)
-    P->>R: run_reconciliation(ledger, registry)
-    R-->>P: discrepancies, gaps, demand lines, derived facts
-    P->>E: run_entitlement(ledger, registry, demand_lines, retriever, client)
-    E->>D: search(clause queries)
-    D-->>E: ranked clauses + plan_id (or insufficient_evidence)
-    E->>E: LLM reads clause params (quoted) -> deterministic calculator
-    E-->>P: entitlements, contract terms, position numbers
-    P->>B: run_benchmark(ledger, registry)
-    B-->>P: comparables + cohort stats
-    P->>G: verify_fact_citations(ledger, registry)
-    G-->>P: citation QA (quarantine failures)
-    P->>C: compose_position(...)  (LLM + NumberGuard + repair)
-    C-->>P: brief sections + draft reply, or fail-closed
-    P->>O: write_outputs(case)
-    O-->>P: case_file.json · brief.html · brief.md · draft_reply.txt
-```
+<p align="center"><img src="../diagrams/seq_pipeline.png" alt="Pipeline stages as a sequence" width="520"></p>
 
 Stage contracts, precisely:
 
@@ -275,24 +137,7 @@ cannot be derived from the ledger is a violation. Violations are fed back for a 
 repair; if the output still fails, composition fails closed and the written prose is
 withheld while the deterministic sections still render.
 
-```mermaid
-flowchart LR
-    src["untrusted sources"] -->|extract| f["EXTRACTED facts + quotes"]
-    f --> qg{"Guard 1<br/>quote in source?"}
-    qg -->|no| quar["quarantine<br/>(excluded from reasoning)"]
-    qg -->|yes| led["fact ledger"]
-    src --> sc{"Guard 2<br/>adversarial scan"}
-    sc --> panel["security panel<br/>(findings surfaced)"]
-    led --> comp["LLM composition"]
-    comp --> ng{"Guard 3<br/>every number in ledger?"}
-    ng -->|no, after repair| closed["fail closed<br/>(prose withheld)"]
-    ng -->|yes| brief["brief + reply"]
-
-    classDef guard fill:#6f42c1,stroke:#3f2374,color:#fff;
-    classDef bad fill:#c93c37,stroke:#7d211d,color:#fff;
-    class qg,sc,ng guard;
-    class quar,closed bad;
-```
+<p align="center"><img src="../diagrams/guards.png" alt="The three deterministic guards" width="860"></p>
 
 ## The datum bridge protocol
 
@@ -321,28 +166,10 @@ full canonical section before the LLM reads it, with the matched span kept for a
 `llm.LLMClient` is cache-first, provider-second, with schema validation and a bounded
 repair loop around every structured call.
 
-```mermaid
-flowchart TD
-    call["client.call(LLMRequest)"] --> key["cache key =<br/>sha256(model, system, prompt,<br/>attachment sha256s, schema)"]
-    key --> hit{"cache hit?"}
-    hit -->|yes| ret["return cached (cost 0)"]
-    hit -->|no| prov["provider.complete()"]
-    prov --> anthropic["AnthropicAPIProvider<br/>urllib · document/image blocks<br/>tool-forced JSON · ret/backoff"]
-    prov --> cli["ClaudeCLIProvider<br/>claude -p headless · stdin<br/>Read tool for vision"]
-    prov --> replay["ReplayProvider<br/>cache-only (CacheMiss if absent)"]
-    anthropic --> val
-    cli --> val
-    val{"schema valid?"} -->|no, < max_repairs| repair["feed errors back"]
-    repair --> prov
-    val -->|yes| store["write cache + return"]
-    val -->|no, exhausted| err["raise LLMError"]
-
-    classDef llmnode fill:#D97757,stroke:#8a3b1e,color:#fff;
-    class anthropic,cli,replay llmnode;
-```
+<p align="center"><img src="../diagrams/provider.png" alt="LLM provider and cache flow" width="640"></p>
 
 Because the cache key is derived from request content only (not from which provider
-served it), a cache populated by the Claude CLI replays byte-identically under
+served it), a cache populated by any provider replays byte-identically under
 `--provider replay`. That is what makes evals and CI deterministic and free, and it is
 why every LLM call is temperature 0. The `AnthropicAPIProvider` honors `ANTHROPIC_BASE_URL`
 so the same code path works against an enterprise gateway or Bedrock-style endpoint.
@@ -359,36 +186,7 @@ attack; it matches structure. The engine runs three passes over each source and 
 fixed set of pattern classes, emitting at most one finding per class per source so the
 panel stays readable.
 
-```mermaid
-flowchart TB
-    subgraph inputs["Per source (skip MISSING / UNREADABLE)"]
-        t1["native text<br/>(doc.text)"]
-        t2["vision transcript<br/>(doc.derived_text)"]
-        t3["unexpected text layer<br/>(doc.meta, scans only)"]
-    end
-    t1 --> scan
-    t2 --> scan
-    t3 --> flag["emit unexpected_text_layer (HIGH)<br/>never adopted as citable text"]
-    t3 --> scan
-
-    subgraph scan["scan_text: match each pattern class"]
-        direction TB
-        c1["instruction_override (HIGH)<br/>ignore/disregard/override/bypass<br/>+ instructions/prompts/rules/context"]
-        c2["role_marker (HIGH)<br/>&lt;|...|&gt; · [INST] · ^role: · 'system note'"]
-        c3["ai_directive (MEDIUM)<br/>note/instructions to the AI/LLM/assistant<br/>· 'you are an AI'"]
-        c4["invisible_unicode (HIGH)<br/>zero-width + bidi codepoints<br/>U+200B..U+200D U+2060 U+FEFF U+202A..E U+2066..9"]
-        c5["encoded_blob (LOW)<br/>base64-like run ≥ 120 chars"]
-    end
-
-    scan --> f["SecurityFinding{source_id, kind, severity,<br/>evidence (escaped snippet), location (offset)}"]
-    flag --> f
-    f --> panel["security panel in the brief<br/>+ CloudWatch metric in prod"]
-
-    classDef guard fill:#6f42c1,stroke:#3f2374,color:#fff;
-    classDef bad fill:#c93c37,stroke:#7d211d,color:#fff;
-    class c1,c2,c3,c4,c5 guard;
-    class flag bad;
-```
+<p align="center"><img src="../diagrams/scanner.png" alt="Adversarial scanning engine internals" width="800"></p>
 
 Three properties are deliberate:
 
@@ -412,36 +210,7 @@ Two layers cooperate: the app-side `DatumRetriever` (transport and provenance al
 and datum's own compiled-query plan (the retrieval algorithm). A single `search` call
 flows through both.
 
-```mermaid
-flowchart TB
-    q["clause query or ask question"] --> dr["DatumRetriever.search"]
-    dr -->|JSON-lines RPC| plan
-
-    subgraph plan["datum compiled plan (inside the bridge)"]
-        direction TB
-        acl["resolve namespace ACL<br/>(fail closed, before any operator)"]
-        acl --> ops
-        subgraph ops["run operators, scoped to namespace"]
-            grep["grep<br/>literal"]
-            bm25["BM25<br/>Postgres full-text"]
-            ann["ANN<br/>pgvector HNSW (dense)"]
-        end
-        ops --> rrf["weighted Reciprocal Rank Fusion<br/>score = sum_o w_o / (k + rank_o(d))"]
-        rrf --> rerank["cross-encoder rerank<br/>reads query+candidate together"]
-        rerank --> suff{"best dense similarity<br/>≥ abstain_floor (0.50)?"}
-        suff -->|no| abstain["status = insufficient_evidence"]
-        suff -->|yes| hits["hits: content, section_path,<br/>page, score, span, plan_id"]
-    end
-
-    hits --> map["map span → full canonical section<br/>via _chunk_lookup (title key)<br/>keep matched span for audit"]
-    abstain --> up["status propagates up:<br/>entitlement records the topic unresolved<br/>ask returns an honest refusal"]
-    map --> out["RetrievalHit{source_id, locator, title,<br/>text=full section, score,<br/>extra: hit_id, section_path, matched_span}"]
-
-    classDef det fill:#1a7f37,stroke:#0b4a20,color:#fff;
-    classDef guard fill:#6f42c1,stroke:#3f2374,color:#fff;
-    class grep,bm25,ann,rrf,rerank det;
-    class suff,abstain guard;
-```
+<p align="center"><img src="../diagrams/retrieval.png" alt="Retrieval engine internals" width="560"></p>
 
 The details that matter:
 
@@ -467,33 +236,7 @@ The details that matter:
 `extract.run_extraction` routes each source down one of three paths by kind. Structured
 data never touches the model; language and images do, always with a quote.
 
-```mermaid
-flowchart TB
-    reg["registry (15 sources)"] --> router{"source kind"}
-
-    router -->|JSON / CSV / XLSX| det["Deterministic path<br/>parse native structure"]
-    det --> detq["quote = the raw JSON line / CSV row<br/>(_json_line_quote)"]
-    detq --> f1["FactWriter.det → EXTRACTED / DETERMINISTIC"]
-
-    router -->|invoice / BOL / POD / email / overview| llm["LLM path<br/>schema-forced JSON, one quote per field"]
-    llm --> repair["schema validate + up to 2 repairs"]
-    repair --> f2["FactWriter.fv → EXTRACTED / LLM<br/>confidence halved if a quote is missing"]
-
-    router -->|scanned PDF / photos| vis["Vision path"]
-    vis --> tr["1. full transcript<br/>(becomes the citable derived text)"]
-    tr --> fields["2. fields, each quoting the transcript"]
-    fields --> verify["3. second pass re-reads the image<br/>confirms key values"]
-    verify --> f3["EXTRACTED / LLM_VISION<br/>confidence = read legibility;<br/>disagreement lowers it further"]
-
-    f1 --> led["fact ledger"]
-    f2 --> led
-    f3 --> led
-
-    classDef det fill:#1a7f37,stroke:#0b4a20,color:#fff;
-    classDef llmnode fill:#D97757,stroke:#8a3b1e,color:#fff;
-    class det,detq,f1 det;
-    class llm,repair,vis,tr,fields,verify llmnode;
-```
+<p align="center"><img src="../diagrams/extraction.png" alt="Extraction engine, three paths" width="660"></p>
 
 The vision path is the most defended because it is the least trustworthy input. The
 transcript is produced first and becomes the source's citable text, so field quotes cite
@@ -508,28 +251,7 @@ The 14 rules share one context object and one shape: read facts, derive new fact
 formula, raise discrepancies or gaps, degrade if inputs are missing. A rule that throws is
 caught so one bug cannot take down the run.
 
-```mermaid
-flowchart TB
-    subgraph ctx["Ctx (shared)"]
-        led["ledger"]
-        reg["registry"]
-    end
-    rule["rule r02_piece_counts"] --> guard{"has(tms.pieces_tendered,<br/>pod.received_cartons)?"}
-    guard -->|no| skip["skip() with a note<br/>(graceful degradation)"]
-    guard -->|yes| read["read facts:<br/>tendered=60, received=58, edi=59"]
-    read --> derive["derive('derived.shortage_cartons', 2,<br/>formula='60 - 58', inputs=[F.., F..])"]
-    read --> conflict{"edi != received?"}
-    conflict -->|yes| disc["disc(HIGH, COUNT_CONFLICT,<br/>authority_note='signed POD governs',<br/>cite dd.pod_authority + dd.edi_semantics)"]
-    derive --> out["new DERIVED facts + Discrepancy/Gap objects"]
-    disc --> out
-
-    runner["run_reconciliation:<br/>for each rule: try/except, log, continue"] -.-> rule
-
-    classDef det fill:#1a7f37,stroke:#0b4a20,color:#fff;
-    classDef bad fill:#c93c37,stroke:#7d211d,color:#fff;
-    class read,derive,out det;
-    class disc,conflict bad;
-```
+<p align="center"><img src="../diagrams/rule.png" alt="Anatomy of a reconciliation rule" width="640"></p>
 
 Three mechanisms carry the correctness story:
 
@@ -549,29 +271,7 @@ Three mechanisms carry the correctness story:
 Stage 5 is a retrieve-read-compute sandwich: retrieval and one LLM read sit between two
 deterministic ends, and only the deterministic ends touch money.
 
-```mermaid
-flowchart TB
-    dl["demand lines (from reconcile)"] --> rc["retrieve_clauses<br/>8 topics, primary + fallback query<br/>abstention → record unresolved"]
-    rc --> et["extract_terms (LLM)<br/>read params from retrieved text,<br/>each quoted + verified vs agreement"]
-    et --> params["contract facts:<br/>cap $50/lb, notice 9mo/30d,<br/>delay excluded, salvage required"]
-
-    params --> calc
-
-    subgraph calc["deterministic calculator"]
-        direction TB
-        cap["_cap_math per line:<br/>min(units x price,<br/>units x weight x $50/lb)"]
-        dead["check_timeliness:<br/>_add_months(delivered, 9) etc.<br/>filed ≤ deadline?"]
-        cls["classify each line:<br/>STRONG / MODERATE / NEEDS_INFO /<br/>EXCLUDED_CONTRACTUAL / GOODWILL_LEVER"]
-    end
-
-    calc --> pos["compute_position_numbers:<br/>core_low, core_high,<br/>goodwill_high, recommended_counter,<br/>expected band, reserve check"]
-    pos --> led["DERIVED facts + Entitlement objects"]
-
-    classDef det fill:#1a7f37,stroke:#0b4a20,color:#fff;
-    classDef llmnode fill:#D97757,stroke:#8a3b1e,color:#fff;
-    class cap,dead,cls,pos det;
-    class et llmnode;
-```
+<p align="center"><img src="../diagrams/entitlement.png" alt="Entitlement calculator" width="700"></p>
 
 The calculator is where the case's judgment is encoded as arithmetic:
 
@@ -592,33 +292,7 @@ The calculator is where the case's judgment is encoded as arithmetic:
 The guard's strength is that one tokenizer builds the allow-list and scans the output, so
 the two can never disagree about what a number is.
 
-```mermaid
-flowchart TB
-    subgraph build["build allow-list (from the ledger)"]
-        vals["non-quarantined fact values<br/>+ extras (entitlements, comps)"]
-        vals --> tok1["collect_tokens: strip id-like tokens,<br/>split ISO timestamps,<br/>extract num/date/time/pct, canonicalize"]
-        tok1 --> widen["_widen: date without year,<br/>pct roundings, integer form of x.00"]
-        widen --> allow[("allowed token set<br/>{(kind, canonical)}")]
-    end
-
-    subgraph scanpass["scan generated text (same tokenizer)"]
-        gen["brief + draft reply"] --> tok2["collect_tokens"]
-        tok2 --> check{"each token in allowed?"}
-        check -->|small int <= 10| pass1["pass (prose counts)"]
-        check -->|in set| pass2["pass"]
-        check -->|no| viol["GuardViolation{kind, token, context}"]
-    end
-
-    allow --> check
-    viol --> repair["feed violations back, bounded repair"]
-    repair -->|still failing| closed["fail closed:<br/>withhold prose, render deterministic sections"]
-    viol -. also .-> refs["check_fact_refs: every [F-x]/[E-x]/[D-x]<br/>must resolve; draft reply carries none"]
-
-    classDef guard fill:#6f42c1,stroke:#3f2374,color:#fff;
-    classDef bad fill:#c93c37,stroke:#7d211d,color:#fff;
-    class tok1,tok2,widen,check guard;
-    class viol,closed bad;
-```
+<p align="center"><img src="../diagrams/numberguard.png" alt="NumberGuard tokenizer" width="800"></p>
 
 Mechanics worth knowing:
 

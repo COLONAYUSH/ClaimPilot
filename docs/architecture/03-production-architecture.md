@@ -36,86 +36,14 @@ Everything runs inside a VPC with private subnets. The model is reached through 
 endpoint (Bedrock), so no claim content leaves the AWS network boundary on the default
 path.
 
-```mermaid
-flowchart TB
-    subgraph edge["Edge / intake"]
-        ses["SES inbound<br/>(claim emails)"]
-        apigw["API Gateway<br/>(portal + reviewer UI)"]
-    end
-
-    subgraph vpc["VPC (private subnets, multi-AZ)"]
-        subgraph ingestlane["Ingestion"]
-            s3raw[("S3<br/>raw documents")]
-            eb["EventBridge"]
-            q1["SQS<br/>claim-work queue"]
-            dlq["SQS DLQ"]
-        end
-        subgraph compute["Compute"]
-            workers["ECS Fargate<br/>pipeline worker pool<br/>(autoscaled on queue depth)"]
-            askfn["Lambda / Fargate<br/>ask hot path"]
-        end
-        subgraph retrieval["Retrieval"]
-            datumsvc["ECS Fargate<br/>datum service"]
-            aurora[("Aurora PostgreSQL<br/>+ pgvector, multi-AZ")]
-        end
-        subgraph state["State + artifacts"]
-            ddb[("DynamoDB<br/>claim state + cache index")]
-            s3art[("S3<br/>case_file.json · briefs · ledger")]
-            s3cache[("S3<br/>LLM response cache")]
-        end
-        subgraph aiservices["AI services"]
-            bedrock{{"Bedrock VPC endpoint<br/>Claude (text + vision)"}}
-            textract{{"Textract<br/>independent OCR"}}
-        end
-        secrets["Secrets Manager + KMS"]
-    end
-
-    obs["CloudWatch · X-Ray · OpenSearch"]
-
-    ses --> s3raw
-    apigw --> q1
-    s3raw --> eb --> q1
-    q1 --> workers
-    q1 -. poison .-> dlq
-    workers --> bedrock
-    workers --> textract
-    workers --> datumsvc --> aurora
-    workers --> ddb
-    workers --> s3art
-    workers <--> s3cache
-    apigw --> askfn --> datumsvc
-    askfn --> bedrock
-    workers --> secrets
-    workers --> obs
-    datumsvc --> obs
-
-    classDef ext fill:#1a7f37,stroke:#0b4a20,color:#fff;
-    classDef comp fill:#1f6feb,stroke:#0b3d91,color:#fff;
-    classDef data fill:#57606a,stroke:#2b2f36,color:#fff;
-    class bedrock,textract,ses,apigw ext;
-    class workers,askfn,datumsvc comp;
-    class s3raw,s3art,s3cache,ddb,aurora data;
-```
+<p align="center"><img src="../diagrams/prod_topology.png" alt="AWS production topology" width="100%"></p>
 
 ## Intake and triggers
 
 Each trigger normalizes to the same event: a claim folder assembled in S3 and a message on
 the work queue.
 
-```mermaid
-flowchart LR
-    e1["inbound email"] --> ses["SES"] --> s3["S3 raw prefix<br/>claims/{claim_id}/"]
-    e2["portal upload"] --> api["API Gateway"] --> val["Lambda validate + assemble"]
-    val --> s3
-    e3["reviewer re-run"] --> api
-    e4["nightly batch"] --> sfn["Step Functions<br/>fan-out over open claims"]
-    sfn --> q
-    s3 --> eb["EventBridge rule<br/>folder-complete"] --> q["SQS claim-work"]
-    q --> w["worker pool"]
-
-    classDef c fill:#1f6feb,stroke:#0b3d91,color:#fff;
-    class ses,api,val,sfn,eb c;
-```
+<p align="center"><img src="../diagrams/triggers.png" alt="Intake triggers" width="920"></p>
 
 A claim is "folder-complete" when its manifest of expected sources is satisfied or a
 timeout fires; the EventBridge rule then enqueues it. Missing sources are fine, the
@@ -180,7 +108,7 @@ and changes nothing else.
   claim content and the model call stay inside the AWS network and are governed by IAM.
   This is the enterprise-friendly path: no API keys to rotate, data residency controlled,
   per-role access. A `BedrockProvider` slots in beside `AnthropicAPIProvider`,
-  `ClaudeCLIProvider` and `ReplayProvider`; the cache key and the whole pipeline are
+  `LocalCLIProvider` and `ReplayProvider`; the cache key and the whole pipeline are
   unchanged.
 - **Vision and OCR.** The multimodal model reads the scanned inspection report and photos
   on the primary path. Textract runs as an independent second OCR and the two transcripts
@@ -213,38 +141,7 @@ already keeps.
 The security model treats the documents as hostile and the network as the enforcement
 layer around them.
 
-```mermaid
-flowchart TB
-    subgraph untrusted["Untrusted"]
-        docs["claim documents<br/>(counterparty-authored)"]
-    end
-    subgraph boundary["Trust boundary: the guards"]
-        g1["Guard 1 quote gate"]
-        g2["Guard 2 adversarial scan"]
-        g3["Guard 3 NumberGuard"]
-    end
-    subgraph trusted["Trusted compute (private subnets)"]
-        w["workers"]
-        d["datum + Aurora"]
-        det["deterministic engine<br/>(computes the money)"]
-    end
-    subgraph controlled["Controlled egress"]
-        be["Bedrock VPC endpoint only"]
-    end
-
-    docs --> g1 --> det
-    docs --> g2 --> w
-    det --> g3 --> out["brief"]
-    w --> d
-    w --> be
-
-    classDef u fill:#c93c37,stroke:#7d211d,color:#fff;
-    classDef g fill:#6f42c1,stroke:#3f2374,color:#fff;
-    classDef t fill:#1a7f37,stroke:#0b4a20,color:#fff;
-    class docs u;
-    class g1,g2,g3 g;
-    class w,d,det,be t;
-```
+<p align="center"><img src="../diagrams/boundaries.png" alt="Network and trust boundaries" width="740"></p>
 
 - **No public egress on the default path.** VPC endpoints for S3, DynamoDB, SQS, Secrets
   and Bedrock; no NAT gateway unless a non-Bedrock provider is deliberately enabled. A
@@ -262,27 +159,7 @@ flowchart TB
 Security shifts left to the pipeline, so nothing reaches an environment without passing
 the gates. The build blocks on any gate failing.
 
-```mermaid
-flowchart LR
-    pr["pull request"] --> lint["lint + type check<br/>ruff · mypy"]
-    lint --> unit["unit + eval suite<br/>tests + golden 106/106 + judge"]
-    unit --> sast["SAST<br/>Bandit (Python) · Semgrep"]
-    sast --> deps["dependency + license<br/>pip-audit · Artifactory Xray"]
-    deps --> secretscan["secret scan<br/>Gitleaks / detect-secrets"]
-    secretscan --> iac["IaC + container scan<br/>Checkov · Trivy · ECR scan"]
-    iac --> robustness["injection robustness gate<br/>claimpilot robustness (12/12)"]
-    robustness --> redteam["LLM red-team<br/>PyRIT prompt-injection + jailbreak suite"]
-    redteam --> sign["SBOM + image signing<br/>Syft · cosign"]
-    sign --> stage["deploy to staging"]
-    stage --> promote{"all gates green?"}
-    promote -->|yes| prod["deploy to prod"]
-    promote -->|no| block["block + report"]
-
-    classDef sec fill:#6f42c1,stroke:#3f2374,color:#fff;
-    classDef bad fill:#c93c37,stroke:#7d211d,color:#fff;
-    class sast,deps,secretscan,iac,robustness,redteam,sign sec;
-    class block bad;
-```
+<p align="center"><img src="../diagrams/cicd.png" alt="Security-first CI/CD pipeline" width="100%"></p>
 
 The gates, and what each is for:
 

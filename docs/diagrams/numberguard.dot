@@ -1,0 +1,44 @@
+digraph numberguard {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.55;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  subgraph cluster_build {
+    label=<<B>build allow-list (from the ledger)</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#E7F6EC";
+    color="#A9DBBE"; penwidth=1.4; margin=14;
+  vals [label=<<B>non-quarantined fact values</B><BR/><FONT POINT-SIZE="9">+ extras (entitlements, comps)</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  tok1 [label=<<B>collect_tokens</B><BR/><FONT POINT-SIZE="9">strip id-like tokens<BR/>split timestamps, canonicalize</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  widen [label=<<B>_widen</B><BR/><FONT POINT-SIZE="9">date without year, pct roundings</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  allow [label=<<B>allowed token set</B><BR/><FONT POINT-SIZE="9">{(kind, canonical)}</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  }
+  subgraph cluster_scan {
+    label=<<B>scan generated text (same tokenizer)</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#FCF1E2";
+    color="#EBC98C"; penwidth=1.4; margin=14;
+  gen [label=<<B>brief + draft reply</B>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  tok2 [label=<<B>collect_tokens (same)</B>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  check [label=<each token<BR/>in allowed?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  pass2 [label=<<B>pass</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  viol [label=<<B>GuardViolation</B><BR/><FONT POINT-SIZE="9">kind, token, context</FONT>>, fillcolor="#FBEAE9", color="#D64540"];
+  }
+  repair [label=<<B>feed violations back, bounded repair</B>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  closed [label=<<B>fail closed: withhold prose</B>>, fillcolor="#FBEAE9", color="#D64540"];
+  refs [label=<<B>check_fact_refs</B><BR/><FONT POINT-SIZE="9">every [F-x] resolves<BR/>reply carries none</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  vals -> tok1;
+  tok1 -> widen;
+  widen -> allow;
+  gen -> tok2;
+  tok2 -> check;
+  allow -> check [style=dashed];
+  check -> pass2 [label="in set / small int", color="#1E9E57", fontcolor="#1E9E57"];
+  check -> viol [label="no", color="#D64540", fontcolor="#D64540"];
+  viol -> repair;
+  repair -> closed [label="still failing", color="#D64540", fontcolor="#D64540"];
+  viol -> refs [label="also", style=dashed];
+}

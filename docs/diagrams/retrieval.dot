@@ -1,0 +1,48 @@
+digraph retrieval {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.55;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  q [label=<<B>clause query / ask question</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  dr [label=<<B>DatumRetriever.search</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  subgraph cluster_plan {
+    label=<<B>datum compiled plan (inside the bridge)</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#EFEAF9";
+    color="#C3A9EC"; penwidth=1.4; margin=14;
+  acl [label=<<B>resolve namespace ACL</B><BR/><FONT POINT-SIZE="9">fail closed, before operators</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  subgraph cluster_ops {
+    label=<<B>run operators, scoped to namespace</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#E7F6EC";
+    color="#A9DBBE"; penwidth=1.4; margin=14;
+  grep [label=<<B>grep</B><BR/><FONT POINT-SIZE="9">literal</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  bm25 [label=<<B>BM25</B><BR/><FONT POINT-SIZE="9">Postgres full-text</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  ann [label=<<B>ANN</B><BR/><FONT POINT-SIZE="9">pgvector HNSW</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  }
+  rrf [label=<<B>weighted RRF fusion</B><BR/><FONT POINT-SIZE="9">score = sum w/(k+rank)</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  rerank [label=<<B>cross-encoder rerank</B><BR/><FONT POINT-SIZE="9">query + candidate together</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  suff [label=<best dense sim<BR/>&gt;= abstain floor?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  abstain [label=<<B>insufficient_evidence</B>>, fillcolor="#FBEAE9", color="#D64540"];
+  hits [label=<<B>hits: content, section_path,</B><BR/><FONT POINT-SIZE="9">page, score, span, plan_id</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  }
+  map [label=<<B>map span to full section</B><BR/><FONT POINT-SIZE="9">via _chunk_lookup<BR/>keep matched span for audit</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  out [label=<<B>RetrievalHit</B><BR/><FONT POINT-SIZE="9">full section text + provenance</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  q -> dr;
+  dr -> acl [label="JSON-lines RPC"];
+  acl -> grep;
+  acl -> bm25;
+  acl -> ann;
+  grep -> rrf;
+  bm25 -> rrf;
+  ann -> rrf;
+  rrf -> rerank;
+  rerank -> suff;
+  suff -> abstain [label="no", color="#D64540", fontcolor="#D64540"];
+  suff -> hits [label="yes", color="#1E9E57", fontcolor="#1E9E57"];
+  hits -> map;
+  map -> out;
+}

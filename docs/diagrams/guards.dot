@@ -1,0 +1,32 @@
+digraph guards {
+  bgcolor="white"; rankdir=LR; pad=0.35; nodesep=0.5; ranksep=0.7;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  src [label=<<B>untrusted sources</B>>, fillcolor="#FBEAE9", color="#D64540"];
+  f [label=<<B>EXTRACTED facts + quotes</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  qg [label=<Guard 1<BR/>quote in source?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  quar [label=<<B>quarantine</B><BR/><FONT POINT-SIZE="9">excluded from reasoning</FONT>>, fillcolor="#FBEAE9", color="#D64540"];
+  led [label=<<B>fact ledger</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  sc [label=<Guard 2<BR/>adversarial scan>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  panel [label=<<B>security panel</B><BR/><FONT POINT-SIZE="9">findings surfaced</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  comp [label=<<B>LLM composition</B>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  ng [label=<Guard 3<BR/>every number<BR/>in ledger?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  closed [label=<<B>fail closed</B><BR/><FONT POINT-SIZE="9">prose withheld</FONT>>, fillcolor="#FBEAE9", color="#D64540"];
+  brief [label=<<B>brief + reply</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  src -> f [label="extract"];
+  f -> qg;
+  qg -> quar [label="no", color="#D64540", fontcolor="#D64540"];
+  qg -> led [label="yes", color="#1E9E57", fontcolor="#1E9E57"];
+  src -> sc;
+  sc -> panel;
+  led -> comp [weight=2];
+  comp -> ng;
+  ng -> closed [label="no (after repair)", color="#D64540", fontcolor="#D64540"];
+  ng -> brief [label="yes", color="#1E9E57", fontcolor="#1E9E57"];
+}

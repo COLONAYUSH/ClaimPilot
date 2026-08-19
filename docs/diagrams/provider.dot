@@ -1,0 +1,36 @@
+digraph provider {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.55;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  call [label=<<B>client.call(LLMRequest)</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  key [label=<<B>cache key</B><BR/><FONT POINT-SIZE="9">sha256(model, system, prompt,<BR/>attachments, schema)</FONT>>, fillcolor="#F0F2F5", color="#7A828E"];
+  hit [label=<cache hit?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  ret [label=<<B>return cached (cost 0)</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  prov [label=<<B>provider.complete()</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  api [label=<<B>AnthropicAPIProvider</B><BR/><FONT POINT-SIZE="9">urllib · doc/image blocks<BR/>tool-forced JSON · retry</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  cli [label=<<B>LocalCLIProvider</B><BR/><FONT POINT-SIZE="9">headless local model CLI<BR/>Read tool for vision</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  replay [label=<<B>ReplayProvider</B><BR/><FONT POINT-SIZE="9">cache-only (CacheMiss)</FONT>>, fillcolor="#F0F2F5", color="#7A828E"];
+  val [label=<schema valid?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  repair [label=<<B>feed errors back</B>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  store [label=<<B>write cache + return</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  err [label=<<B>raise LLMError</B>>, fillcolor="#FBEAE9", color="#D64540"];
+  call -> key;
+  key -> hit;
+  hit -> ret [label="yes", color="#1E9E57", fontcolor="#1E9E57"];
+  hit -> prov [label="no", color="#D64540", fontcolor="#D64540"];
+  prov -> api;
+  prov -> cli;
+  prov -> replay;
+  api -> val;
+  cli -> val;
+  val -> repair [label="no (< max)", color="#D9A431", fontcolor="#D9A431"];
+  repair -> prov;
+  val -> store [label="yes", color="#1E9E57", fontcolor="#1E9E57"];
+  val -> err [label="no (exhausted)", color="#D64540", fontcolor="#D64540"];
+}

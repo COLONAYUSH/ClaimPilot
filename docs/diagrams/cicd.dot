@@ -1,0 +1,38 @@
+digraph cicd {
+  bgcolor="white"; rankdir=LR; pad=0.35; nodesep=0.5; ranksep=0.55;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  pr [label=<<B>pull request</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  lint [label=<<B>lint + type check</B><BR/><FONT POINT-SIZE="9">ruff · mypy</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  unit [label=<<B>unit + eval suite</B><BR/><FONT POINT-SIZE="9">tests · golden · judge</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  sast [label=<<B>SAST</B><BR/><FONT POINT-SIZE="9">Bandit · Semgrep</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  deps [label=<<B>dependency + license</B><BR/><FONT POINT-SIZE="9">pip-audit · Artifactory Xray</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  secretscan [label=<<B>secret scan</B><BR/><FONT POINT-SIZE="9">Gitleaks</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  iac [label=<<B>IaC + container</B><BR/><FONT POINT-SIZE="9">Checkov · Trivy</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  robustness [label=<<B>injection robustness</B><BR/><FONT POINT-SIZE="9">claimpilot robustness 12/12</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  redteam [label=<<B>LLM red-team</B><BR/><FONT POINT-SIZE="9">PyRIT injection + jailbreak</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  sign [label=<<B>SBOM + signing</B><BR/><FONT POINT-SIZE="9">Syft · cosign</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  stage [label=<<B>deploy to staging</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  promote [label=<all gates<BR/>green?>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  prod [label=<<B>deploy to prod</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  block [label=<<B>block + report</B>>, fillcolor="#FBEAE9", color="#D64540"];
+  pr -> lint [weight=5];
+  lint -> unit [weight=5];
+  unit -> sast [weight=5];
+  sast -> deps [weight=5];
+  deps -> secretscan [weight=5];
+  secretscan -> iac [weight=5];
+  iac -> robustness [weight=5];
+  robustness -> redteam [weight=5];
+  redteam -> sign [weight=5];
+  sign -> stage [weight=5];
+  stage -> promote [weight=5];
+  promote -> prod [label="yes", color="#1E9E57", fontcolor="#1E9E57"];
+  promote -> block [label="no", color="#D64540", fontcolor="#D64540"];
+}

@@ -1,0 +1,24 @@
+digraph pipeline {
+  bgcolor="white"; rankdir=LR; pad=0.35; nodesep=0.5; ranksep=0.75;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  s1 [label=<<B>Claim folder</B><BR/><FONT POINT-SIZE="9">15 untrusted sources<BR/>email · JSON/CSV/XLSX · PDFs<BR/>image-only scan · photos · MSA</FONT>>, fillcolor="#F0F2F5", color="#7A828E"];
+  A [label=<<B>1  INGEST</B><BR/><FONT POINT-SIZE="9">deterministic parsers<BR/>sha256 · trust tiers</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  B [label=<<B>2  EXTRACT</B><BR/><FONT POINT-SIZE="9">LLM, schema-forced<BR/>verbatim quote per field<BR/>vision: transcript to fields to verify</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  C [label=<<B>3  GROUND</B><BR/><FONT POINT-SIZE="9">quote must exist in source<BR/>else the fact is quarantined</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  D [label=<<B>4  RECONCILE</B><BR/><FONT POINT-SIZE="9">14 pure-Python rules<BR/>counts · money · dates<BR/>source-authority rulings</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  E [label=<<B>5  ENTITLE</B><BR/><FONT POINT-SIZE="9">datum retrieves MSA clauses<BR/>LLM reads params (quoted)<BR/>deterministic calculator</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  F [label=<<B>6  BENCHMARK</B><BR/><FONT POINT-SIZE="9">similarity + dispute-pattern<BR/>over 30 past claims</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  G [label=<<B>7  COMPOSE</B><BR/><FONT POINT-SIZE="9">LLM writes brief + reply<BR/>NumberGuard + ref check<BR/>bounded repair · fails CLOSED</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  H [label=<<B>Outputs</B><BR/><FONT POINT-SIZE="9">brief.html<BR/>case_file.json<BR/>draft_reply.txt</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  SEC [label=<<B>SCAN  tamper-proofing</B><BR/><FONT POINT-SIZE="9">deterministic adversarial check<BR/>injection · invisible unicode<BR/>smuggled text layer</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  s1 -> A -> B -> C -> D -> E -> F -> G -> H [weight=20];
+  B -> SEC [label="sources +\nvision transcripts", style=dashed, color="#7A47D1", fontcolor="#7A47D1"];
+  SEC -> H [label="findings", style=dashed, color="#7A47D1", fontcolor="#7A47D1"];
+}

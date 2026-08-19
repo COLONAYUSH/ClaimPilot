@@ -1,0 +1,50 @@
+digraph sources {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.35; ranksep=0.5;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  subgraph cluster_pr {
+    label=<<B>PRIMARY_RECORD — signed / issued</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#EEF8F1";
+    color="#A9DBBE"; penwidth=1.4; margin=14;
+  inv [label=<<B>commercial invoice</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  bol [label=<<B>bill of lading</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  pod [label=<<B>proof of delivery</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  insp [label=<<B>inspection report (scan)</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  msa [label=<<B>carrier agreement</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  }
+  subgraph cluster_op {
+    label=<<B>OPERATIONAL — systems</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#EFF4FD";
+    color="#9DBBF0"; penwidth=1.4; margin=14;
+  tms [label=<<B>TMS + EDI</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  erp [label=<<B>ERP order/invoice</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  snap [label=<<B>claim snapshot</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  hist [label=<<B>historical claims</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  dd [label=<<B>data dictionary</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  }
+  subgraph cluster_co {
+    label=<<B>CORRESPONDENCE</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#E9F5F5";
+    color="#A6D6D9"; penwidth=1.4; margin=14;
+  eml [label=<<B>email thread (6 messages)</B>>, fillcolor="#E3F4F4", color="#2C9AA0"];
+  }
+  subgraph cluster_cv {
+    label=<<B>CONVENIENCE</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#FCEEED";
+    color="#E6ADAA"; penwidth=1.4; margin=14;
+  ov [label=<<B>case overview (summary)</B>>, fillcolor="#FBEAE9", color="#D64540"];
+  }
+  subgraph cluster_ev {
+    label=<<B>EVIDENCE_MEDIA</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F4EFFB";
+    color="#C3A9EC"; penwidth=1.4; margin=14;
+  p1 [label=<<B>damage photo 1</B>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  p2 [label=<<B>damage photo 2</B>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  }
+}

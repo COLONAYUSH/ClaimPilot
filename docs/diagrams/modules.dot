@@ -1,0 +1,54 @@
+digraph modules {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.4; ranksep=0.55;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  cli [label=<<B>cli.py</B><BR/><FONT POINT-SIZE="9">run · ask · eval<BR/>bench · robustness</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  pipeline [label=<<B>pipeline.py</B><BR/><FONT POINT-SIZE="9">orchestrator</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  ingest [label=<<B>ingest.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  extract [label=<<B>extract.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  grounding [label=<<B>grounding.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  security [label=<<B>security.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  reconcile [label=<<B>reconcile.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  entitlement [label=<<B>entitlement.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  benchmark [label=<<B>benchmark.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  position [label=<<B>position.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  report [label=<<B>report.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  llm [label=<<B>llm.py</B><BR/><FONT POINT-SIZE="9">providers · cache<BR/>schema repair</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  prompts [label=<<B>prompts.py</B><BR/><FONT POINT-SIZE="9">schemas + templates</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  retrieval [label=<<B>retrieval.py</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  bridge [label=<<B>datum_bridge.py</B><BR/><FONT POINT-SIZE="9">runs under datum's venv</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  models [label=<<B>models.py</B><BR/><FONT POINT-SIZE="9">FactLedger + types</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  config [label=<<B>config.py</B><BR/><FONT POINT-SIZE="9">manifest · trust tiers</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  util [label=<<B>util.py</B><BR/><FONT POINT-SIZE="9">money · hashing<BR/>quote match · json</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  cli -> pipeline [weight=5];
+  pipeline -> ingest;
+  pipeline -> extract;
+  pipeline -> grounding;
+  pipeline -> security;
+  pipeline -> reconcile;
+  pipeline -> entitlement;
+  pipeline -> benchmark;
+  pipeline -> position;
+  pipeline -> report;
+  extract -> llm;
+  extract -> prompts;
+  entitlement -> llm;
+  entitlement -> prompts;
+  position -> llm;
+  position -> prompts;
+  entitlement -> retrieval;
+  retrieval -> bridge;
+  ingest -> models;
+  extract -> models;
+  reconcile -> models;
+  grounding -> models;
+  security -> models;
+  pipeline -> config;
+  models -> util;
+}

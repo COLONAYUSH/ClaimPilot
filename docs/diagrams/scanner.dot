@@ -1,0 +1,39 @@
+digraph scanner {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.6;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  subgraph cluster_in {
+    label=<<B>Per source (skip MISSING / UNREADABLE)</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F0F2F5";
+    color="#B9C0CB"; penwidth=1.4; margin=14;
+  t1 [label=<<B>native text</B><BR/><FONT POINT-SIZE="9">doc.text</FONT>>, fillcolor="#F0F2F5", color="#7A828E"];
+  t2 [label=<<B>vision transcript</B><BR/><FONT POINT-SIZE="9">doc.derived_text</FONT>>, fillcolor="#F0F2F5", color="#7A828E"];
+  t3 [label=<<B>unexpected text layer</B><BR/><FONT POINT-SIZE="9">doc.meta, scans only</FONT>>, fillcolor="#FBEAE9", color="#D64540"];
+  }
+  subgraph cluster_sc {
+    label=<<B>scan_text — match each pattern class</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F1EBFB";
+    color="#C3A9EC"; penwidth=1.4; margin=14;
+  c1 [label=<<B>instruction_override (HIGH)</B><BR/><FONT POINT-SIZE="9">ignore/override + instructions</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  c2 [label=<<B>role_marker (HIGH)</B><BR/><FONT POINT-SIZE="9">&lt;|..|&gt; · [INST] · system note</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  c3 [label=<<B>ai_directive (MEDIUM)</B><BR/><FONT POINT-SIZE="9">message to the AI/assistant</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  c4 [label=<<B>invisible_unicode (HIGH)</B><BR/><FONT POINT-SIZE="9">zero-width + bidi codepoints</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  c5 [label=<<B>encoded_blob (LOW)</B><BR/><FONT POINT-SIZE="9">base64-like run</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  }
+  flag [label=<<B>emit unexpected_text_layer (HIGH)</B><BR/><FONT POINT-SIZE="9">never adopted as citable text</FONT>>, fillcolor="#FBEAE9", color="#D64540"];
+  f [label=<<B>SecurityFinding</B><BR/><FONT POINT-SIZE="9">source · kind · severity<BR/>evidence · offset</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  panel [label=<<B>security panel + metric</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  t1 -> c1;
+  t2 -> c1;
+  t3 -> c1;
+  t3 -> flag;
+  c5 -> f;
+  flag -> f;
+  f -> panel;
+}

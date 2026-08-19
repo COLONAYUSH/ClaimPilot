@@ -189,30 +189,7 @@ claimpilot bench --pack DIR
 
 ## How it works
 
-```mermaid
-flowchart LR
-    subgraph folder["Claim folder - 15 untrusted sources"]
-        s1["email thread · JSON/CSV/XLSX<br/>text PDFs · image-only scan<br/>photos · carrier MSA · history"]
-    end
-    s1 --> A["<b>1 INGEST</b><br/>deterministic parsers<br/>sha256 · trust tiers"]
-    A --> B["<b>2 EXTRACT</b><br/>LLM, schema-forced,<br/>verbatim quote per field<br/>vision: transcript → fields → re-verify"]
-    B --> C["<b>3 GROUND</b><br/>quote must exist in source<br/>else the fact is quarantined"]
-    C --> D["<b>4 RECONCILE</b><br/>14 pure-Python rules<br/>counts · money · dates · docs<br/>source-authority rulings"]
-    D --> E["<b>5 ENTITLE</b><br/>datum retrieves MSA clauses<br/>LLM reads params (quoted)<br/>deterministic calculator"]
-    E --> F["<b>6 BENCHMARK</b><br/>similarity + dispute-pattern<br/>over 30 past claims"]
-    F --> G["<b>7 COMPOSE</b><br/>LLM writes brief + reply<br/>NumberGuard + ref check<br/>bounded repair · fails CLOSED"]
-    G --> H["brief.html<br/>case_file.json<br/>draft_reply.txt"]
-
-    B -. sources + vision transcripts .-> SEC["<b>SCAN</b> tamper-proofing<br/>deterministic adversarial-input check<br/>injection · invisible unicode · smuggled text layer"]
-    SEC -. findings .-> H
-
-    classDef llm fill:#D97757,stroke:#8a3b1e,color:#fff;
-    classDef det fill:#1a7f37,stroke:#0b4a20,color:#fff;
-    classDef guard fill:#6f42c1,stroke:#3f2374,color:#fff;
-    class B,E,G llm;
-    class A,D,F det;
-    class C,SEC guard;
-```
+<p align="center"><img src="docs/diagrams/pipeline.png" alt="ClaimPilot pipeline: ingest, extract, ground, reconcile, entitle, benchmark, compose, with a tamper-proofing scan branch" width="100%"></p>
 
 Green is deterministic Python, orange is an LLM call, purple is a guard that can stop or
 flag output. The three guards (the quote gate at **3**, the tamper-proofing **SCAN**, and

@@ -1,0 +1,23 @@
+digraph seq_pipeline {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.35; ranksep=0.4;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  s1 [label=<<B>1  pipeline</B><BR/><FONT POINT-SIZE="9">load_registry(cfg)</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  s2 [label=<<B>2  ingest</B><BR/><FONT POINT-SIZE="9">15 SourceDocs: sha256, trust tier, parsed text</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  s3 [label=<<B>3  extract</B><BR/><FONT POINT-SIZE="9">structured sources to facts (deterministic)</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  s4 [label=<<B>4  extract</B><BR/><FONT POINT-SIZE="9">text + vision sources to facts (LLM, quoted)</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  s5 [label=<<B>5  security</B><BR/><FONT POINT-SIZE="9">scan sources + transcripts to findings</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  s6 [label=<<B>6  reconcile</B><BR/><FONT POINT-SIZE="9">discrepancies, gaps, demand lines, derived facts</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  s7 [label=<<B>7  entitlement</B><BR/><FONT POINT-SIZE="9">datum clauses to LLM params to calculator</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  s8 [label=<<B>8  benchmark</B><BR/><FONT POINT-SIZE="9">comparables + cohort stats</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  s9 [label=<<B>9  grounding</B><BR/><FONT POINT-SIZE="9">verify citations, quarantine failures</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  s10 [label=<<B>10  position</B><BR/><FONT POINT-SIZE="9">compose (LLM + NumberGuard + repair, or fail closed)</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  s11 [label=<<B>11  report</B><BR/><FONT POINT-SIZE="9">case_file.json · brief.html · brief.md · draft_reply.txt</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  s1 -> s2 -> s3 -> s4 -> s5 -> s6 -> s7 -> s8 -> s9 -> s10 -> s11 [weight=20];
+}

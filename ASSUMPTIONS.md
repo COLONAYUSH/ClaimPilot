@@ -56,10 +56,10 @@ assertions and derived values; this file covers the decisions around that machin
 
 ## Technical
 
-11. **The LLM is `claude-sonnet-5` at temperature 0 with schema-forced JSON.** On this
-    machine the calls go through the Claude CLI in headless mode since there is no API
-    key here; the direct API provider exists for production; the content-addressed
-    replay cache makes evals and CI deterministic and free.
+11. **The LLM is `claude-sonnet-5` at temperature 0 with schema-forced JSON.** The direct
+    Anthropic API provider is the production path; a local model CLI provider and a
+    cache-only replay provider cover machines with no key configured; the
+    content-addressed replay cache makes evals and CI deterministic and free.
 
 12. **Scanned and photographic sources are read by the model's vision.** Transcript
     first, then fields quoted from the transcript, then an independent second pass

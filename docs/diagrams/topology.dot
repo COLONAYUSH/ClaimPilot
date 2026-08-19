@@ -1,0 +1,36 @@
+digraph topology {
+  bgcolor="white"; rankdir=LR; pad=0.35; nodesep=0.5; ranksep=0.8;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  subgraph cluster_A {
+    label=<<B>Process A — claimpilot (Python 3.9)</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#EAF1FC";
+    color="#9DBBF0"; penwidth=1.4; margin=14;
+  orch [label=<<B>pipeline orchestrator</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  llmc [label=<<B>llm.LLMClient</B><BR/><FONT POINT-SIZE="9">+ DiskCache</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  dret [label=<<B>retrieval.DatumRetriever</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  }
+  subgraph cluster_B {
+    label=<<B>Process B — datum bridge (Python 3.12 venv)</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F1EBFB";
+    color="#C3A9EC"; penwidth=1.4; margin=14;
+  br [label=<<B>datum_bridge.py</B><BR/><FONT POINT-SIZE="9">stdin/stdout JSON-lines</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  corpus [label=<<B>datum.Corpus</B>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  }
+  cache [label=<<B>Disk cache</B><BR/><FONT POINT-SIZE="9">.cache/llm/*.json<BR/>content-addressed</FONT>>, fillcolor="#EDEFF3", color="#5B6472", shape=cylinder, style="filled"];
+  pg [label=<<B>PostgreSQL 17</B><BR/><FONT POINT-SIZE="9">+ pgvector</FONT>>, fillcolor="#EDEFF3", color="#5B6472", shape=cylinder, style="filled"];
+  prov [label=<<B>Model provider</B><BR/><FONT POINT-SIZE="9">Anthropic API · local CLI · replay</FONT>>, fillcolor="#EFEAF9", color="#6B4FC7", shape=hexagon, style="filled"];
+  orch -> llmc;
+  llmc -> cache [label="sha256 key", dir=both];
+  llmc -> prov [label="HTTPS or subprocess"];
+  orch -> dret;
+  dret -> br [label="newline JSON\nover a pipe", dir=both];
+  br -> corpus;
+  corpus -> pg [label="SQL + vector ops", dir=both];
+}

@@ -1,0 +1,16 @@
+digraph ledger {
+  bgcolor="white"; rankdir=LR; pad=0.35; nodesep=0.5; ranksep=0.9;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  Ledger [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4"><TR><TD ALIGN="CENTER" BGCOLOR="#2F5FDF"><FONT COLOR="white"><B>FactLedger</B></FONT></TD></TR><TR><TD ALIGN="LEFT">+ facts: list[Fact]</TD></TR><TR><TD ALIGN="LEFT">+ by_key: dict</TD></TR><TR><TD ALIGN="LEFT">+ add(key, value, kind, ...)</TD></TR><TR><TD ALIGN="LEFT">+ fact(key) / value(key) / dec(key)</TD></TR></TABLE>>, shape=box, style="rounded,filled", fillcolor="white", color="#2F5FDF", penwidth=1.5];
+  Fact [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4"><TR><TD ALIGN="CENTER" BGCOLOR="#2F5FDF"><FONT COLOR="white"><B>Fact</B></FONT></TD></TR><TR><TD ALIGN="LEFT">+ fact_id : str   (F-217)</TD></TR><TR><TD ALIGN="LEFT">+ key : str   (pod.received_cartons)</TD></TR><TR><TD ALIGN="LEFT">+ value : Any</TD></TR><TR><TD ALIGN="LEFT">+ kind : EXTRACTED | ASSERTED | DERIVED</TD></TR><TR><TD ALIGN="LEFT">+ method : DETERMINISTIC | LLM | LLM_VISION | COMPUTED</TD></TR><TR><TD ALIGN="LEFT">+ citations : list[Citation]</TD></TR><TR><TD ALIGN="LEFT">+ confidence : float</TD></TR><TR><TD ALIGN="LEFT">+ inputs : list[str]   (DERIVED)</TD></TR><TR><TD ALIGN="LEFT">+ formula : str   (DERIVED)</TD></TR></TABLE>>, shape=box, style="rounded,filled", fillcolor="white", color="#2F5FDF", penwidth=1.5];
+  Cit [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4"><TR><TD ALIGN="CENTER" BGCOLOR="#2F5FDF"><FONT COLOR="white"><B>Citation</B></FONT></TD></TR><TR><TD ALIGN="LEFT">+ source_id : str</TD></TR><TR><TD ALIGN="LEFT">+ locator : str   (page:1 · message:4)</TD></TR><TR><TD ALIGN="LEFT">+ quote : str   (verbatim)</TD></TR><TR><TD ALIGN="LEFT">+ verified : bool</TD></TR><TR><TD ALIGN="LEFT">+ match_ratio : float</TD></TR></TABLE>>, shape=box, style="rounded,filled", fillcolor="white", color="#2F5FDF", penwidth=1.5];
+  Ledger -> Fact [label="1  *  contains", weight=2];
+  Fact -> Cit [label="1  *  cites", weight=2];
+}

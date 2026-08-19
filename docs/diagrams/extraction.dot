@@ -1,0 +1,40 @@
+digraph extraction {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.5;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  reg [label=<<B>registry (15 sources)</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  router [label=<source kind>, shape=diamond, style="filled", fillcolor="#FFF6E0", color="#D9A431", fontsize=10, margin="0.05,0.03"];
+  det [label=<<B>Deterministic path</B><BR/><FONT POINT-SIZE="9">parse native structure</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  detq [label=<<B>quote = raw JSON line / CSV row</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  f1 [label=<<B>EXTRACTED / DETERMINISTIC</B>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  llm [label=<<B>LLM path</B><BR/><FONT POINT-SIZE="9">schema-forced JSON<BR/>one quote per field</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  repair [label=<<B>schema validate + repair</B>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  f2 [label=<<B>EXTRACTED / LLM</B><BR/><FONT POINT-SIZE="9">confidence halved if no quote</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  vis [label=<<B>Vision path</B>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  tr [label=<<B>1. full transcript</B><BR/><FONT POINT-SIZE="9">becomes citable text</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  fields [label=<<B>2. fields quote the transcript</B>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  verify [label=<<B>3. second pass re-reads image</B>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  f3 [label=<<B>EXTRACTED / LLM_VISION</B><BR/><FONT POINT-SIZE="9">confidence = legibility</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  led [label=<<B>fact ledger</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  reg -> router;
+  router -> det [label="JSON / CSV / XLSX", color="#1E9E57", fontcolor="#1E9E57"];
+  det -> detq;
+  detq -> f1;
+  router -> llm [label="invoice / BOL / POD / email", color="#DE8A24", fontcolor="#DE8A24"];
+  llm -> repair;
+  repair -> f2;
+  router -> vis [label="scanned PDF / photos", color="#DE8A24", fontcolor="#DE8A24"];
+  vis -> tr;
+  tr -> fields;
+  fields -> verify;
+  verify -> f3;
+  f1 -> led;
+  f2 -> led;
+  f3 -> led;
+}

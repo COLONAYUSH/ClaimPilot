@@ -1,0 +1,78 @@
+digraph prod_topology {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.6;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  subgraph cluster_edge {
+    label=<<B>Edge / intake</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#EFF4FD";
+    color="#9DBBF0"; penwidth=1.4; margin=14;
+  ses [label=<<B>SES inbound</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  apigw [label=<<B>API Gateway</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  }
+  subgraph cluster_vpc {
+    label=<<B>VPC — private subnets, multi-AZ</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#FBFCFD";
+    color="#D5DBE3"; penwidth=1.4; margin=14;
+  subgraph cluster_ing {
+    label=<<B>Ingestion</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#EEF8F1";
+    color="#A9DBBE"; penwidth=1.4; margin=14;
+  s3raw [label=<<B>S3 raw documents</B>>, fillcolor="#EDEFF3", color="#5B6472", shape=cylinder, style="filled"];
+  eb [label=<<B>EventBridge</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  q1 [label=<<B>SQS claim-work</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  dlq [label=<<B>SQS DLQ</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  }
+  subgraph cluster_cmp {
+    label=<<B>Compute</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#EFF4FD";
+    color="#9DBBF0"; penwidth=1.4; margin=14;
+  workers [label=<<B>ECS Fargate</B><BR/><FONT POINT-SIZE="9">pipeline worker pool<BR/>autoscaled on queue depth</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  askfn [label=<<B>Lambda / Fargate</B><BR/><FONT POINT-SIZE="9">ask hot path</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  }
+  subgraph cluster_ret {
+    label=<<B>Retrieval</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F4EFFB";
+    color="#C3A9EC"; penwidth=1.4; margin=14;
+  datumsvc [label=<<B>ECS Fargate datum</B>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  aurora [label=<<B>Aurora PostgreSQL</B><BR/><FONT POINT-SIZE="9">+ pgvector, multi-AZ</FONT>>, fillcolor="#EDEFF3", color="#5B6472", shape=cylinder, style="filled"];
+  }
+  subgraph cluster_st {
+    label=<<B>State + artifacts</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F2F3F6";
+    color="#C7CEDA"; penwidth=1.4; margin=14;
+  ddb [label=<<B>DynamoDB</B><BR/><FONT POINT-SIZE="9">claim state + cache index</FONT>>, fillcolor="#EDEFF3", color="#5B6472", shape=cylinder, style="filled"];
+  s3art [label=<<B>S3 artifacts</B><BR/><FONT POINT-SIZE="9">briefs · case_file · ledger</FONT>>, fillcolor="#EDEFF3", color="#5B6472", shape=cylinder, style="filled"];
+  s3cache [label=<<B>S3 response cache</B>>, fillcolor="#EDEFF3", color="#5B6472", shape=cylinder, style="filled"];
+  }
+  subgraph cluster_aisvc {
+    label=<<B>AI services</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F0EBF9";
+    color="#C9B6EE"; penwidth=1.4; margin=14;
+  bedrock [label=<<B>Bedrock VPC endpoint</B><BR/><FONT POINT-SIZE="9">Claude (text + vision)</FONT>>, fillcolor="#EFEAF9", color="#6B4FC7", shape=hexagon, style="filled"];
+  textract [label=<<B>Textract</B><BR/><FONT POINT-SIZE="9">independent OCR</FONT>>, fillcolor="#EFEAF9", color="#6B4FC7", shape=hexagon, style="filled"];
+  }
+  secrets [label=<<B>Secrets Manager + KMS</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  }
+  obs [label=<<B>CloudWatch · X-Ray · OpenSearch</B>>, fillcolor="#F0F2F5", color="#7A828E"];
+  ses -> s3raw;
+  apigw -> q1;
+  s3raw -> eb;
+  eb -> q1;
+  q1 -> workers;
+  q1 -> dlq [label="poison", style=dashed];
+  workers -> bedrock;
+  workers -> datumsvc;
+  datumsvc -> aurora;
+  workers -> ddb;
+  workers -> s3art;
+  workers -> s3cache [dir=both];
+  apigw -> askfn;
+  askfn -> datumsvc;
+  workers -> obs [style=dashed];
+}

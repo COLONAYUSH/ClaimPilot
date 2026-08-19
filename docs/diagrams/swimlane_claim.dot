@@ -1,0 +1,29 @@
+digraph swimlane_claim {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.35; ranksep=0.4;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  s1 [label=<<B>1  Trigger</B><BR/><FONT POINT-SIZE="9">claim folder ready</FONT>>, fillcolor="#F0F2F5", color="#7A828E"];
+  s2 [label=<<B>2  Deterministic</B><BR/><FONT POINT-SIZE="9">parse 15 sources, sha256, assign trust tiers</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  s3 [label=<<B>3  Ledger</B><BR/><FONT POINT-SIZE="9">structured facts: offer 7225, tender 60, price 425</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  s4 [label=<<B>4  LLM</B><BR/><FONT POINT-SIZE="9">extract invoice / BOL / POD / email / overview</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  s5 [label=<<B>5  Ledger</B><BR/><FONT POINT-SIZE="9">EXTRACTED facts, each with a verbatim quote</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  s6 [label=<<B>6  LLM (vision)</B><BR/><FONT POINT-SIZE="9">transcribe the scanned inspection + photos</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  s7 [label=<<B>7  Ledger</B><BR/><FONT POINT-SIZE="9">14 unsellable / 6 repackable, foam present</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  s8 [label=<<B>8  Security</B><BR/><FONT POINT-SIZE="9">scan every source + transcript (clean on this pack)</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  s9 [label=<<B>9  Deterministic</B><BR/><FONT POINT-SIZE="9">reconcile 60 vs 59 vs 58, POD governs; photos 2 of 5</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  s10 [label=<<B>10  Ledger</B><BR/><FONT POINT-SIZE="9">DERIVED: shortage 8 units, damage 20 units, delay 4 days</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  s11 [label=<<B>11  datum</B><BR/><FONT POINT-SIZE="9">retrieve MSA clauses + plan_id (abstains on unsupported)</FONT>>, fillcolor="#E3F4F4", color="#2C9AA0"];
+  s12 [label=<<B>12  LLM</B><BR/><FONT POINT-SIZE="9">read clause params (quoted): cap $50/lb, notice, delay excluded</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  s13 [label=<<B>13  Deterministic</B><BR/><FONT POINT-SIZE="9">entitlement calculator: counter $11,920; markdown EXCLUDED</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  s14 [label=<<B>14  Deterministic</B><BR/><FONT POINT-SIZE="9">benchmark vs 30 claims: damage 83.77%, delay 8.51%</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  s15 [label=<<B>15  LLM</B><BR/><FONT POINT-SIZE="9">compose brief + reply from the ledger only</FONT>>, fillcolor="#FCF1E2", color="#DE8A24"];
+  s16 [label=<<B>16  Deterministic</B><BR/><FONT POINT-SIZE="9">NumberGuard + reference check</FONT>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  s17 [label=<<B>17  Output</B><BR/><FONT POINT-SIZE="9">brief.html, case_file.json, draft_reply.txt</FONT>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  s1 -> s2 -> s3 -> s4 -> s5 -> s6 -> s7 -> s8 -> s9 -> s10 -> s11 -> s12 -> s13 -> s14 -> s15 -> s16 -> s17 [weight=20];
+}

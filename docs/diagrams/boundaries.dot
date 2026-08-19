@@ -1,0 +1,48 @@
+digraph boundaries {
+  bgcolor="white"; rankdir=TB; pad=0.35; nodesep=0.5; ranksep=0.6;
+  fontname="Helvetica"; splines=spline;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11,
+        penwidth=1.5, margin="0.20,0.13", color="#2F5FDF",
+        fillcolor="#EAF1FC", fontcolor="#16233B"];
+  edge [color="#6B7480", penwidth=1.4, arrowsize=0.85, fontname="Helvetica",
+        fontsize=9, fontcolor="#55606E"];
+  
+
+  subgraph cluster_u {
+    label=<<B>Untrusted</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#FCEEED";
+    color="#E6ADAA"; penwidth=1.4; margin=14;
+  docs [label=<<B>claim documents</B><BR/><FONT POINT-SIZE="9">counterparty-authored</FONT>>, fillcolor="#FBEAE9", color="#D64540"];
+  }
+  subgraph cluster_bnd {
+    label=<<B>Trust boundary: the guards</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F4EFFB";
+    color="#C3A9EC"; penwidth=1.4; margin=14;
+  g1 [label=<<B>Guard 1 quote gate</B>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  g2 [label=<<B>Guard 2 adversarial scan</B>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  g3 [label=<<B>Guard 3 NumberGuard</B>>, fillcolor="#F1EBFB", color="#7A47D1"];
+  }
+  subgraph cluster_t {
+    label=<<B>Trusted compute (private subnets)</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#EEF8F1";
+    color="#A9DBBE"; penwidth=1.4; margin=14;
+  w [label=<<B>workers</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  d [label=<<B>datum + Aurora</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  det [label=<<B>deterministic engine</B><BR/><FONT POINT-SIZE="9">computes the money</FONT>>, fillcolor="#E7F6EC", color="#1E9E57"];
+  }
+  subgraph cluster_ctl {
+    label=<<B>Controlled egress</B>>; labeljust="l"; fontname="Helvetica"; fontsize=12;
+    fontcolor="#3A4658"; style="rounded,filled"; fillcolor="#F0EBF9";
+    color="#C9B6EE"; penwidth=1.4; margin=14;
+  be [label=<<B>Bedrock VPC endpoint only</B>>, fillcolor="#EFEAF9", color="#6B4FC7"];
+  }
+  docs -> g1;
+  g1 -> det;
+  docs -> g2;
+  g2 -> w;
+  det -> g3;
+  g3 -> out;
+  out [label=<<B>brief</B>>, fillcolor="#EAF1FC", color="#2F5FDF"];
+  w -> d;
+  w -> be;
+}
