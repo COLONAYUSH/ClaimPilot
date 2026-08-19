@@ -236,6 +236,12 @@ The design decision that matters is who does what:
 Every computed number lands in the fact ledger with its formula and input fact ids, so
 any figure in the brief can be walked back to source documents in two clicks.
 
+> [!NOTE]
+> For the engineering deep dive (module graph, the fact-ledger data model, per-component
+> internals for the scanner, retrieval, extraction, reconciliation and the calculator, the
+> end-to-end swimlane, and the full AWS production design with the security-first CI gates
+> and scaling math) see [`docs/architecture/`](docs/architecture/).
+
 <div align="right"><a href="#contents">back to top</a></div>
 
 ## The grounding gates
