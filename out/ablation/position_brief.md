@@ -1,6 +1,6 @@
 # Negotiation Position Brief - Claim FCL-2026-0147
 
-**Northstar Retail Equipment LLC** vs **BlueLine Freight Systems** | status NEGOTIATION | owner Maya Chen | generated 2026-08-18T03:56:05+00:00 | provider claude-cli (claude-sonnet-5) | retrieval datum
+**Northstar Retail Equipment LLC** vs **BlueLine Freight Systems** | status NEGOTIATION | owner Maya Chen | generated 2026-08-18T03:56:05+00:00 | provider replay (claude-sonnet-5) | retrieval datum
 
 | Demand | Carrier offer | Recommended counter | Expected band |
 |---|---|---|---|

@@ -1,40 +1,6 @@
 {
  "text": "Based on the retrieved passages, recovery of the $18,000 markdown appears unlikely, though no final ruling on this specific claim is in the record.\n\nThe shipper's original demand explicitly included this cost: \"Our current demand is $29,920.00, consisting of product shortage/damage, inspection and rework costs, the commercial markdown caused by the missed promotion launch, and a refund of the freight charge.\" [email_thread] The shipper later detailed it further: \"Because they arrived after launch, we incurred an $18,000 markdown to move the inventory. We expect BlueLine to address that delay loss as well.\" [email_thread]\n\nThe carrier, however, has rejected this component. Its stated position is: \"Our position is that the service was Standard LTL, not a guaranteed appointment service. The agreement excludes consequential and loss-of-market damages for delay.\" [email_thread] It confirmed the exclusion directly in its offer: \"This offer does not include inspection/repack expense, late-delivery markdown, or freight refund.\" [email_thread]\n\nA prior case with the same carrier reinforces this outcome. Historical claim HC-2025-0094, also a DELAY claim with \"No guaranteed service,\" resolved with \"Promotion markdown denied; commercial freight refund approved.\" [historical_claims]\n\nThe internal claim record's analyst note echoes the same caution for this claim: \"Promotion-impact component is commercially important but may not be contractually recoverable.\" [claim_snapshot]\n\nWhat's missing to give a definitive answer: the passages do not include the actual carrier service agreement/tariff language on delay and consequential/loss-of-market damages, nor any final settlement, arbitration outcome, or legal determination for this specific claim (FCL-2026-0147) — only the carrier's negotiating position and one historical precedent are available.",
  "obj": null,
- "usage": {
-  "input_tokens": 2,
-  "cache_creation_input_tokens": 13003,
-  "cache_read_input_tokens": 25874,
-  "output_tokens": 1768,
-  "output_tokens_details": {
-   "thinking_tokens": 1175
-  },
-  "server_tool_use": {
-   "web_search_requests": 0,
-   "web_fetch_requests": 0
-  },
-  "service_tier": "standard",
-  "cache_creation": {
-   "ephemeral_1h_input_tokens": 13003,
-   "ephemeral_5m_input_tokens": 0
-  },
-  "inference_geo": "global",
-  "iterations": [
-   {
-    "input_tokens": 2,
-    "output_tokens": 1768,
-    "cache_read_input_tokens": 25874,
-    "cache_creation_input_tokens": 13003,
-    "cache_creation": {
-     "ephemeral_5m_input_tokens": 0,
-     "ephemeral_1h_input_tokens": 13003
-    },
-    "type": "message"
-   }
-  ],
-  "speed": "standard"
- },
  "model": "claude-sonnet-5",
- "provider": "claude-cli",
  "label": "ask"
 }

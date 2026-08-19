@@ -5,14 +5,15 @@ Providers
   anthropic   direct Messages API over urllib (no SDK dependency); supports
               PDF/image content blocks and schema-forced tool output. The
               production path.
-  claude-cli  headless `claude -p` using the operator's existing Claude Code
-              auth; vision via a Read-only tool allowance. The path this demo
-              runs on (no API key present on this machine).
+  cli         headless call to a local model CLI over stdin, using an existing
+              login instead of an API key; vision via a Read-only tool
+              allowance. A convenience for machines with no key configured.
   replay      cache-only. Same pipeline, zero network, fully deterministic -
               this is what evals/CI run against.
 
-Every completed call is cached under sha256(provider-class, model, system,
-prompt, attachment hashes, schema), so a re-run is byte-identical and free.
+Every completed call is cached under sha256(model, system, prompt, attachment
+hashes, schema), so a re-run is byte-identical and free regardless of which
+provider served it.
 """
 
 from __future__ import annotations
@@ -208,12 +209,12 @@ class AnthropicAPIProvider(BaseProvider):
         raise LLMError("Anthropic API unreachable: {}".format(last_err))
 
 
-class ClaudeCLIProvider(BaseProvider):
-    """Headless `claude -p`. The prompt travels over stdin (no ARG_MAX
+class LocalCLIProvider(BaseProvider):
+    """Headless local model CLI. The prompt travels over stdin (no ARG_MAX
     concerns); vision attachments are handled by allowing exactly the Read
     tool and instructing the model to read the named files first."""
 
-    name = "claude-cli"
+    name = "cli"
 
     def complete(self, req: LLMRequest, model: str) -> Tuple[str, Dict[str, Any], float]:
         cmd = ["claude", "-p", "--output-format", "json", "--model", model]
@@ -262,10 +263,10 @@ class ReplayProvider(BaseProvider):
     def complete(self, req: LLMRequest, model: str) -> Tuple[str, Dict[str, Any], float]:
         raise CacheMiss(
             "replay provider has no cached response for {!r}. Run once with a live "
-            "provider (anthropic or claude-cli) to populate .cache/llm.".format(req.label))
+            "provider (anthropic or cli) to populate .cache/llm.".format(req.label))
 
 
-_PROVIDERS = {"anthropic": AnthropicAPIProvider, "claude-cli": ClaudeCLIProvider,
+_PROVIDERS = {"anthropic": AnthropicAPIProvider, "cli": LocalCLIProvider,
               "replay": ReplayProvider}
 
 
@@ -287,7 +288,7 @@ class LLMClient:
     def _cache_key(self, req: LLMRequest) -> str:
         att = [sha256_file(p) for p in req.attachments]
         # Keyed by request content only (not provider), so a cache populated by
-        # claude-cli replays identically under --provider replay.
+        # any provider replays identically under --provider replay.
         return sha256_text(stable_json({
             "model": self.model, "system": req.system, "prompt": req.prompt,
             "attachments": att, "schema": req.schema, "v": 1,

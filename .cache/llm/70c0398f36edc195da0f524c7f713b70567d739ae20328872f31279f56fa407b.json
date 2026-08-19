@@ -35,40 +35,6 @@
   },
   "description": "The image shows three cartons on a pallet against a plain gray background. A header bar reads \"SYNTHETIC TRAINING EVIDENCE\" on the left and \"MetroMart DC18 | 2026-05-12 11:18 CT\" on the right. The leftmost carton is labeled \"C-021\" and appears intact. The center carton, also associated with a \"C-021\" label (shown in a white callout box over the carton), has a jagged torn top edge with a dark rod-like object sticking out of it, a large oval stain on its lower-front face, and a smaller torn triangular flap on its front face. The rightmost carton is labeled \"C-023\" and appears intact. A footer at the bottom reads \"Claim FCL-2026-0147 | Warehouse photo | C-021\"."
  },
- "usage": {
-  "input_tokens": 4,
-  "cache_creation_input_tokens": 14170,
-  "cache_read_input_tokens": 70605,
-  "output_tokens": 4300,
-  "output_tokens_details": {
-   "thinking_tokens": 3364
-  },
-  "server_tool_use": {
-   "web_search_requests": 0,
-   "web_fetch_requests": 0
-  },
-  "service_tier": "standard",
-  "cache_creation": {
-   "ephemeral_1h_input_tokens": 14170,
-   "ephemeral_5m_input_tokens": 0
-  },
-  "inference_geo": "global",
-  "iterations": [
-   {
-    "input_tokens": 2,
-    "output_tokens": 4204,
-    "cache_read_input_tokens": 38521,
-    "cache_creation_input_tokens": 7733,
-    "cache_creation": {
-     "ephemeral_5m_input_tokens": 0,
-     "ephemeral_1h_input_tokens": 7733
-    },
-    "type": "message"
-   }
-  ],
-  "speed": "standard"
- },
  "model": "claude-sonnet-5",
- "provider": "claude-cli",
  "label": "vision/damage_photo_1"
 }

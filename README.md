@@ -151,10 +151,12 @@ Dependencies are Python 3.9+, `pypdf`, and optionally `openpyxl` for the xlsx
 cross-check. Everything else is standard library. No LangChain, no SDK, no vector DB
 client.
 
-For the LLM you need one of: `ANTHROPIC_API_KEY` (direct API), a logged-in Claude CLI
-(`claude -p`, headless), or nothing at all with `--provider replay`, which serves the
-committed response cache. The datum retrieval backend is optional; without it the
-stdlib FTS5 backend takes over and says so in the log (see [Retrieval](#retrieval)).
+For the LLM you need one of: `ANTHROPIC_API_KEY` (direct Anthropic API, the production
+path), or nothing at all with `--provider replay`, which serves the committed response
+cache offline and for free. A third provider, `--provider cli`, calls a local model CLI
+login for machines with no key configured. The datum retrieval backend is optional;
+without it the stdlib FTS5 backend takes over and says so in the log
+(see [Retrieval](#retrieval)).
 
 <details>
 <summary><b>Full CLI reference</b></summary>
@@ -162,7 +164,7 @@ stdlib FTS5 backend takes over and says so in the log (see [Retrieval](#retrieva
 <br/>
 
 ```text
-claimpilot run   --pack DIR [--out DIR] [--provider anthropic|claude-cli|replay]
+claimpilot run   --pack DIR [--out DIR] [--provider anthropic|cli|replay]
                  [--model ID] [--retrieval auto|datum|fts5]
                  [--ablate SOURCE_ID]... [--no-vision-verify]
     Build the negotiation position brief end to end.
@@ -540,7 +542,7 @@ freight-claim-copilot/
 │   ├── entitlement.py     stage 5: clause retrieval, quoted params, deterministic calculator
 │   ├── benchmark.py       stage 6: structural + dispute-pattern comparables, cohort stats
 │   ├── position.py        stage 7: guarded composition, fails closed
-│   ├── llm.py             providers (anthropic, claude-cli, replay), cache, schema repair
+│   ├── llm.py             providers (anthropic, cli, replay), cache, schema repair
 │   ├── models.py          the fact ledger and domain types
 │   ├── report.py          case_file.json, brief.md and brief.html renderers
 │   ├── pipeline.py        orchestrator

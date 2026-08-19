@@ -36,40 +36,6 @@
   },
   "description": "The image is a simplified/illustrated warehouse evidence photo, not a real photograph. A header bar reads \"SYNTHETIC TRAINING EVIDENCE\" in bold dark red on the left, with \"MetroMart DC18 | 2026-05-12 11:18 CT\" on the right. Three cartons sit on a wooden pallet against a plain gray warehouse backdrop. The leftmost carton, bearing a white label reading \"C-023\", is visibly damaged: it is tilted off-square, has a large dark angular shape across its face resembling a tear or puncture, and a jagged torn edge along its lower portion. To its right, an intact, square carton labeled \"C-022\" shows no damage. A third intact carton on the far right is also labeled \"C-023\", identical in text to the damaged carton's label but showing no damage itself. A footer at the bottom reads \"Claim FCL-2026-0147 | Warehouse photo | C-023\"."
  },
- "usage": {
-  "input_tokens": 4,
-  "cache_creation_input_tokens": 22325,
-  "cache_read_input_tokens": 65395,
-  "output_tokens": 3399,
-  "output_tokens_details": {
-   "thinking_tokens": 2480
-  },
-  "server_tool_use": {
-   "web_search_requests": 0,
-   "web_fetch_requests": 0
-  },
-  "service_tier": "standard",
-  "cache_creation": {
-   "ephemeral_1h_input_tokens": 22325,
-   "ephemeral_5m_input_tokens": 0
-  },
-  "inference_geo": "global",
-  "iterations": [
-   {
-    "input_tokens": 2,
-    "output_tokens": 3307,
-    "cache_read_input_tokens": 39521,
-    "cache_creation_input_tokens": 8678,
-    "cache_creation": {
-     "ephemeral_5m_input_tokens": 0,
-     "ephemeral_1h_input_tokens": 8678
-    },
-    "type": "message"
-   }
-  ],
-  "speed": "standard"
- },
  "model": "claude-sonnet-5",
- "provider": "claude-cli",
  "label": "vision/damage_photo_2"
 }

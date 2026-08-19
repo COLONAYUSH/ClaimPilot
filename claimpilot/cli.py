@@ -21,7 +21,7 @@ def _common(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--pack", default="..", help="claim folder (default: ..)")
     parser.add_argument("--out", default="out", help="output directory")
     parser.add_argument("--provider", default=None,
-                        choices=["anthropic", "claude-cli", "replay"],
+                        choices=["anthropic", "cli", "replay"],
                         help="LLM provider (default: auto-detect)")
     parser.add_argument("--model", default=None, help="model id override")
     parser.add_argument("--retrieval", default="auto", choices=["auto", "datum", "fts5"],

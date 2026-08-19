@@ -1,7 +1,7 @@
 # Evaluation report - Freight Claim Copilot
 
 Overall: **111/111 checks passed (100.0%)**
-Run: provider=claude-cli model=claude-sonnet-5 retrieval=datum | LLM cost this eval: $0.00
+Run: provider=replay model=claude-sonnet-5 retrieval=datum | LLM cost this eval: $0.00
 
 ## Fact extraction accuracy  (72/72)
 

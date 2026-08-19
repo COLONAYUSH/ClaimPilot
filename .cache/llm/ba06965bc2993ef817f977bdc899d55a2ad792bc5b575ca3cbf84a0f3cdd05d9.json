@@ -37,40 +37,6 @@
   },
   "description": "Illustrated/synthetic warehouse evidence image showing three cartons on a wooden pallet against a plain gray backdrop. A header banner reads 'SYNTHETIC TRAINING EVIDENCE' with 'MetroMart DC18 | 2026-05-12 11:18 CT' at top right. A footer reads 'Claim FCL-2026-0147 | Warehouse photo | C-023'. The leftmost, tallest carton bears a white tag labeled 'C-023' and shows a large dark irregular torn/punctured area on its face with jagged crack lines extending toward its bottom-right corner. The middle carton is labeled 'C-022' and the rightmost carton is labeled 'C-023' (a second carton sharing that same id); both of these appear intact with no visible tears, punctures, crush, or stains."
  },
- "usage": {
-  "input_tokens": 4,
-  "cache_creation_input_tokens": 14298,
-  "cache_read_input_tokens": 70737,
-  "output_tokens": 3801,
-  "output_tokens_details": {
-   "thinking_tokens": 2883
-  },
-  "server_tool_use": {
-   "web_search_requests": 0,
-   "web_fetch_requests": 0
-  },
-  "service_tier": "standard",
-  "cache_creation": {
-   "ephemeral_1h_input_tokens": 14298,
-   "ephemeral_5m_input_tokens": 0
-  },
-  "inference_geo": "global",
-  "iterations": [
-   {
-    "input_tokens": 2,
-    "output_tokens": 3709,
-    "cache_read_input_tokens": 38653,
-    "cache_creation_input_tokens": 7729,
-    "cache_creation": {
-     "ephemeral_5m_input_tokens": 0,
-     "ephemeral_1h_input_tokens": 7729
-    },
-    "type": "message"
-   }
-  ],
-  "speed": "standard"
- },
  "model": "claude-sonnet-5",
- "provider": "claude-cli",
  "label": "vision/damage_photo_2"
 }

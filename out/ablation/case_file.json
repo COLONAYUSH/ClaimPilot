@@ -11,7 +11,7 @@
   },
   "run": {
     "generated_at": "2026-08-18T03:56:05+00:00",
-    "provider": "claude-cli",
+    "provider": "replay",
     "model": "claude-sonnet-5",
     "retrieval_backend": "datum",
     "retrieval_fallback_note": "",
@@ -20,7 +20,7 @@
     "llm_calls": [
       {
         "label": "extract/commercial_invoice",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,
@@ -29,7 +29,7 @@
       },
       {
         "label": "extract/bill_of_lading",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,
@@ -38,7 +38,7 @@
       },
       {
         "label": "extract/proof_of_delivery",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,
@@ -47,7 +47,7 @@
       },
       {
         "label": "extract/case_overview",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,
@@ -56,7 +56,7 @@
       },
       {
         "label": "extract/email_thread",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,
@@ -65,7 +65,7 @@
       },
       {
         "label": "vision/damage_photo_1",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,
@@ -74,7 +74,7 @@
       },
       {
         "label": "vision/damage_photo_2",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,
@@ -83,7 +83,7 @@
       },
       {
         "label": "extract/contract_terms",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,
@@ -92,7 +92,7 @@
       },
       {
         "label": "position/brief",
-        "provider": "claude-cli",
+        "provider": "replay",
         "model": "claude-sonnet-5",
         "cached": true,
         "cost_usd": 0.0,

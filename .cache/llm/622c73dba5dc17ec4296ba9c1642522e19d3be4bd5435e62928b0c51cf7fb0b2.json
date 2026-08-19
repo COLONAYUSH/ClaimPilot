@@ -71,40 +71,6 @@
    "quote": "The claimant must provide reasonable proof of quantity tendered, quantity delivered, product value, and the nature and extent of loss. BlueLine may request photographs, inspection records, packaging information, salvage information, and other evidence reasonably necessary to evaluate the claim."
   }
  },
- "usage": {
-  "input_tokens": 2,
-  "cache_creation_input_tokens": 8477,
-  "cache_read_input_tokens": 32084,
-  "output_tokens": 7638,
-  "output_tokens_details": {
-   "thinking_tokens": 6330
-  },
-  "server_tool_use": {
-   "web_search_requests": 0,
-   "web_fetch_requests": 0
-  },
-  "service_tier": "standard",
-  "cache_creation": {
-   "ephemeral_1h_input_tokens": 8477,
-   "ephemeral_5m_input_tokens": 0
-  },
-  "inference_geo": "global",
-  "iterations": [
-   {
-    "input_tokens": 2,
-    "output_tokens": 7638,
-    "cache_read_input_tokens": 32084,
-    "cache_creation_input_tokens": 8477,
-    "cache_creation": {
-     "ephemeral_5m_input_tokens": 0,
-     "ephemeral_1h_input_tokens": 8477
-    },
-    "type": "message"
-   }
-  ],
-  "speed": "standard"
- },
  "model": "claude-sonnet-5",
- "provider": "claude-cli",
  "label": "extract/contract_terms"
 }

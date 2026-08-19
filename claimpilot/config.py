@@ -107,7 +107,7 @@ def _default_provider() -> str:
     if os.environ.get("ANTHROPIC_API_KEY"):
         return "anthropic"
     if shutil.which("claude"):
-        return "claude-cli"
+        return "cli"
     return "replay"
 
 
@@ -116,7 +116,7 @@ class RunConfig:
     pack_dir: str
     out_dir: str = "out"
     cache_dir: str = ".cache/llm"
-    provider: str = field(default_factory=_default_provider)   # anthropic | claude-cli | replay
+    provider: str = field(default_factory=_default_provider)   # anthropic | cli | replay
     model: str = field(default_factory=lambda: os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5"))
     retrieval_backend: str = "auto"    # auto | datum | fts5
     datum: DatumConfig = field(default_factory=DatumConfig)

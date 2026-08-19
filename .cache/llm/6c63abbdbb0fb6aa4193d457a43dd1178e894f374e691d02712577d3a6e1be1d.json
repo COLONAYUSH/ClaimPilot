@@ -54,40 +54,6 @@
    "quote": "Pallet 3 wrap torn at rear; exceptions written before departure."
   }
  },
- "usage": {
-  "input_tokens": 2,
-  "cache_creation_input_tokens": 7541,
-  "cache_read_input_tokens": 32084,
-  "output_tokens": 2383,
-  "output_tokens_details": {
-   "thinking_tokens": 1663
-  },
-  "server_tool_use": {
-   "web_search_requests": 0,
-   "web_fetch_requests": 0
-  },
-  "service_tier": "standard",
-  "cache_creation": {
-   "ephemeral_1h_input_tokens": 7541,
-   "ephemeral_5m_input_tokens": 0
-  },
-  "inference_geo": "global",
-  "iterations": [
-   {
-    "input_tokens": 2,
-    "output_tokens": 2383,
-    "cache_read_input_tokens": 32084,
-    "cache_creation_input_tokens": 7541,
-    "cache_creation": {
-     "ephemeral_5m_input_tokens": 0,
-     "ephemeral_1h_input_tokens": 7541
-    },
-    "type": "message"
-   }
-  ],
-  "speed": "standard"
- },
  "model": "claude-sonnet-5",
- "provider": "claude-cli",
  "label": "extract/proof_of_delivery"
 }

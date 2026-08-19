@@ -34,40 +34,6 @@
   },
   "description": "Flat vector-style illustration of three cartons on a pallet in a warehouse setting. Header text at top-left reads 'SYNTHETIC TRAINING EVIDENCE' and top-right reads 'MetroMart DC18 | 2026-05-12 11:18 CT'. Footer text at bottom-left reads 'Claim FCL-2026-0147 | Warehouse photo | C-023'. Three distinct cartons are visible: the leftmost (tallest) carton bears a white label box reading 'C-023' and has a dark irregular quadrilateral shape with a jagged line extending to its lower edge, depicting a tear/puncture or stain; the middle carton is labeled 'C-022' with no visible damage; the rightmost carton is labeled 'C-023' with no visible damage."
  },
- "usage": {
-  "input_tokens": 4,
-  "cache_creation_input_tokens": 15003,
-  "cache_read_input_tokens": 70605,
-  "output_tokens": 3120,
-  "output_tokens_details": {
-   "thinking_tokens": 2233
-  },
-  "server_tool_use": {
-   "web_search_requests": 0,
-   "web_fetch_requests": 0
-  },
-  "service_tier": "standard",
-  "cache_creation": {
-   "ephemeral_1h_input_tokens": 15003,
-   "ephemeral_5m_input_tokens": 0
-  },
-  "inference_geo": "global",
-  "iterations": [
-   {
-    "input_tokens": 2,
-    "output_tokens": 3001,
-    "cache_read_input_tokens": 38521,
-    "cache_creation_input_tokens": 8566,
-    "cache_creation": {
-     "ephemeral_5m_input_tokens": 0,
-     "ephemeral_1h_input_tokens": 8566
-    },
-    "type": "message"
-   }
-  ],
-  "speed": "standard"
- },
  "model": "claude-sonnet-5",
- "provider": "claude-cli",
  "label": "vision/damage_photo_2"
 }
